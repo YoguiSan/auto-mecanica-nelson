@@ -1,3 +1,5 @@
+'use client';
+
 import { mobile } from '@amn/styles/Breakpoints';
 import styles from 'styled-components';
 

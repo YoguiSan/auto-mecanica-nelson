@@ -4,9 +4,12 @@ import Context from '@amn/stores';
 
 const TopMenu: React.FC = () => {
   const { theme } = React.useContext(Context);
-  return <Header>
 
-  </Header>;
+  return (
+    <Header theme={theme.mode}>
+      
+    </Header>
+  );
 };
 
 export default TopMenu;

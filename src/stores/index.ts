@@ -1,3 +1,4 @@
+'use client';
 import ContextType from '@amn/types/stores';
 import { createContext } from 'react';
 import theme from './theme';

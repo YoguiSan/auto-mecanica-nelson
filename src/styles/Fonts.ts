@@ -1,0 +1,1 @@
+export const base = "'Roboto', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif";
