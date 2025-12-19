@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@amn/*": ["./src/*"]
+      "@amn/*": ["./src/*"],
+      "@eui*": ["./packages/ethyl-ui/src/index.ts"],
+      "@icons/*": ["./src/assets/icons/*"]
     }
   },
   "include": [

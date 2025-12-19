@@ -1,9 +1,11 @@
 'use client';
 
+import { useState } from "react";
+import TopMenu from "@amn/components/TopMenu";
 import Context from "@amn/stores";
 import type { Metadata } from "next";
-import TopMenu from "@amn/components/TopMenu";
-import { useState } from "react";
+import './globals.css';
+import WebComponentLoader from "@amn/components/WebComponentLoader";
 
 /*
 export const metadata: Metadata = {
@@ -26,7 +28,9 @@ export default function RootLayout({
       },
     }}>
       <html lang="en">
-        <head></head>
+        <head>
+          <WebComponentLoader />
+        </head>
         <body>
           <TopMenu />
           {children}

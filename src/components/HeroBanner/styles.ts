@@ -6,7 +6,11 @@ import {
   vibrantOrange,
   white,
 } from '@amn/styles/Colors';
-import { base } from '@amn/styles/Fonts';
+import {
+  family,
+  size,
+} from '@amn/styles/Fonts';
+import { tablet } from '@amn/styles/Breakpoints';
 
 type HeroBannerStylesType = {
   theme?: 'light' | 'dark',
@@ -17,14 +21,15 @@ export default styles.section<HeroBannerStylesType>`
 ${({
   image,
 }) => `
-  font-family: ${base};
+  font-family: ${family.base};
 
   .hero-image {
-    height: 80vh;
-    padding: 1rem;
-    display: flex;
     align-items: center;
+    display: flex;
+    height: 80vh;
     justify-content: center;
+    margin: 0;
+    padding: 0;
     width: 100%;
 
     ${
@@ -44,6 +49,7 @@ ${({
       margin: auto;
       padding: 1rem;
       text-align: center;
+      width: 100%;
 
       > * {
         margin: 0;
@@ -51,7 +57,11 @@ ${({
 
       .hero-title {
         color: ${darkBlue};
-        font-size: 4rem;
+        font-size: 3rem;
+
+        @media all and (max-width: ${tablet}) {
+          font-size: 1.875rem;
+        }
 
         &.callout {
           color: ${vibrantOrange};
@@ -59,6 +69,7 @@ ${({
       }
   
       .hero-subtitle {
+        font-size: ${size.base};
       }
   
       .hero-ctas {
