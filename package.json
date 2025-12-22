@@ -6,11 +6,14 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"npm run watch:eui\" \"next dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "update:eui": "npm i ./packages/ethyl-ui"
+    "build:eui": "(cd packages/ethyl-ui && npm run build && cd ../..)",
+    "watch:eui": "(cd packages/ethyl-ui && npm start && cd ../../)",
+    "update:eui": "npm run build:eui && npm i ./packages/ethyl-ui",
+    "dev:eui": "(cd packages/ethyl-ui && npx storybook dev && cd ../..)"
   },
   "dependencies": {
     "ethyl-ui": "^0.0.1",

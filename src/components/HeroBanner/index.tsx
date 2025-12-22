@@ -13,6 +13,7 @@ type Props = {
     action: string | (() => void),
     // FIXME: Define proper type
     icon?: unknown,
+    color?: string,
   }[],
   image: string,
 };
@@ -34,7 +35,22 @@ const HeroBanner: React.FC<Props> = ({
           <p className="hero-title callout">{callout}</p>
           <p className="hero-subtitle">{subtitle}</p>
           <div className="hero-ctas">
-            {ctas.map(({text, action, icon}) => (<></>))}
+            {ctas.map(({
+              text,
+              action,
+              icon,
+              color,
+            },
+              index,
+            ) => (
+              <eui-button
+                key={`hero-cta-${index}`}
+                text={text}
+                onClick={action}
+                icon={icon}
+                color={color}
+              />
+            ))}
           </div>
         </div>
       </figure>
