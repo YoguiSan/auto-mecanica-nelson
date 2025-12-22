@@ -1,7 +1,8 @@
 import HeroBanner from '@amn/components/HeroBanner';
 import { darkBlue, vibrantOrange, whatsAppGreen } from '@amn/styles/Colors';
-import MapPinpoint from '@icons/map-pinpoint.svg';
+import Image from 'next/image';
 import Clock from '@icons/clock.svg';
+import MapPinpoint from '@icons/map-pinpoint.svg';
 import Main from './styles';
 import Styles from './styles';
 
@@ -33,28 +34,29 @@ export default function Home() {
             >
               <eui-card
                 title="Localização"
-                icon={MapPinpoint}
+                id="card-localizacao"
                 iconBgColor={darkBlue}
               >
+                <Image src={MapPinpoint} alt="" slot="icon" />
                 <div className="address-container" slot="body">
                   <p>Rua Lourenço Saporito, 332</p>
                   <p>Jardim Ana Maria, São Paulo - SP</p>
                   <p>CEP: 05757-200</p>
-
                   <div className="map-container"></div>
                 </div>
               </eui-card>
             </eui-grid>
-
             <eui-grid
               medium={16}
               large={8}
               >
               <eui-card
+                id="card-horario-funcionamento"
                 title="Horário de Funcionamento"
-                icon={Clock}
                 iconBgColor={vibrantOrange}
               >
+                <Image src={Clock} slot="icon"  />
+                <div slot="body"></div>
               </eui-card>
             </eui-grid>
           </eui-grid>

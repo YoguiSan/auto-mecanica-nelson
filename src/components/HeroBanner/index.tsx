@@ -46,7 +46,9 @@ const HeroBanner: React.FC<Props> = ({
               <eui-button
                 key={`hero-cta-${index}`}
                 text={text}
-                onClick={action}
+                onClick={typeof (action) === 'string'
+                  ? () => action
+                  : action}
                 icon={icon}
                 color={color}
               />
