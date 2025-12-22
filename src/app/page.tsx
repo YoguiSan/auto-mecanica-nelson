@@ -26,8 +26,8 @@ export default function Home() {
         // image="/images/hero-banner.jpg"
       />
       <Main>
-        <section className="time-and-place">
-          <eui-grid container="true" columns="16">
+        <section id="section-time-and-place">
+          <eui-grid container="true" columns={16}>
             <eui-grid
               medium={16}
               large={8}
@@ -49,7 +49,7 @@ export default function Home() {
             <eui-grid
               medium={16}
               large={8}
-              >
+            >
               <eui-card
                 id="card-horario-funcionamento"
                 title="Horário de Funcionamento"
@@ -61,7 +61,29 @@ export default function Home() {
             </eui-grid>
           </eui-grid>
         </section>
-        <section className="about-us"></section>
+        <section id="section-about-us">
+          <eui-grid container="true" columns={16}>
+            <eui-grid
+              small={16}
+              medium={8}
+            ></eui-grid>
+            <eui-grid
+              small={16}
+              medium={8}
+            >
+              <h2>Sobre nós</h2>
+              <p>
+                Tradição familiar desde 1994. Nossa oficina vem servindo a comunidade de Campo Limpo há mais de três décadas, combinando expertise em serviços básicos e avançados com a confiança herdada de geração em geração.
+              </p>
+              <p>
+                Fundada por João Silva, hoje a oficina é administrada pela segunda geração da família, mantendo os valores de honestidade, qualidade e compromisso com cada cliente. Investimos constantemente em tecnologia e capacitação para oferecer o melhor serviço automotivo da região.
+              </p>
+            </eui-grid>
+          </eui-grid>
+        </section>
+        <section id="section-main-services">
+
+        </section>
       </Main>
     </Styles>
   );

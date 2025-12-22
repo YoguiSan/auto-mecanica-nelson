@@ -1,11 +1,18 @@
 'use client';
 
-import { mobile } from '@amn/styles/Breakpoints';
 import styles from 'styled-components';
+import { mobile } from '@amn/styles/Breakpoints';
+import { family } from '@amn/styles/Fonts';
 import { darkBlue, vibrantOrange } from '@amn/styles/Colors';
 
 export default styles.main`
-.time-and-place {
+font-family: ${family.base};
+
+h2 {
+  color: ${darkBlue};
+}
+
+#section-time-and-place {
   eui-grid {
     &.eui-grid-container {
       box-sizing: border-box;
@@ -18,6 +25,10 @@ export default styles.main`
           img {
             margin: auto;
           }
+        }
+
+        .eui-card-title {
+          color: ${darkBlue};
         }
 
         &#card-localizacao {
