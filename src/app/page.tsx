@@ -61,7 +61,7 @@ export default function Home() {
                 title="Horário de Funcionamento"
                 iconBgColor={vibrantOrange}
               >
-                <Image src={Clock} slot="icon"  />
+                <Image src={Clock} slot="icon" alt="" />
                 <div slot="body"></div>
               </eui-card>
             </eui-grid>
@@ -107,7 +107,7 @@ export default function Home() {
                     <eui-card>
                       <div slot="body">
                         <p className="quote">
-                          &quot;Nossa missão é manter seu veículo rodando com segurança e eficiência, como se fosse da nossa própria família."
+                          &quot;Nossa missão é manter seu veículo rodando com segurança e eficiência, como se fosse da nossa própria família.&quot;
                         </p>
                         <p className="author">
                           - Nelson Salles, proprietário

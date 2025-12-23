@@ -3,7 +3,7 @@
 import { useState } from "react";
 import TopMenu from "@amn/components/TopMenu";
 import Context from "@amn/stores";
-import type { Metadata } from "next";
+// import type { Metadata } from "next";
 import './globals.css';
 import WebComponentLoader from "@amn/components/WebComponentLoader";
 

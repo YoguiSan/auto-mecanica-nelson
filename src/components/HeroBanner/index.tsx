@@ -4,14 +4,6 @@ import { useContext } from 'react';
 import Context from '@amn/stores';
 import Section from './styles';
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'eui-button': any;
-    }
-  }
-}
-
 type Props = {
   title: string,
   callout?: string,
