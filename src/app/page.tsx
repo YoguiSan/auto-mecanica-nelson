@@ -118,7 +118,8 @@ export default function Home() {
           </eui-grid>
         </section>
         <section id="section-main-services">
-          <h2>Nossos Serviços Principais</h2>
+          <eui-grid container="true">
+            <h2>Nossos Serviços Principais</h2>
           <p className="subtitle">
             Oferecemos uma ampla gama de serviços automotivos com garantia, peças de qualidade e mão de obra especializada.
           </p>
@@ -227,7 +228,115 @@ export default function Home() {
                 </div>
               </eui-card>
             </eui-grid>
+          </eui-grid>
+          </eui-grid>
+        </section>
+        <section id="section-more-services">
+          <eui-card title="Não encontrou o que precisa?">
+            <div slot="body">
+              <p>Entre em contato conosco! Realizamos diversos outros serviços automotivos personalizados.</p>
+              <eui-button
+                color={vibrantOrange}
+                text="Fale com Especialista" onClick="wa.me/5511999999999"
+              />
+            </div>
+          </eui-card>
+        </section>
+        <section id="section-testimonials">
+          <eui-grid container="true">
 
+            <h2>O que nossos clientes dizem</h2>
+            <p className="subtitle">Satisfação do cliente é nossa prioridade. Veja o que dizem sobre nossos serviços.</p>
+            { /* TODO: carousel */ }
+            <eui-card>
+              { /* TODO: card */ }
+            </eui-card>
+            <div className="social-links">
+              <p>Siga-nos nas redes sociais</p>
+            </div>
+          </eui-grid>
+        </section>
+        <section id="section-get-in-touch">
+          <eui-grid container="true" columns={2}>
+            <eui-grid small={2} medium={1}>
+              <eui-card
+                title="Solicite um Orçamento"
+              >
+                { /* TODO: form */ }
+                <eui-button
+                  color={whatsAppGreen}
+                  text="Enviar via WhatsApp"
+                  onClick="wa.me/5511999999999"
+                />
+              </eui-card>
+            </eui-grid>
+            <eui-grid small={2} medium={1}>
+              <eui-card
+                title="Telefone"
+              >
+                { /* <Image src={PhoneIcon} slot="icon" /> */ }
+                <div slot="body">
+                  <p className="highlight">
+                    (11) 9999-9999
+                  </p>
+                  <p>
+                    Seg.-Sex.: 8h - 18h
+                  </p>
+                </div>
+              </eui-card>
+              <eui-card
+                title="Whatsapp"
+              >
+                { /* <Image src={PhoneIcon} slot="icon" /> */ }
+                <div slot="body">
+                  <p className="highlight">
+                    (11) 99999-9999
+                  </p>
+                  <p>
+                    Nelson Salles
+                  </p>
+                </div>
+              </eui-card>
+              <eui-card
+                title="E-mail"
+              >
+                { /* <Image src={PhoneIcon} slot="icon" /> */ }
+                <div slot="body">
+                  <p className="highlight">
+                    contato@automecanicanelson.com
+                  </p>
+                  <p>
+                    Respondemos em até 24h
+                  </p>
+                </div>
+              </eui-card>
+              <eui-card
+                title="Endereço"
+                className="address-card"
+              >
+                { /* <Image src={PhoneIcon} slot="icon" /> */ }
+                <div slot="body">
+                  <p>
+                    Rua Lourenço Saporito, 332
+                  </p>
+                  <p>
+                    Jardim Ana Maria, São Paulo - SP
+                  </p>
+                  <p>
+                    CEP: 05757-200
+                  </p>
+                </div>
+              </eui-card>
+              <eui-card
+                title="Horário de Funcionamento"
+                className="schedule-card"
+                >
+                  <Image src={Clock} slot="icon" alt="" />
+                  <p>Seg.-Sex.: 8h - 18h</p>
+                  <p>Sáb.: 8h - 14h</p>
+                  <p>Domingos e feriados: Fechado</p>
+                </eui-card>
+            </eui-grid>
           </eui-grid>
         </section>
       </Main>
