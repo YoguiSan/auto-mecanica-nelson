@@ -16,11 +16,14 @@ export default function Home() {
         ctas={[{
           text: 'Agende pelo Whatsapp',
           action: 'https://wa.me/5511999999999',
+          variant: "primary",
           color: whatsAppGreen,
           // icon: WhatsappIcon,
         }, {
           text: 'Ligue Agora',
           action: 'tel:+5511999999999',
+          variant: "primary",
+          color: vibrantOrange,
           // icon: PhoneIcon,
         }]}
         // image="/images/hero-banner.jpg"
@@ -67,11 +70,11 @@ export default function Home() {
         <section id="section-about-us">
           <eui-grid container="true" columns={16}>
             <eui-grid
-              small={16}
+              extraSmall={16}
               medium={8}
             ></eui-grid>
             <eui-grid
-              small={16}
+              extraSmall={16}
               medium={8}
             >
               <h2>Sobre nós</h2>
@@ -88,19 +91,19 @@ export default function Home() {
                   narrow="true"
                   condensed="true"
                 >
-                  <eui-grid small={2} medium={1}>
+                  <eui-grid extraSmall={2} medium={1}>
                     <p>Prédio próprio</p>
                   </eui-grid>
-                  <eui-grid small={2} medium={1}>
+                  <eui-grid extraSmall={2} medium={1}>
                     <p>Atendimento personalizado</p>
                   </eui-grid>
-                  <eui-grid small={2} medium={1}>
+                  <eui-grid extraSmall={2} medium={1}>
                     <p>Ferramentas profissionais</p>
                   </eui-grid>
-                  <eui-grid small={2} medium={1}>
+                  <eui-grid extraSmall={2} medium={1}>
                     <p>Equipe certificada</p>
                   </eui-grid>
-                  <eui-grid small={2}>
+                  <eui-grid extraSmall={2}>
                     <eui-card>
                       <div slot="body">
                         <p className="quote">
@@ -119,116 +122,118 @@ export default function Home() {
         </section>
         <section id="section-main-services">
           <eui-grid container="true">
-            <h2>Nossos Serviços Principais</h2>
-          <p className="subtitle">
-            Oferecemos uma ampla gama de serviços automotivos com garantia, peças de qualidade e mão de obra especializada.
-          </p>
-          <eui-grid container="true" columns={4}>
-            <eui-grid small={4} medium={2} large={1}>
-              <eui-card title="Revisão básica">
-                {/* <Image src={Wrench} slot="icon" /> */}
-                <div slot="body">
-                  <p className="description">Troca de óleo, filtros, verificação completa de fluidos e sistema</p>
-                  <div className="price-container">
-                    <p className="price">R$ 120,00</p>
-                    <p className="time">1-2h</p>
-                    <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
-                  </div>
-                </div>
-              </eui-card>
+            <eui-grid extraSmall={16}>
+              <h2>Nossos Serviços Principais</h2>
+              <p className="subtitle">
+                Oferecemos uma ampla gama de serviços automotivos com garantia, peças de qualidade e mão de obra especializada.
+              </p>
             </eui-grid>
-            <eui-grid small={4} medium={2} large={1}>
-              <eui-card title="Freios">
-                {/* <Image src={Wrench} slot="icon" /> */}
-                <div slot="body">
-                  <p className="description">Manutenção e troca de pastilhas, discos, fluido de freio</p>
-                  <div className="price-container">
-                    <p className="price">R$ 300 - 800</p>
-                    <p className="time">1-2h</p>
-                    <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+            <eui-grid container="true" columns={4}>
+              <eui-grid extraSmall={4} medium={2} large={1}>
+                <eui-card title="Revisão básica">
+                  {/* <Image src={Wrench} slot="icon" /> */}
+                  <div slot="body">
+                    <p className="description">Troca de óleo, filtros, verificação completa de fluidos e sistema</p>
+                    <div className="price-container">
+                      <p className="price">R$ 120,00</p>
+                      <p className="time">1-2h</p>
+                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                    </div>
                   </div>
-                </div>
-              </eui-card>
-            </eui-grid>
-            <eui-grid small={4} medium={2} large={1}>
-              <eui-card title="Injeção Eletrônica">
-                {/* <Image src={Wrench} slot="icon" /> */}
-                <div slot="body">
-                  <p className="description">Diagnóstico EFI, scanner, limpeza de bicos e regulagem</p>
-                  <div className="price-container">
-                    <p className="price">R$ 120,00</p>
-                    <p className="time">1-2h</p>
-                    <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                </eui-card>
+              </eui-grid>
+              <eui-grid extraSmall={4} medium={2} large={1}>
+                <eui-card title="Freios">
+                  {/* <Image src={Wrench} slot="icon" /> */}
+                  <div slot="body">
+                    <p className="description">Manutenção e troca de pastilhas, discos, fluido de freio</p>
+                    <div className="price-container">
+                      <p className="price">R$ 300 - 800</p>
+                      <p className="time">1-2h</p>
+                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                    </div>
                   </div>
-                </div>
-              </eui-card>
-            </eui-grid>
-            <eui-grid small={4} medium={2} large={1}>
-              <eui-card title="Motor">
-                {/* <Image src={Wrench} slot="icon" /> */}
-                <div slot="body">
-                  <p className="description">Troca de correia dentada, válvulas e componentes</p>
-                  <div className="price-container">
-                    <p className="price">R$ 120,00</p>
-                    <p className="time">1-2h</p>
-                    <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                </eui-card>
+              </eui-grid>
+              <eui-grid small={4} medium={2} large={1}>
+                <eui-card title="Injeção Eletrônica">
+                  {/* <Image src={Wrench} slot="icon" /> */}
+                  <div slot="body">
+                    <p className="description">Diagnóstico EFI, scanner, limpeza de bicos e regulagem</p>
+                    <div className="price-container">
+                      <p className="price">R$ 120,00</p>
+                      <p className="time">1-2h</p>
+                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                    </div>
                   </div>
-                </div>
-              </eui-card>
-            </eui-grid>
-            <eui-grid small={4} medium={2} large={1}>
-              <eui-card title="Suspensão">
-                {/* <Image src={Wrench} slot="icon" /> */}
-                <div slot="body">
-                  <p className="description">Troca de amortecedores, molas, buchas</p>
-                  <div className="price-container">
-                    <p className="price">R$ 120,00</p>
-                    <p className="time">1-2h</p>
-                    <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                </eui-card>
+              </eui-grid>
+              <eui-grid extraSmall={4} medium={2} large={1}>
+                <eui-card title="Motor">
+                  {/* <Image src={Wrench} slot="icon" /> */}
+                  <div slot="body">
+                    <p className="description">Troca de correia dentada, válvulas e componentes</p>
+                    <div className="price-container">
+                      <p className="price">R$ 120,00</p>
+                      <p className="time">1-2h</p>
+                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                    </div>
                   </div>
-                </div>
-              </eui-card>
-            </eui-grid>
-            <eui-grid small={4} medium={2} large={1}>
-              <eui-card title="Elétrica">
-                {/* <Image src={Wrench} slot="icon" /> */}
-                <div slot="body">
-                  <p className="description">Bateria, alternador, motor de partida e sistema elétrico</p>
-                  <div className="price-container">
-                    <p className="price">R$ 120,00</p>
-                    <p className="time">1-2h</p>
-                    <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                </eui-card>
+              </eui-grid>
+              <eui-grid small={4} medium={2} large={1}>
+                <eui-card title="Suspensão">
+                  {/* <Image src={Wrench} slot="icon" /> */}
+                  <div slot="body">
+                    <p className="description">Troca de amortecedores, molas, buchas</p>
+                    <div className="price-container">
+                      <p className="price">R$ 120,00</p>
+                      <p className="time">1-2h</p>
+                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                    </div>
                   </div>
-                </div>
-              </eui-card>
-            </eui-grid>
-            <eui-grid small={4} medium={2} large={1}>
-              <eui-card title="Diagnóstico Completo">
-                {/* <Image src={Wrench} slot="icon" /> */}
-                <div slot="body">
-                  <p className="description">Scanner automotivo, teste de compressão e sistemas</p>
-                  <div className="price-container">
-                    <p className="price">R$ 120,00</p>
-                    <p className="time">1-2h</p>
-                    <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                </eui-card>
+              </eui-grid>
+              <eui-grid extraSmall={4} medium={2} large={1}>
+                <eui-card title="Elétrica">
+                  {/* <Image src={Wrench} slot="icon" /> */}
+                  <div slot="body">
+                    <p className="description">Bateria, alternador, motor de partida e sistema elétrico</p>
+                    <div className="price-container">
+                      <p className="price">R$ 120,00</p>
+                      <p className="time">1-2h</p>
+                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                    </div>
                   </div>
-                </div>
-              </eui-card>
-            </eui-grid>
-            <eui-grid small={4} medium={2} large={1}>
-              <eui-card title="Ar Condicionado">
-                {/* <Image src={Wrench} slot="icon" /> */}
-                <div slot="body">
-                  <p className="description">Recarga de gás, limpeza de sistema e troca de compressor</p>
-                  <div className="price-container">
-                    <p className="price">R$ 120,00</p>
-                    <p className="time">1-2h</p>
-                    <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                </eui-card>
+              </eui-grid>
+              <eui-grid small={4} medium={2} large={1}>
+                <eui-card title="Diagnóstico Completo">
+                  {/* <Image src={Wrench} slot="icon" /> */}
+                  <div slot="body">
+                    <p className="description">Scanner automotivo, teste de compressão e sistemas</p>
+                    <div className="price-container">
+                      <p className="price">R$ 120,00</p>
+                      <p className="time">1-2h</p>
+                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                    </div>
                   </div>
-                </div>
-              </eui-card>
+                </eui-card>
+              </eui-grid>
+              <eui-grid small={4} medium={2} large={1}>
+                <eui-card title="Ar Condicionado">
+                  {/* <Image src={Wrench} slot="icon" /> */}
+                  <div slot="body">
+                    <p className="description">Recarga de gás, limpeza de sistema e troca de compressor</p>
+                    <div className="price-container">
+                      <p className="price">R$ 120,00</p>
+                      <p className="time">1-2h</p>
+                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                    </div>
+                  </div>
+                </eui-card>
+              </eui-grid>
             </eui-grid>
-          </eui-grid>
           </eui-grid>
         </section>
         <section id="section-more-services">
@@ -244,33 +249,35 @@ export default function Home() {
         </section>
         <section id="section-testimonials">
           <eui-grid container="true">
-
-            <h2>O que nossos clientes dizem</h2>
-            <p className="subtitle">Satisfação do cliente é nossa prioridade. Veja o que dizem sobre nossos serviços.</p>
-            { /* TODO: carousel */ }
-            <eui-card>
-              { /* TODO: card */ }
-            </eui-card>
-            <div className="social-links">
-              <p>Siga-nos nas redes sociais</p>
-            </div>
+            <eui-grid extraSmall={16}>
+              <h2>O que nossos clientes dizem</h2>
+              <p className="subtitle">Satisfação do cliente é nossa prioridade. Veja o que dizem sobre nossos serviços.</p>
+              { /* TODO: carousel */ }
+              <eui-card>
+                { /* TODO: card */ }
+              </eui-card>
+              <div className="social-links">
+                <p>Siga-nos nas redes sociais</p>
+              </div>
+            </eui-grid>
           </eui-grid>
         </section>
         <section id="section-get-in-touch">
           <eui-grid container="true" columns={2}>
-            <eui-grid small={2} medium={1}>
+            <eui-grid extraSmall={2} medium={1}>
               <eui-card
                 title="Solicite um Orçamento"
               >
                 { /* TODO: form */ }
                 <eui-button
+                  variant="primary"
                   color={whatsAppGreen}
                   text="Enviar via WhatsApp"
                   onClick="wa.me/5511999999999"
                 />
               </eui-card>
             </eui-grid>
-            <eui-grid small={2} medium={1}>
+            <eui-grid extraSmall={2} medium={1}>
               <eui-card
                 title="Telefone"
               >

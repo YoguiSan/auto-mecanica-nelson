@@ -4,6 +4,14 @@ import { useContext } from 'react';
 import Context from '@amn/stores';
 import Section from './styles';
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'eui-button': any;
+    }
+  }
+}
+
 type Props = {
   title: string,
   callout?: string,
@@ -14,6 +22,7 @@ type Props = {
     // FIXME: Define proper type
     icon?: unknown,
     color?: string,
+    variant?: 'text' | 'outlined' | 'black' | 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'error' | 'fatal',
   }[],
   image: string,
 };
@@ -40,6 +49,7 @@ const HeroBanner: React.FC<Props> = ({
               action,
               icon,
               color,
+              variant,
             },
               index,
             ) => (
@@ -51,6 +61,7 @@ const HeroBanner: React.FC<Props> = ({
                   : action}
                 icon={icon}
                 color={color}
+                variant={variant}
               />
             ))}
           </div>
