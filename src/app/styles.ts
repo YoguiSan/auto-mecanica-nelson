@@ -8,6 +8,10 @@ import { darkBlue, vibrantOrange } from '@amn/styles/Colors';
 export default styles.main`
 font-family: ${family.base};
 
+* {
+  box-sizing: border-box;
+}
+
 h2 {
   color: ${darkBlue};
 }
@@ -18,7 +22,6 @@ h2 {
       box-sizing: border-box;
 
       eui-card {
-        box-sizing: border-box;
         height: 100%;
 
         .eui-card-icon {
