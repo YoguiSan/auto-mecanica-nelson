@@ -3,6 +3,8 @@
 import { useContext } from 'react';
 import Context from '@amn/stores';
 import Section from './styles';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 type Props = {
   title: string,
@@ -28,6 +30,8 @@ const HeroBanner: React.FC<Props> = ({
 }) => {
   const { theme } = useContext(Context);
 
+  const router = useRouter();
+
   return (
     <Section theme={theme.mode} image={image}>
       <figure className="hero-image">
@@ -49,12 +53,13 @@ const HeroBanner: React.FC<Props> = ({
                 key={`hero-cta-${index}`}
                 text={text}
                 onClick={typeof (action) === 'string'
-                  ? () => action
-                  : action}
-                icon={icon}
+                  ? () => router.push(action)
+                  : (event) => action(event)}
                 color={color}
                 variant={variant}
-              />
+                padding={16}>
+                  <Image slot="icon" src={icon as unknown} alt="" />
+                </eui-button>
             ))}
           </div>
         </div>

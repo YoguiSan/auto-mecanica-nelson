@@ -2,7 +2,9 @@ import HeroBanner from '@amn/components/HeroBanner';
 import { darkBlue, vibrantOrange, whatsAppGreen } from '@amn/styles/Colors';
 import Image from 'next/image';
 import Clock from '@icons/clock.svg';
+import SendMessage from '@icons/send-message.svg';
 import MapPinpoint from '@icons/map-pinpoint.svg';
+import Phone from '@icons/phone.svg';
 import Main from './styles';
 import Styles from './styles';
 
@@ -18,13 +20,13 @@ export default function Home() {
           action: 'https://wa.me/5511999999999',
           variant: "primary",
           color: whatsAppGreen,
-          // icon: WhatsappIcon,
+          icon: SendMessage,
         }, {
           text: 'Ligue Agora',
           action: 'tel:+5511999999999',
           variant: "primary",
           color: vibrantOrange,
-          // icon: PhoneIcon,
+          icon: Phone,
         }]}
         // image="/images/hero-banner.jpg"
       />

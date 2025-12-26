@@ -73,6 +73,14 @@ ${({
       }
   
       .hero-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+
+        @media all and (max-width: ${tablet}) {
+          flex-direction: column;
+        }
       }
     }
   }    
