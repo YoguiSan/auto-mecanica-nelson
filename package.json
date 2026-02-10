@@ -17,7 +17,7 @@
     "dev:eui": "(cd packages/ethyl-ui && npx storybook dev && cd ../..)"
   },
   "dependencies": {
-    "ethyl-ui": "^0.0.1",
+    "ethyl-ui": "./packages/ethyl-ui",
     "next": "16.0.10",
     "react": "19.2.1",
     "react-dom": "19.2.1",
@@ -33,6 +33,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.10",
+    "surge": "^0.24.6",
     "typescript": "^5"
   },
   "config": {

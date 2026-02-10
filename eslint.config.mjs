@@ -5,6 +5,12 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  {
+    rules: {
+      "react/react-in-jsx-scope": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
@@ -13,7 +19,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     "webpack.config.js",
-    "packages/ethyl-ui/**"
+    "packages/**/*.{js,ts,jsx,tsx}",
   ]),
 ]);
 
