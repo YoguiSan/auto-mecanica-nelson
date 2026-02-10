@@ -4,13 +4,13 @@ import Image from 'next/image';
 import Clock from '@icons/clock.svg';
 import SendMessage from '@icons/send-message.svg';
 import MapPinpoint from '@icons/map-pinpoint.svg';
-import Phone from '@icons/phone.svg';
+import PhoneIcon from '@icons/phone.svg';
+import WrenchIcon from '@icons/wrench.svg';
 import Main from './styles';
-import Styles from './styles';
 
 export default function Home() {
   return (
-    <Styles>
+    <Main>
       <HeroBanner
         title="Auto Mecânica Nelson"
         callout="30+ Anos de Mecânica de Excelência"
@@ -26,55 +26,56 @@ export default function Home() {
           action: 'tel:+5511999999999',
           variant: "primary",
           color: vibrantOrange,
-          icon: Phone,
+          icon: PhoneIcon,
         }]}
-        // image="/images/hero-banner.jpg"
       />
-      <Main>
-        <section id="section-time-and-place">
+      <section id="section-time-and-place">
+        <eui-grid
+          container="true"
+          columns={16}
+          narrow="true"
+        >
           <eui-grid
-            container="true"
-            columns={16}
+            medium={16}
+            large={8}
           >
-            <eui-grid
-              medium={16}
-              large={8}
+            <eui-card
+              title="Localização"
+              id="card-localizacao"
+              iconBgColor={darkBlue}
             >
-              <eui-card
-                title="Localização"
-                id="card-localizacao"
-                iconBgColor={darkBlue}
-              >
-                <Image src={MapPinpoint} alt="" slot="icon" />
-                <div className="address-container" slot="body">
-                  <p>Rua Lourenço Saporito, 332</p>
-                  <p>Jardim Ana Maria, São Paulo - SP</p>
-                  <p>CEP: 05757-200</p>
-                  <div className="map-container"></div>
-                </div>
-              </eui-card>
-            </eui-grid>
-            <eui-grid
-              medium={16}
-              large={8}
-            >
-              <eui-card
-                id="card-horario-funcionamento"
-                title="Horário de Funcionamento"
-                iconBgColor={vibrantOrange}
-              >
-                <Image src={Clock} slot="icon" alt="" />
-                <div slot="body"></div>
-              </eui-card>
-            </eui-grid>
+              <Image src={MapPinpoint} alt="" slot="icon" />
+              <div className="address-container" slot="body">
+                <p>Rua Lourenço Saporito, 332</p>
+                <p>Jardim Ana Maria, São Paulo - SP</p>
+                <p>CEP: 05757-200</p>
+                <div className="map-container"></div>
+              </div>
+            </eui-card>
           </eui-grid>
+          <eui-grid
+            medium={16}
+            large={8}
+          >
+            <eui-card
+              id="card-horario-funcionamento"
+              title="Horário de Funcionamento"
+              iconBgColor={vibrantOrange}
+            >
+              <Image src={Clock} slot="icon" alt="" />
+              <div slot="body"></div>
+            </eui-card>
+          </eui-grid>
+        </eui-grid>
         </section>
         <section id="section-about-us">
-          <eui-grid container="true" columns={16}>
+          <eui-grid container="true" columns={16} narrow="true">
             <eui-grid
               extraSmall={16}
               medium={8}
-            ></eui-grid>
+            >
+              **TODO: imagem da equipe ou oficina**
+            </eui-grid>
             <eui-grid
               extraSmall={16}
               medium={8}
@@ -123,17 +124,17 @@ export default function Home() {
           </eui-grid>
         </section>
         <section id="section-main-services">
-          <eui-grid container="true">
-            <eui-grid extraSmall={16}>
+          <eui-grid container="true" narrow="true">
+            <eui-grid extraSmall={16} narrow="true">
               <h2>Nossos Serviços Principais</h2>
               <p className="subtitle">
                 Oferecemos uma ampla gama de serviços automotivos com garantia, peças de qualidade e mão de obra especializada.
               </p>
             </eui-grid>
-            <eui-grid container="true" columns={4}>
-              <eui-grid extraSmall={4} medium={2} large={1}>
-                <eui-card title="Revisão básica">
-                  {/* <Image src={Wrench} slot="icon" /> */}
+            <eui-grid container="true" columns={4} narrow="true" gap="16">
+              <eui-grid extraSmall={4} medium={2} large={1} narrow="true">
+                <eui-card title="Revisão básica" iconBgColor={darkBlue}>
+                  <Image src={WrenchIcon} slot="icon" alt="" />
                   <div slot="body">
                     <p className="description">Troca de óleo, filtros, verificação completa de fluidos e sistema</p>
                     <div className="price-container">
@@ -144,9 +145,9 @@ export default function Home() {
                   </div>
                 </eui-card>
               </eui-grid>
-              <eui-grid extraSmall={4} medium={2} large={1}>
-                <eui-card title="Freios">
-                  {/* <Image src={Wrench} slot="icon" /> */}
+              <eui-grid extraSmall={4} medium={2} large={1} narrow="true">
+                <eui-card title="Freios" iconBgColor={darkBlue}>
+                  <Image src={WrenchIcon} slot="icon" alt="" />
                   <div slot="body">
                     <p className="description">Manutenção e troca de pastilhas, discos, fluido de freio</p>
                     <div className="price-container">
@@ -157,9 +158,9 @@ export default function Home() {
                   </div>
                 </eui-card>
               </eui-grid>
-              <eui-grid small={4} medium={2} large={1}>
-                <eui-card title="Injeção Eletrônica">
-                  {/* <Image src={Wrench} slot="icon" /> */}
+              <eui-grid small={4} medium={2} large={1} narrow="true">
+                <eui-card title="Injeção Eletrônica" iconBgColor={darkBlue}>
+                  <Image src={WrenchIcon} slot="icon" alt="" />
                   <div slot="body">
                     <p className="description">Diagnóstico EFI, scanner, limpeza de bicos e regulagem</p>
                     <div className="price-container">
@@ -170,9 +171,9 @@ export default function Home() {
                   </div>
                 </eui-card>
               </eui-grid>
-              <eui-grid extraSmall={4} medium={2} large={1}>
-                <eui-card title="Motor">
-                  {/* <Image src={Wrench} slot="icon" /> */}
+              <eui-grid extraSmall={4} medium={2} large={1} narrow="true">
+                <eui-card title="Motor" iconBgColor={darkBlue}>
+                  <Image src={WrenchIcon} slot="icon" />
                   <div slot="body">
                     <p className="description">Troca de correia dentada, válvulas e componentes</p>
                     <div className="price-container">
@@ -183,9 +184,9 @@ export default function Home() {
                   </div>
                 </eui-card>
               </eui-grid>
-              <eui-grid small={4} medium={2} large={1}>
-                <eui-card title="Suspensão">
-                  {/* <Image src={Wrench} slot="icon" /> */}
+              <eui-grid small={4} medium={2} large={1} narrow="true">
+                <eui-card title="Suspensão" iconBgColor={darkBlue}>
+                  <Image src={WrenchIcon} slot="icon" alt="" />
                   <div slot="body">
                     <p className="description">Troca de amortecedores, molas, buchas</p>
                     <div className="price-container">
@@ -196,9 +197,9 @@ export default function Home() {
                   </div>
                 </eui-card>
               </eui-grid>
-              <eui-grid extraSmall={4} medium={2} large={1}>
-                <eui-card title="Elétrica">
-                  {/* <Image src={Wrench} slot="icon" /> */}
+              <eui-grid extraSmall={4} medium={2} large={1} narrow="true">
+                <eui-card title="Elétrica" iconBgColor={darkBlue}>
+                  <Image src={WrenchIcon} slot="icon" alt="" />
                   <div slot="body">
                     <p className="description">Bateria, alternador, motor de partida e sistema elétrico</p>
                     <div className="price-container">
@@ -209,9 +210,9 @@ export default function Home() {
                   </div>
                 </eui-card>
               </eui-grid>
-              <eui-grid small={4} medium={2} large={1}>
-                <eui-card title="Diagnóstico Completo">
-                  {/* <Image src={Wrench} slot="icon" /> */}
+              <eui-grid small={4} medium={2} large={1} narrow="true">
+                <eui-card title="Diagnóstico Completo" iconBgColor={darkBlue}>
+                  <Image src={WrenchIcon} slot="icon" alt="" />
                   <div slot="body">
                     <p className="description">Scanner automotivo, teste de compressão e sistemas</p>
                     <div className="price-container">
@@ -222,9 +223,9 @@ export default function Home() {
                   </div>
                 </eui-card>
               </eui-grid>
-              <eui-grid small={4} medium={2} large={1}>
-                <eui-card title="Ar Condicionado">
-                  {/* <Image src={Wrench} slot="icon" /> */}
+              <eui-grid small={4} medium={2} large={1} narrow="true">
+                <eui-card title="Ar Condicionado" iconBgColor={darkBlue}>
+                  <Image src={WrenchIcon} slot="icon" alt="" />
                   <div slot="body">
                     <p className="description">Recarga de gás, limpeza de sistema e troca de compressor</p>
                     <div className="price-container">
@@ -249,8 +250,8 @@ export default function Home() {
             </div>
           </eui-card>
         </section>
-        <section id="section-testimonials">
-          <eui-grid container="true">
+        <section id="section-testimonials" style={{ display: 'none' }}>
+          <eui-grid container="true" narrow="true">
             <eui-grid extraSmall={16}>
               <h2>O que nossos clientes dizem</h2>
               <p className="subtitle">Satisfação do cliente é nossa prioridade. Veja o que dizem sobre nossos serviços.</p>
@@ -265,12 +266,12 @@ export default function Home() {
           </eui-grid>
         </section>
         <section id="section-get-in-touch">
-          <eui-grid container="true" columns={2}>
+          <eui-grid container="true" narrow="true" columns={2}>
             <eui-grid extraSmall={2} medium={1}>
               <eui-card
                 title="Solicite um Orçamento"
               >
-                { /* TODO: form */ }
+                { /* TODO: form a*/ }
                 <eui-button
                   variant="primary"
                   color={whatsAppGreen}
@@ -279,11 +280,11 @@ export default function Home() {
                 />
               </eui-card>
             </eui-grid>
-            <eui-grid extraSmall={2} medium={1}>
+            <eui-grid extraSmall={2} medium={1} className="contact-cards-container">
               <eui-card
                 title="Telefone"
               >
-                { /* <Image src={PhoneIcon} slot="icon" /> */ }
+                <Image src={PhoneIcon} slot="icon" alt="" />
                 <div slot="body">
                   <p className="highlight">
                     (11) 9999-9999
@@ -296,7 +297,7 @@ export default function Home() {
               <eui-card
                 title="Whatsapp"
               >
-                { /* <Image src={PhoneIcon} slot="icon" /> */ }
+                <Image src={PhoneIcon} slot="icon" alt="" />
                 <div slot="body">
                   <p className="highlight">
                     (11) 99999-9999
@@ -309,7 +310,7 @@ export default function Home() {
               <eui-card
                 title="E-mail"
               >
-                { /* <Image src={PhoneIcon} slot="icon" /> */ }
+                <Image src={PhoneIcon} slot="icon" alt="" />
                 <div slot="body">
                   <p className="highlight">
                     contato@automecanicanelson.com
@@ -323,7 +324,7 @@ export default function Home() {
                 title="Endereço"
                 className="address-card"
               >
-                { /* <Image src={PhoneIcon} slot="icon" /> */ }
+                <Image src={MapPinpoint} slot="icon" />
                 <div slot="body">
                   <p>
                     Rua Lourenço Saporito, 332
@@ -339,16 +340,17 @@ export default function Home() {
               <eui-card
                 title="Horário de Funcionamento"
                 className="schedule-card"
-                >
+              >
+                <div slot="body">
                   <Image src={Clock} slot="icon" alt="" />
                   <p>Seg.-Sex.: 8h - 18h</p>
                   <p>Sáb.: 8h - 14h</p>
                   <p>Domingos e feriados: Fechado</p>
-                </eui-card>
+                </div>
+              </eui-card>
             </eui-grid>
           </eui-grid>
         </section>
-      </Main>
-    </Styles>
+    </Main>
   );
 }

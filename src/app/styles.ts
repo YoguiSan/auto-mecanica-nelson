@@ -16,6 +16,11 @@ h2 {
   color: ${darkBlue};
 }
 
+section {
+  margin: auto;
+  max-width: 1200px;
+}
+
 #section-time-and-place {
   eui-grid {
     &.eui-grid-container {
@@ -47,6 +52,46 @@ h2 {
         }
       }
     }
+  }
+}
+
+#section-main-services {
+  eui-card {
+    height: 100%;
+  }
+}
+
+#section-more-services {
+  eui-card {
+    background: ${darkBlue};
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 2rem;
+
+    .eui-card-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    div[slot="body"] {
+      p {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    > *, eui-button {
+      display: flex;
+      margin: auto;
+      width: fit-content;
+    }
+  }
+}
+
+.contact-cards-container {
+  eui-card {
+    margin-bottom: 1rem;
   }
 }
 

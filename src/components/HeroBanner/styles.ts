@@ -22,6 +22,7 @@ ${({
   image,
 }) => `
   font-family: ${family.base};
+  max-width: 100% !important;
 
   .hero-image {
     align-items: center;
