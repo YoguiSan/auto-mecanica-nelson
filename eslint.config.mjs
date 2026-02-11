@@ -7,7 +7,7 @@ const eslintConfig = defineConfig([
   ...nextTs,
   {
     rules: {
-      "react/react-in-jsx-scope": "warn",
+      "react/react-in-jsx-scope": "off", // Not needed in Next.js
       "@typescript-eslint/no-unused-vars": "warn",
     },
   },

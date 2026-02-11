@@ -18,7 +18,7 @@ type Props = {
     color?: string,
     variant?: 'text' | 'outlined' | 'black' | 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'error' | 'fatal',
   }[],
-  image: string,
+  image?: string,
 };
 
 const HeroBanner: React.FC<Props> = ({

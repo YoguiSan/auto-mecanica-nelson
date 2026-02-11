@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@amn/*": ["./src/*"],
-      "@eui*": ["./packages/ethyl-ui/src/index.ts"],
+      "@eui/*": ["./packages/ethyl-ui/src/*"],
       "@icons/*": ["./src/assets/icons/*"]
     }
   },
@@ -31,7 +31,9 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts",
-    "packages/ethyl-ui/dist/**/*.d.ts",
+    "types/**/*.d.ts",
+    "packages/ethyl-ui/dist/types/**/*.d.ts",
+    "packages/ethyl-ui/dist/types/components.d.ts"
   ],
   "exclude": ["node_modules", "packages"]
 }
