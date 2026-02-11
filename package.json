@@ -14,7 +14,8 @@
     "build:eui": "(cd packages/ethyl-ui && npm run build && cd ../..)",
     "watch:eui": "(cd packages/ethyl-ui && npm start && cd ../../)",
     "update:eui": "npm run build:eui && npm i ./packages/ethyl-ui",
-    "dev:eui": "(cd packages/ethyl-ui && npx storybook dev && cd ../..)"
+    "dev:eui": "(cd packages/ethyl-ui && npx storybook dev && cd ../..)",
+    "publish:dev": "npm run build:eui && npm run build && surge out auto-mecanica-nelson.surge.sh"
   },
   "dependencies": {
     "ethyl-ui": "./packages/ethyl-ui",
