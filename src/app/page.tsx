@@ -63,7 +63,10 @@ export default function Home() {
               iconBgColor={vibrantOrange}
             >
               <Image src={Clock} slot="icon" alt="" />
-              <div slot="body"></div>
+              <div slot="body">
+                <p>Segunda a sexta: 8-18h</p>
+                <p>Sábados, domingos e feriados: fechado</p>
+              </div>
             </eui-card>
           </eui-grid>
         </eui-grid>
@@ -124,15 +127,15 @@ export default function Home() {
           </eui-grid>
         </section>
         <section id="section-main-services">
-          <eui-grid container="true" narrow="true">
+          <eui-grid container="true">
             <eui-grid extraSmall={16} narrow="true">
               <h2>Nossos Serviços Principais</h2>
               <p className="subtitle">
                 Oferecemos uma ampla gama de serviços automotivos com garantia, peças de qualidade e mão de obra especializada.
               </p>
             </eui-grid>
-            <eui-grid container="true" columns={4} narrow="true" gap="16">
-              <eui-grid extraSmall={4} medium={2} large={1} narrow="true">
+            <eui-grid container="true" columns={4} gap="16">
+              <eui-grid extraSmall={16} large={2} extraLarge={1} narrow="true">
                 <eui-card title="Revisão básica" iconBgColor={darkBlue}>
                   <Image src={WrenchIcon} slot="icon" alt="" />
                   <div slot="body">
@@ -145,7 +148,7 @@ export default function Home() {
                   </div>
                 </eui-card>
               </eui-grid>
-              <eui-grid extraSmall={4} medium={2} large={1} narrow="true">
+              <eui-grid small={4} medium={2} large={1} narrow="true">
                 <eui-card title="Freios" iconBgColor={darkBlue}>
                   <Image src={WrenchIcon} slot="icon" alt="" />
                   <div slot="body">
@@ -171,7 +174,7 @@ export default function Home() {
                   </div>
                 </eui-card>
               </eui-grid>
-              <eui-grid extraSmall={4} medium={2} large={1} narrow="true">
+              <eui-grid small={4} medium={2} large={1} narrow="true">
                 <eui-card title="Motor" iconBgColor={darkBlue}>
                   <Image src={WrenchIcon} slot="icon" />
                   <div slot="body">
@@ -197,7 +200,7 @@ export default function Home() {
                   </div>
                 </eui-card>
               </eui-grid>
-              <eui-grid extraSmall={4} medium={2} large={1} narrow="true">
+              <eui-grid small={4} medium={2} large={1} narrow="true">
                 <eui-card title="Elétrica" iconBgColor={darkBlue}>
                   <Image src={WrenchIcon} slot="icon" alt="" />
                   <div slot="body">

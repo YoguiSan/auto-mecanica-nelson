@@ -60,7 +60,7 @@ ${({
         color: ${darkBlue};
         font-size: 3rem;
 
-        @media all and (max-width: ${tablet}) {
+        @media all and (max-width: ${tablet}px) {
           font-size: 1.875rem;
         }
 
@@ -87,4 +87,20 @@ ${({
   }    
   
   width: 100%;
+
+  @media all and (max-width: ${tablet}px) {
+    #card-localizacao {
+    .eui-card-header,
+    .eui-card-body {
+      grid-column: span 16 !important;
+    }
+      .eui-card-body {
+        padding-left: 0;
+      }
+    }
+
+    .hero-image {
+      height: fit-content;
+    }
+  }
 `}`;

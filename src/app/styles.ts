@@ -1,7 +1,7 @@
 'use client';
 
 import styles from 'styled-components';
-import { mobile } from '@amn/styles/Breakpoints';
+import { mobile, tablet } from '@amn/styles/Breakpoints';
 import { family } from '@amn/styles/Fonts';
 import { darkBlue, vibrantOrange } from '@amn/styles/Colors';
 
@@ -58,6 +58,14 @@ section {
 #section-main-services {
   eui-card {
     height: 100%;
+
+    .eui-card-icon {
+      background: color-mix(in oklab, ${darkBlue} 80%, transparent);
+
+      > img {
+        margin: auto;
+      }
+    }
   }
 }
 
@@ -95,7 +103,10 @@ section {
   }
 }
 
-@media all and (max-width: ${mobile}px) {
-    
+@media all and (max-width: ${tablet}px) {
+  .eui-card-icon {
+    min-height: 3rem;
+    min-width: 3rem;
+  }
 }
 `;
