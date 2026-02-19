@@ -1,0 +1,1 @@
+{"app":"Flashpost","id":"7e13c2cf-292c-41f6-b248-8e7361e3aef7","name":"[LOCAL] Auto Mecânica Nelson","version":"1.0","type":"variables","createdTime":"12-Feb-2026 16:50:54","exportedDate":"19-Feb-2026 12:23:57","isActive":true,"data":[{"isChecked":true,"key":"SYSTEM_API_URL","value":"http://localhost:4000","type":"local"}]}

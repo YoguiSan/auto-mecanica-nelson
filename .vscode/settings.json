@@ -1,6 +1,10 @@
 {
   "conventionalCommits.scopes": [
     "setup",
-    "components"
+    "components",
+    "Services",
+    "TypeScript",
+    "Tests",
+    "Docker"
   ]
 }
