@@ -5,6 +5,7 @@
     "Services",
     "TypeScript",
     "Tests",
-    "Docker"
+    "Docker",
+    "Routes"
   ]
 }
