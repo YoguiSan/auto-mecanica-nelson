@@ -20,11 +20,12 @@
     "dev:channel": "npm run channel:dev",
     "channel:activate-venv": "(packages/chatbot-channel-backend/scripts/venv-activate.sh)",
     "channel:update-requirements": "(cd packages/chatbot-channel-backend && scripts/freeze.sh && cd ../../)",
-    "channel:run-docker": "podman run -d -p 8000:80 --name ams-chatbot-channel-container ams-chatbot-channel",
-    "channel:stop-docker": "podman stop ams-chatbot-channel-container && podman rm ams-chatbot-channel-container",
-    "channel:build-docker": "podman build -t ams-chatbot-channel ./packages/chatbot-channel-backend",
+    "channel:run-docker": "(cd packages/chatbot-channel-backend && docker run -p 8000:80 . && cd ../../)",
+    "channel:stop-docker": "docker stop ams-chatbot-channel-container && docker rm ams-chatbot-channel-container",
+    "channel:build-docker": "(cd packages/chatbot-channel-backend && docker build . && cd ../../)",
     "channel:docker": "npm run channel:stop-docker && npm run channel:build-docker && npm run channel:run-docker",
-    "channel:dev": "(cd packages/chatbot-channel-backend && source ./.venv/bin/activate & fastapi dev src/__init__.py && cd ../../)"
+    "channel:dev": "(cd packages/chatbot-channel-backend && source ./.venv/bin/activate & fastapi dev src/__init__.py && cd ../../)",
+    "docker:backends": "docker compose -f docker-compose.backends.yml up -d"
   },
   "dependencies": {
     "ethyl-ui": "./packages/ethyl-ui",
