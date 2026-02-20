@@ -18,6 +18,7 @@
     "publish:dev": "npm run build:eui && npm run build && cp out/index.html out/200.html && surge out auto-mecanica-nelson.surge.sh",
     "dev:system": "(cd packages/chatbot-system-backend && npm run dev && cd ../../)",
     "dev:channel": "npm run channel:dev",
+    "system:build-docker": "(cd packages/chatbot-system-backend && docker build . && cd ../../)",
     "channel:activate-venv": "(packages/chatbot-channel-backend/scripts/venv-activate.sh)",
     "channel:update-requirements": "(cd packages/chatbot-channel-backend && scripts/freeze.sh && cd ../../)",
     "channel:run-docker": "(cd packages/chatbot-channel-backend && docker run -p 8000:80 . && cd ../../)",
@@ -25,7 +26,10 @@
     "channel:build-docker": "(cd packages/chatbot-channel-backend && docker build . && cd ../../)",
     "channel:docker": "npm run channel:stop-docker && npm run channel:build-docker && npm run channel:run-docker",
     "channel:dev": "(cd packages/chatbot-channel-backend && source ./.venv/bin/activate & fastapi dev src/__init__.py && cd ../../)",
-    "docker:backends": "docker compose -f docker-compose.backends.yml up -d"
+    "docker:backends-build": "npm run system:build-docker && npm run channel:build-docker",
+    "docker:backends-start": "docker compose -f docker-compose.backends.yml -p amn-backends up -d",
+    "docker:backends-stop": "docker compose -f docker-compose.backends.yml down -v",
+    "docker:backends": "npm run docker:backends-stop & npm run docker:backends-build && npm run docker:backends-start"
   },
   "dependencies": {
     "ethyl-ui": "./packages/ethyl-ui",
