@@ -24,7 +24,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "4000:4000"  # System API
-    # environment:
+    environment:
+      - PORT = 4000
+      - ENVIRONMENT=${ENVIRONMENT:-development}  # Fallback
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
     #   - REDIS_URL=redis://redis:6379
     #   - CHANNEL_URL=http://channel-api:8000
     #   - DATABASE_URL=postgresql://postgres:password@db:5432/chatbot
