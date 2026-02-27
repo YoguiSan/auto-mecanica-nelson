@@ -7,6 +7,8 @@ export type MessagesType = {
 type ChatContextType = {
   messages: MessagesType[] | [];
   chatId?: string | null;
+  setMessages: (messages: MessagesType[]) => void;
+  setChatId: (chatId: string) => void;
 };
 
 export default ChatContextType;

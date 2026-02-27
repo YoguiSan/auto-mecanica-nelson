@@ -54,17 +54,16 @@ const ChatbotDialog = (): React.FC<Props> => {
       {
         open
           ? (
-            <div id="">
-          
-            </div>
-            <input
-              type="text"
-              onChange={(event) => setCurrentQuestion(event.target.value)}
-            />
-            <eui-button
-              text="a"
-              onClick="send()"
-            />
+            <>
+              <div id="">
+            
+              </div>
+              <input
+                type="text"
+                onChange={(event) => setCurrentQuestion(event.target.value)}
+              />
+              <button onClick={send}>Enviar</button>
+            </>
           ) : (
           <></>
         )

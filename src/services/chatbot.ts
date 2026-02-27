@@ -13,11 +13,11 @@ export type ChatbotResponseType = {
 
 const ask = async (query: string, chatId?: string): Promise<ChatbotResponseType> => {
   const {
-    SYSTEM_API_URL: url,
+    CHANNEL_API_URL: url,
   } = Config;
 
   try {
-    const request = await Request.get(url as string, {
+    const request = await Request.get(`${(url as string)}/ask`, {
       query,
     }, {
       chatId,

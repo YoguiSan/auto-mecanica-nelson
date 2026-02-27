@@ -7,6 +7,7 @@ import Context from "@amn/stores";
 import './globals.css';
 import WebComponentLoader from "@amn/components/WebComponentLoader";
 import { MessagesType } from "@amn/types/stores/chat";
+import ChatbotDialog from "@amn/components/ChatbotDialog";
 
 /*
 export const metadata: Metadata = {
@@ -45,6 +46,7 @@ export default function RootLayout({
         <body>
           <TopMenu />
           {children}
+          <ChatbotDialog />
         </body>
       </html>
     </Context.Provider>

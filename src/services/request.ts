@@ -16,7 +16,10 @@ const request = async (url: string, {
   let response;
 
   if (method.toLowerCase() === 'get') {
-    response = await fetch(`${url}?${Object.keys(params as UnknownObject)?.forEach((key: string) => `${key}=${(params as UnknownObject)[key]}&`)}`, {
+    response = await fetch(`${url}?${
+      (Object.keys(params as UnknownObject)?.map((key: string) => `${key}=${(params as UnknownObject)[key]}&`))
+        || ''
+    }`, {
       headers: (headers as HeadersInit),
     });
   } else {
