@@ -1,16 +1,34 @@
 import Config from '@amn/utils/config';
 import Request from './request';
+import { MessagesType } from '@amn/types/stores/chat';
 
-const ask = async (query: string, chatId?: string) => {
+// FIXME: adicionar tipos corretos
+export type ChatbotResponseType = {
+  chatId: string,
+  text: string,
+  chatHistory: MessagesType;
+} | {
+  error: unknown;
+};
+
+const ask = async (query: string, chatId?: string): Promise<ChatbotResponseType> => {
   const {
     SYSTEM_API_URL: url,
   } = Config;
 
-  const request = await Request.get(url as string, {
-    query,
-  }, {
-    chatId,
-  });
+  try {
+    const request = await Request.get(url as string, {
+      query,
+    }, {
+      chatId,
+    });
+  
+    return request as unknown as ChatbotResponseType;
+  } catch (error) {
+    return {
+      error,
+    } as unknown as ChatbotResponseType;
+  }
 };
 
 const ChatbotService = {

@@ -25,6 +25,8 @@ const request = async (url: string, {
       body: (params as unknown as BodyInit),
     });
   }
+
+  return response;
 };
 
 const Get = async (url: string, params?: UnknownObject, headers?: UnknownObject) => request(url, {

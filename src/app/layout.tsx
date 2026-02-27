@@ -6,6 +6,7 @@ import Context from "@amn/stores";
 // import type { Metadata } from "next";
 import './globals.css';
 import WebComponentLoader from "@amn/components/WebComponentLoader";
+import { MessagesType } from "@amn/types/stores/chat";
 
 /*
 export const metadata: Metadata = {
@@ -20,12 +21,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [themeMode, setThemeMode] = useState<'light' | 'dark'>('light');
+  const [messages, setMessages] = useState<MessagesType[]>([]);
+  const [chatId, setChatId] = useState<string | null>(null);
+
   return (
     <Context.Provider value={{
       theme: {
         mode: themeMode,
         setMode: setThemeMode,
       },
+      chat: {
+        chatId,
+        setChatId,
+        messages,
+        setMessages,
+      }
     }}>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <html lang="pt-br">

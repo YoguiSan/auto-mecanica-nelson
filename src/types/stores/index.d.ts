@@ -1,9 +1,9 @@
-import { ChatContextType } from './chat';
+import ChatContextType from './chat';
 import ThemeContextType from './theme';
 
 type ContextType = {
   theme: ThemeContextType,
-  chat?: ChatContextType,
+  chat: ChatContextType,
 };
 
 export default ContextType;

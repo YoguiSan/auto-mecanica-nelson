@@ -1,31 +1,53 @@
 'use client'
 
+import { useContext, useState } from 'react';
+import ChatbotService, { ChatbotResponseType } from '@amn/services/chatbot';
 import Context from '@amn/stores';
 import Div from './styles';
-import { useContext, useState } from 'react';
-import ChatbotService from '@amn/services/chatbot';
+import { MessagesType } from '@amn/types/stores/chat';
 
 type Props = {};
 
 const ChatbotDialog = (): React.FC<Props> => {
   const [open, setOpen] = useState<boolean>(true);
-  const [currentQuestion, setCurrentQuestion] = useState<string | undefined>();
+  const [currentQuestion, setCurrentQuestion] = useState<string>();
   const {
     chat,
-    setChat,
   } = useContext(Context);
 
-  const send = async (chatId: string, question: string) => {
-    const response = await ChatbotService.ask(question, chatId);
+  const {
+    chatId,
+    setChatId,
+    messages,
+    setMessages,
+  } = chat;
+
+  const send = async () => {
+    if (!currentQuestion || currentQuestion.length < 3) {
+      return;
+    }
+
+    const response: ChatbotResponseType = await ChatbotService.ask(currentQuestion as string, chatId as string);
 
     const {
       chatId: id,
       text,
       chatHistory,
-    } = response;
-  };
+    } = response as ChatbotResponseType;
 
-  const [chatId] = Object.keys(chat);
+    const updatedHistory: MessagesType[] = messages;
+
+    updatedHistory.push({
+      text,
+      agent: 'ai',
+    });
+
+    setMessages(updatedHistory);
+
+    if (!chatId) {
+      setChatId(id);
+    }
+  };
 
   return (
     <Div>
@@ -37,7 +59,11 @@ const ChatbotDialog = (): React.FC<Props> => {
             </div>
             <input
               type="text"
-              onChange={(event) => send(chatId, event.target.value)}
+              onChange={(event) => setCurrentQuestion(event.target.value)}
+            />
+            <eui-button
+              text="a"
+              onClick="send()"
             />
           ) : (
           <></>
