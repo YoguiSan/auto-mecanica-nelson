@@ -5,7 +5,7 @@ import { MessagesType } from '@amn/types/stores/chat';
 // FIXME: adicionar tipos corretos
 export type ChatbotResponseType = {
   chatId: string,
-  text: string,
+  answer: string,
   chatHistory: MessagesType;
 } | {
   error: unknown;

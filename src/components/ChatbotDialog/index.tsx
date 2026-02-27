@@ -29,23 +29,25 @@ const ChatbotDialog = (): React.FC<Props> => {
 
     const response: ChatbotResponseType = await ChatbotService.ask(currentQuestion as string, chatId as string);
 
+    console.log('bolas', response)
+
     const {
       chatId: id,
-      text,
+      answer: text,
       chatHistory,
     } = response as ChatbotResponseType;
 
-    const updatedHistory: MessagesType[] = messages;
+    const updatedHistory: MessagesType[] = chatHistory;
 
     updatedHistory.push({
       text,
       agent: 'ai',
     });
 
-    setMessages(updatedHistory);
+    setMessages!(updatedHistory);
 
     if (!chatId) {
-      setChatId(id);
+      setChatId!(id);
     }
   };
 
@@ -55,8 +57,19 @@ const ChatbotDialog = (): React.FC<Props> => {
         open
           ? (
             <>
-              <div id="">
-            
+              <div id="chatbot-history-container">
+                {
+                  messages.map(({
+                    agent,
+                    text,
+                  }) => (
+                    <>
+                      <p className={agent}>
+                        {text}
+                      </p>
+                    </>
+                  ))
+                }
               </div>
               <input
                 type="text"

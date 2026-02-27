@@ -21,12 +21,12 @@ const request = async (url: string, {
         || ''
     }`, {
       headers: (headers as HeadersInit),
-    });
+    }).then((res) => res.json());
   } else {
     response = await fetch(url, {
       headers: (headers as HeadersInit),
       body: (params as unknown as BodyInit),
-    });
+    }).then((res) => res.json());
   }
 
   return response;
