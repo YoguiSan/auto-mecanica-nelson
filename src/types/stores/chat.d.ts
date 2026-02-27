@@ -1,12 +1,14 @@
-export type ChatType = {
+export type MessagesType = {
   agent?: 'user' | 'ai';
   text?: string;
   error?: string;
 };
 
 export type ChatContextType = {
-  chat: ChatType[] | [];
-  setChat?: (chat: ChatType) => void;
-}
+  messages: MessagesType[] | [];
+  chatId?: string | null;
+  setMessages: (messages: MessagesType[]) => void;
+  setChatId: (chatId: string) => void;
+};
 
 export default ChatContextType;
