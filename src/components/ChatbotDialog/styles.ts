@@ -43,8 +43,8 @@ ${({ open }) => open
   width: fit-content;
   `
   : `
-  height: 4rem;
-  width: 4rem;
+  max-height: 6rem;
+  max-width: 6rem;
   `}
 
 #chatbot-dialog-header {
@@ -138,4 +138,14 @@ ${({ open }) => open
       margin-left: auto;
     }
   }
-}`;
+}
+  
+#chatbot-open {
+  background: ${darkBlue};
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+  display: flex;
+  padding: .5rem;
+}
+`;

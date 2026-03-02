@@ -1,10 +1,12 @@
 'use client'
 
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ChatbotService, { ChatbotResponseType } from '@amn/services/chatbot';
 import Context from '@amn/stores';
-import Div from './styles';
 import { MessagesType } from '@amn/types/stores/chat';
+import Div from './styles';
+import MessageIcon from '@icons/send-message.svg';
+import Image from 'next/image';
 
 type Props = {};
 
@@ -25,6 +27,11 @@ const ChatbotDialog = (): React.FC<Props> => {
     setMessages,
   } = chat;
 
+  useEffect(() => {
+    console.log('chatId', chatId)
+    console.log('setChatId', setChatId)
+  }, [chatId])
+
   const send = async () => {
     if (!currentQuestion || currentQuestion.length < 3) {
       setError('Favor inserir ao menos 3 caracteres');
@@ -34,6 +41,8 @@ const ChatbotDialog = (): React.FC<Props> => {
     setFetching(true);
 
     const response: ChatbotResponseType = await ChatbotService.ask(currentQuestion as string, chatId as string);
+
+    console.log('response', response)
 
     const {
       chatId: id,
@@ -53,7 +62,9 @@ const ChatbotDialog = (): React.FC<Props> => {
     setFetching(false);
     setError(false);
 
-    if (!chatId) {
+    if (!chatId || chatId === 'null') {
+      console.log('30 ovos por 10 reais')
+      console.log('id', id)
       setChatId!(id);
     }
   };
@@ -111,7 +122,14 @@ const ChatbotDialog = (): React.FC<Props> => {
               </div>
             </>
           ) : (
-          <></>
+          <>
+            <button
+              id="chatbot-open"
+              onClick={() => setOpen(true)}
+            >
+              <Image src={MessageIcon} alt="" slot="icon" />
+            </button>
+          </>
         )
       }
     </Div>

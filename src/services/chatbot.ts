@@ -7,8 +7,6 @@ export type ChatbotResponseType = {
   chatId: string,
   answer: string,
   chatHistory: MessagesType;
-} | {
-  error: unknown;
 };
 
 const ask = async (query: string, chatId?: string): Promise<ChatbotResponseType> => {
