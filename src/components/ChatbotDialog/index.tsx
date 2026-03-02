@@ -59,11 +59,18 @@ const ChatbotDialog = (): React.FC<Props> => {
   };
 
   return (
-    <Div>
+    <Div open={open}>
       {
         open
           ? (
             <>
+              <div id="chatbot-dialog-header">
+                <h3>Faça uma pergunta</h3>
+                <button
+                  id="chatbot-dialog-close"
+                  onClick={() => setOpen(false)}
+                >Fechar</button>
+              </div>
               <div id="chatbot-history-container">
                 {
                   messages.map(({
@@ -88,12 +95,20 @@ const ChatbotDialog = (): React.FC<Props> => {
                   ? <p className="error-message">{error}</p>
                   : ''
               }
-              <input
-                type="text"
-                onChange={(event) => setCurrentQuestion(event.target.value)}
-                disabled={fetching}
-              />
-              <button onClick={send}>Enviar</button>
+              <div id="chatbot-input-container">
+                <input
+                  type="text"
+                  onChange={(event) => setCurrentQuestion(event.target.value)}
+                  disabled={fetching}
+                  id="chatbot-input"
+                />
+                <button
+                  onClick={send}
+                  id="chatbot-submit-button"
+                >
+                  Enviar
+                </button>
+              </div>
             </>
           ) : (
           <></>
