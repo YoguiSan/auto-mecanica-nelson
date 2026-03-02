@@ -37,7 +37,7 @@ const ChatbotDialog = (): React.FC<Props> => {
       chatHistory,
     } = response as ChatbotResponseType;
 
-    const updatedHistory: MessagesType[] = chatHistory;
+    const updatedHistory: MessagesType[] = chatHistory || [];
 
     updatedHistory.push({
       text,
