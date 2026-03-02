@@ -10,6 +10,9 @@ type Props = {};
 
 const ChatbotDialog = (): React.FC<Props> => {
   const [open, setOpen] = useState<boolean>(true);
+  const [error, setError] = useState<string | false>(false);
+  const [fetching, setFetching] = useState<boolean>(false);
+
   const [currentQuestion, setCurrentQuestion] = useState<string>();
   const {
     chat,
@@ -24,12 +27,13 @@ const ChatbotDialog = (): React.FC<Props> => {
 
   const send = async () => {
     if (!currentQuestion || currentQuestion.length < 3) {
+      setError('Favor inserir ao menos 3 caracteres');
       return;
     }
 
-    const response: ChatbotResponseType = await ChatbotService.ask(currentQuestion as string, chatId as string);
+    setFetching(true);
 
-    console.log('bolas', response)
+    const response: ChatbotResponseType = await ChatbotService.ask(currentQuestion as string, chatId as string);
 
     const {
       chatId: id,
@@ -45,6 +49,9 @@ const ChatbotDialog = (): React.FC<Props> => {
     });
 
     setMessages!(updatedHistory);
+
+    setFetching(false);
+    setError(false);
 
     if (!chatId) {
       setChatId!(id);
@@ -70,10 +77,21 @@ const ChatbotDialog = (): React.FC<Props> => {
                     </>
                   ))
                 }
+                {
+                  fetching
+                    ? <p>Loading</p>
+                    : ''
+                }
               </div>
+              {
+                error
+                  ? <p className="error-message">{error}</p>
+                  : ''
+              }
               <input
                 type="text"
                 onChange={(event) => setCurrentQuestion(event.target.value)}
+                disabled={fetching}
               />
               <button onClick={send}>Enviar</button>
             </>
