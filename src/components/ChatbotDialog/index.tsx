@@ -42,31 +42,22 @@ const ChatbotDialog = (): React.FC<Props> => {
 
     const response: ChatbotResponseType = await ChatbotService.ask(currentQuestion as string, chatId as string);
 
-    console.log('response', response)
-
     const {
       chatId: id,
       answer: text,
       chatHistory,
     } = response as ChatbotResponseType;
 
-    const updatedHistory: MessagesType[] = chatHistory || [];
-
-    updatedHistory.push({
-      text,
-      agent: 'ai',
-    });
-
-    setMessages!(updatedHistory);
+    setMessages!(chatHistory);
 
     setFetching(false);
     setError(false);
 
     if (!chatId || chatId === 'null') {
-      console.log('30 ovos por 10 reais')
-      console.log('id', id)
       setChatId!(id);
     }
+
+    setCurrentQuestion(undefined);
   };
 
   return (
@@ -109,7 +100,10 @@ const ChatbotDialog = (): React.FC<Props> => {
               <div id="chatbot-input-container">
                 <input
                   type="text"
-                  onChange={(event) => setCurrentQuestion(event.target.value)}
+                  value={currentQuestion}
+                  onChange={((event) => {
+                    setCurrentQuestion(event.target.value);
+                  })}
                   disabled={fetching}
                   id="chatbot-input"
                 />
