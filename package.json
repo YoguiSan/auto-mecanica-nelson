@@ -11,6 +11,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "jest --runInBand",
+    "test:watch": "jest --watch",
     "build:eui": "(cd packages/ethyl-ui && npm run build && cd ../..)",
     "watch:eui": "(cd packages/ethyl-ui && npm start && cd ../../)",
     "update:eui": "npm run build:eui && npm i ./packages/ethyl-ui",
@@ -29,7 +31,8 @@
     "docker:backends-build": "npm run system:build-docker && npm run channel:build-docker",
     "docker:backends-start": "docker compose -f docker-compose.backends.yml -p amn-backends up",
     "docker:backends-stop": "docker compose -f docker-compose.backends.yml down -v",
-    "docker:backends": "npm run docker:backends-stop & npm run docker:backends-build && npm run docker:backends-start"
+    "docker:backends": "npm run docker:backends-stop & npm run docker:backends-build && npm run docker:backends-start",
+    "set:agent": "mkdir .github & mkdir .github/agents & cp \"packages/ai-agents/frontend/React.agent.md\" .github/agents/AGENTS.md"
   },
   "dependencies": {
     "ethyl-ui": "./packages/ethyl-ui",
@@ -55,7 +58,17 @@
     "msw": "^2.12.10",
     "surge": "^0.24.6",
     "typescript": "^5",
-    "typescript-eslint": "^8.55.0"
+    "typescript-eslint": "^8.55.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.7.0",
+    "@types/node-fetch": "^2.6.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "node-fetch": "^2.6.9",
+    "nock": "^13.3.0",
+    "ts-jest": "^29.1.0"
   },
   "config": {
     "commitizen": {
