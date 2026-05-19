@@ -3,7 +3,7 @@ import HeroBanner from '@amn/components/HeroBanner';
 
 describe('HeroBanner component', () => {
   it('renders title, subtitle, and CTA buttons', () => {
-    render(
+    const { container } = render(
       <HeroBanner
         title="Welcome"
         subtitle="This is a subtitle"
@@ -21,6 +21,9 @@ describe('HeroBanner component', () => {
 
     expect(screen.getByText('Welcome')).toBeInTheDocument();
     expect(screen.getByText('This is a subtitle')).toBeInTheDocument();
-    expect(screen.getByText('Start')).toBeInTheDocument();
+    // the CTA is rendered as a custom element with `text` attribute
+    const cta = container.querySelector('eui-button');
+    expect(cta).toBeTruthy();
+    expect(cta?.getAttribute('text')).toBe('Start');
   });
 });

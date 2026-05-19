@@ -16,14 +16,21 @@ const request = async (url: string, {
   let response;
 
   if (method.toLowerCase() === 'get') {
-    response = await fetch(`${url}?${
-      (Object.keys(params as UnknownObject)?.map((key: string) => `${key}=${(params as UnknownObject)[key]}&`))
-        || ''
-    }`, {
+    const query = params
+      ? Object.keys(params as UnknownObject)
+        .map((key: string) => `${encodeURIComponent(key)}=${encodeURIComponent(String((params as UnknownObject)[key]))}`)
+        .join('&')
+      : '';
+
+    const fullUrl = query ? `${url}?${query}` : url;
+
+    response = await fetch(fullUrl, {
+      method: 'GET',
       headers: (headers as HeadersInit),
     }).then((res) => res.json());
   } else {
     response = await fetch(url, {
+      method: method.toUpperCase(),
       headers: (headers as HeadersInit),
       body: (params as unknown as BodyInit),
     }).then((res) => res.json());

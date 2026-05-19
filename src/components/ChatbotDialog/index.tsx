@@ -10,7 +10,7 @@ import Image from 'next/image';
 
 type Props = {};
 
-const ChatbotDialog = (): React.FC<Props> => {
+const ChatbotDialog: React.FC<Props> = () => {
   const [open, setOpen] = useState<boolean>(true);
   const [error, setError] = useState<string | false>(false);
   const [fetching, setFetching] = useState<boolean>(false);
