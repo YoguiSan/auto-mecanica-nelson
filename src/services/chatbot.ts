@@ -2,11 +2,10 @@ import Config from '@amn/utils/config';
 import Request from './request';
 import { MessagesType } from '@amn/types/stores/chat';
 
-// FIXME: adicionar tipos corretos
 export type ChatbotResponseType = {
   chatId: string,
   answer: string,
-  chatHistory: MessagesType;
+  chatHistory: MessagesType[];
 };
 
 const ask = async (query: string, chatId?: string): Promise<ChatbotResponseType> => {
