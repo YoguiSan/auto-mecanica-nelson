@@ -1,0 +1,12 @@
+[submodule "packages/chatbot-channel-backend"]
+	path = packages/chatbot-channel-backend
+	url = https://github.com/YoguiSan/auto-mecanica-nelson-chatbot-channel-api
+[submodule "packages/chatbot-system-backend"]
+	path = packages/chatbot-system-backend
+	url = https://github.com/YoguiSan/auto-mecanica-nelson-chatbot-system-api.git
+[submodule "packages/ethyl-ui"]
+	path = packages/ethyl-ui
+	url = https://github.com/YoguiSan/ethyl-ui.git
+[submodule "packages/vehicle-system-api"]
+	path = packages/vehicle-system-api
+	url = https://github.com/YoguiSan/auto-mecanica-nelson-vehicle-system-api.git
