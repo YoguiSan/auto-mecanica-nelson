@@ -1,20 +1,16 @@
 services:
+
   # Channel API (FastAPI Python)
   channel-api:
     build:
       context: ./packages/chatbot-channel-backend
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"  # Channel API
-    # environment:
-    #   - REDIS_URL=redis://redis:6379
-    #   - GEMINI_API_KEY=${GEMINI_API_KEY}
-    #   - OLLAMA_URL=http://ollama:11434
-    # depends_on:
-    #   - redis
-    #   - ollama  # Optional local fallback
-    # networks:
-    #  - backend-net
+      - "8000:8000"
+    environment:
+      - SYSTEM_API_URL=${SYSTEM_API_URL}
+    networks:
+      - backend-net
     restart: unless-stopped
 
   # System API (Express Node.js)
@@ -23,43 +19,68 @@ services:
       context: ./packages/chatbot-system-backend
       dockerfile: Dockerfile
     ports:
-      - "4000:4000"  # System API
+      - "4000:4000"
     environment:
-      - PORT = 4000
-      - ENVIRONMENT=${ENVIRONMENT:-development}  # Fallback
+      - PORT=4000
+      - ENVIRONMENT=${ENVIRONMENT:-development}
       - GEMINI_API_KEY=${GEMINI_API_KEY}
-    #   - REDIS_URL=redis://redis:6379
-    #   - CHANNEL_URL=http://channel-api:8000
-    #   - DATABASE_URL=postgresql://postgres:password@db:5432/chatbot
-    # depends_on:
-    #   - redis
-    #   - db
-    # networks:
-    #   - backend-net
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - ADMIN_PHRASE=${ADMIN_PHRASE}
+      - AI_QUESTION_SCOPE=${AI_QUESTION_SCOPE}
+      - AI_REVIEW_SCOPE=${AI_REVIEW_SCOPE}
+    networks:
+      - backend-net
     restart: unless-stopped
 
-  # # Shared Redis
+  # Vehicle Data API (.NET)
+  vehicle-data-api:
+    build:
+      context: ./backend/vehicle-data-api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ConnectionStrings__DefaultConnection=server=mysql;port=3306;database=autoshop_vehicle_data;user=autoshop;password=autoshoppassword
+      - ASPNETCORE_ENVIRONMENT=Development
+      - CARAPI_TOKEN=${CARAPI_TOKEN}
+      - CARAPI_SECRET=${CARAPI_SECRET}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - backend-net
+    restart: unless-stopped
+
+  # MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: amn-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: amn_vehicle_data
+      MYSQL_USER: amn
+      MYSQL_PASSWORD: autoshoppassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - backend-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "amn", "-pautoshoppassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # # Redis (for future chat sessions)
   # redis:
   #   image: redis:7-alpine
   #   ports:
-  #     - "6379:6379"  # Local access for debugging
+  #     - "6379:6379"
   #   volumes:
   #     - redis_data:/data
-  #   networks:
-  #     - backend-net
-  #   restart: unless-stopped
- 
-  # # Postgres (for customer/vehicle data)
-  # db:
-  #   image: postgres:16-alpine
-  #   environment:
-  #     POSTGRES_DB: chatbot
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: password
-  #   ports:
-  #     - "5432:5432"  # Local access
-  #   volumes:
-  #     - postgres_data:/var/lib/postgresql/data
   #   networks:
   #     - backend-net
   #   restart: unless-stopped
@@ -75,11 +96,11 @@ services:
   #     - backend-net
   #   restart: unless-stopped
 
-#volumes:
-#  redis_data:
-#  postgres_data:
-#  ollama_data:
+volumes:
+  mysql_data:
+  # redis_data:
+  # ollama_data:
 
-#networks:
-#  backend-net:
-#    driver: bridge
+networks:
+  backend-net:
+    driver: bridge
