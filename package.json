@@ -35,7 +35,8 @@
     "docker:backends-start": "docker compose -f docker-compose.backends.yml -p amn-backends up",
     "docker:backends-stop": "docker compose -f docker-compose.backends.yml down -v",
     "docker:backends": "npm run docker:backends-stop & npm run docker:backends-build && npm run docker:backends-start",
-    "set:agent": "mkdir .github & mkdir .github/agents & cp \"packages/ai-agents/frontend/React.agent.md\" .github/agents/AGENTS.md"
+    "set:agent": "mkdir .github & mkdir .github/agents & cp \"packages/ai-agents/frontend/React.agent.md\" .github/agents/AGENTS.md",
+    "system:vehicle:docker": "packages/vehicle-system-api/scripts/linux/run.sh"
   },
   "dependencies": {
     "ethyl-ui": "./packages/ethyl-ui",
