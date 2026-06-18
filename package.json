@@ -31,12 +31,13 @@
     "channel:docker": "npm run channel:stop-docker && npm run channel:build-docker && npm run channel:run-docker",
     "channel:dev": "(cd packages/chatbot-channel-backend && source ./.venv/bin/activate & fastapi dev src/__init__.py && cd ../../)",
     "channel:dev:windows": "(packages/chatbot-channel-backend/scripts/windows/start.bat)",
-    "docker:backends-build": "npm run system:build-docker && npm run channel:build-docker",
-    "docker:backends-start": "docker compose -f docker-compose.backends.yml -p amn-backends up",
-    "docker:backends-stop": "docker compose -f docker-compose.backends.yml down -v",
-    "docker:backends": "npm run docker:backends-stop & npm run docker:backends-build && npm run docker:backends-start",
-    "set:agent": "mkdir .github & mkdir .github/agents & cp \"packages/ai-agents/frontend/React.agent.md\" .github/agents/AGENTS.md",
-    "system:vehicle:docker": "packages/vehicle-system-api/scripts/linux/run.sh"
+    "system:vehicle:docker": "packages/vehicle-system-api/scripts/linux/run.sh",
+    "system:vehicle:build-docker": "(cd packages/vehicle-system-api && docker build . && cd ../../)",
+    "docker:build": "npm run system:build-docker && npm run channel:build-docker && npm run system:vehicle:build-docker",
+    "docker:start": "docker compose -f docker-compose.yml -p amn-backends up",
+    "docker:stop": "docker compose -f docker-compose.yml down -v",
+    "docker": "npm run docker:stop & npm run docker:build && npm run docker:start",
+    "set:agent": "mkdir .github & mkdir .github/agents & cp \"packages/ai-agents/frontend/React.agent.md\" .github/agents/AGENTS.md"
   },
   "dependencies": {
     "ethyl-ui": "./packages/ethyl-ui",

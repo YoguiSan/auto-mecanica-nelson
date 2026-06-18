@@ -1,9 +1,9 @@
 services:
 
   # Channel API (FastAPI Python)
-  channel-api:
+  chatbot-channel-api:
     build:
-      context: ./packages/chatbot-channel-backend
+      context: ./packages/chatbot-channel-api
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
@@ -14,9 +14,9 @@ services:
     restart: unless-stopped
 
   # System API (Express Node.js)
-  system-api:
+  chatbot-system-api:
     build:
-      context: ./packages/chatbot-system-backend
+      context: ./packages/chatbot-system-api
       dockerfile: Dockerfile
     ports:
       - "4000:4000"
@@ -33,9 +33,9 @@ services:
     restart: unless-stopped
 
   # Vehicle Data API (.NET)
-  vehicle-data-api:
+  vehicle-system-api:
     build:
-      context: ./backend/vehicle-data-api
+      context: ./packages/vehicle-system-api
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
