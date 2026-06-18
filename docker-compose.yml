@@ -3,7 +3,7 @@ services:
   # Channel API (FastAPI Python)
   chatbot-channel-api:
     build:
-      context: ./packages/chatbot-channel-api
+      context: ./packages/chatbot-channel-backend
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
@@ -16,7 +16,7 @@ services:
   # System API (Express Node.js)
   chatbot-system-api:
     build:
-      context: ./packages/chatbot-system-api
+      context: ./packages/chatbot-system-backend
       dockerfile: Dockerfile
     ports:
       - "4000:4000"

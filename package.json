@@ -34,9 +34,9 @@
     "system:vehicle:docker": "packages/vehicle-system-api/scripts/linux/run.sh",
     "system:vehicle:build-docker": "(cd packages/vehicle-system-api && docker build . && cd ../../)",
     "docker:build": "npm run system:build-docker && npm run channel:build-docker && npm run system:vehicle:build-docker",
-    "docker:start": "docker compose -f docker-compose.yml -p amn-backends up",
+    "docker:start": "docker compose -f docker-compose.yml -p amn-webapp up",
     "docker:stop": "docker compose -f docker-compose.yml down -v",
-    "docker": "npm run docker:stop & npm run docker:build && npm run docker:start",
+    "docker": "npm run docker:stop & npm run docker:build & npm run docker:start",
     "set:agent": "mkdir .github & mkdir .github/agents & cp \"packages/ai-agents/frontend/React.agent.md\" .github/agents/AGENTS.md"
   },
   "dependencies": {
