@@ -7,6 +7,7 @@ import MapPinpoint from '@icons/map-pinpoint.svg';
 import PhoneIcon from '@icons/phone.svg';
 import WrenchIcon from '@icons/wrench.svg';
 import Main from './styles';
+// import { EuiGrid, EuiCard } from 'ethyl-ui/react/components';
 
 export default function Home() {
   return (
