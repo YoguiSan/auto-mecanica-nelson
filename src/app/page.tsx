@@ -135,7 +135,7 @@ export default function Home() {
                 Oferecemos uma ampla gama de serviços automotivos com garantia, peças de qualidade e mão de obra especializada.
               </p>
             </eui-grid>
-            <eui-grid container="true" columns={4} gap="16">
+            <eui-grid container="true" columns={4}>
               <eui-grid extraSmall={16} large={2} extraLarge={1} narrow="true">
                 <eui-card title="Revisão básica" iconBgColor={darkBlue}>
                   <Image src={WrenchIcon} slot="icon" alt="" />
