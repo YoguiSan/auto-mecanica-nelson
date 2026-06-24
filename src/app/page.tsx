@@ -19,6 +19,7 @@ export default function Home() {
     key: 'fullName',
     label: 'Nome Completo',
     placeholder: 'Seu Nome',
+    required: true,
     onChange: (key, value) => setQuotationForm({
       ...quotationForm,
       [key]: value,
@@ -301,6 +302,7 @@ export default function Home() {
                     onClick: () => console.log(),
                     id: "quotation-form-submit",
                   }]}
+                  columns={1}
                 />
               </eui-card>
             </eui-grid>

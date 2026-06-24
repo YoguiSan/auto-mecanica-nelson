@@ -30,18 +30,20 @@ const Form: React.FC<Props> = ({
   questions,
   handleSend,
   buttons,
+  columns,
 }: Props) => {
   return (
     <Styles>
       <eui-grid
         container
+        columns={columns}
       >
         {
           questions.map(({
             label,
             key,
             placeholder,
-            columns,
+            columns: questionColumns,
             onChange,
             errorMessage,
             error,
@@ -51,9 +53,9 @@ const Form: React.FC<Props> = ({
             variant,
             fullWidth,
           }) => (
-            <eui-grid columns={columns}>
+            <eui-grid columns={questionColumns}>
               <eui-input
-                label={label}
+                label={`${label}${required && ' *'}`}
                 type={type}
                 placeholder={placeholder}
                 disabled={disabled}

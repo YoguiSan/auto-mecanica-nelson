@@ -89,10 +89,12 @@ section {
         font-style: italic;
       }
 
+      /*
       .author {
         color: ${metallicGray};
         font-size: 14px;
       }
+      */
     }
   }
 }
