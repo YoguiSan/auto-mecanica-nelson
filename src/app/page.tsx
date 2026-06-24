@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import HeroBanner from '@amn/components/HeroBanner';
 import { darkBlue, vibrantOrange, whatsAppGreen } from '@amn/styles/Colors';
 import Image from 'next/image';
@@ -7,9 +10,23 @@ import MapPinpoint from '@icons/map-pinpoint.svg';
 import PhoneIcon from '@icons/phone.svg';
 import WrenchIcon from '@icons/wrench.svg';
 import Main from './styles';
-// import { EuiGrid, EuiCard } from 'ethyl-ui/react/components';
+import Form, { IQuestion } from '@amn/components/Form';
 
 export default function Home() {
+  const [quotationForm, setQuotationForm] = useState([]);
+
+  const quotationFormQuestions: IQuestion = [{
+    key: 'fullName',
+    label: 'Nome Completo',
+    placeholder: 'Seu Nome',
+    onChange: (key, value) => setQuotationForm({
+      ...quotationForm,
+      [key]: value,
+    }),
+    columns: 12
+
+  }];
+
   return (
     <Main>
       <HeroBanner
@@ -147,6 +164,7 @@ export default function Home() {
                       <p className="price">R$ 120,00</p>
                       <p className="time">1-2h</p>
                       <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                      
                     </div>
                   </div>
                 </eui-card>
@@ -159,7 +177,6 @@ export default function Home() {
                     <div className="price-container">
                       <p className="price">R$ 300 - 800</p>
                       <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
                     </div>
                   </div>
                 </eui-card>
@@ -277,12 +294,13 @@ export default function Home() {
               <eui-card
                 title="Solicite um Orçamento"
               >
-                { /* TODO: form a*/ }
-                <eui-button
-                  variant="primary"
-                  color={whatsAppGreen}
-                  text="Enviar via WhatsApp"
-                  action="https://wa.me/5511912175547"
+                <Form
+                  questions={quotationFormQuestions}
+                  buttons={[{
+                    text: 'Enviar via Whatsapp',
+                    onClick: () => console.log(),
+                    id: "quotation-form-submit",
+                  }]}
                 />
               </eui-card>
             </eui-grid>

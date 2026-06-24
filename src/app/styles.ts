@@ -69,7 +69,6 @@ section {
         width: calc(100% - 3rem);
       }
     }
-
   }
 }
 
@@ -82,6 +81,17 @@ section {
 
       .eui-card-header {
         height: 0;
+      }
+
+      .quote {
+        color: ${darkBlue};
+        font-size: 1.2rem;
+        font-style: italic;
+      }
+
+      .author {
+        color: ${metallicGray};
+        font-size: 14px;
       }
     }
   }
