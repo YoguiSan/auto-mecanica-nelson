@@ -3,7 +3,7 @@
 import styles from 'styled-components';
 import { mobile, tablet } from '@amn/styles/Breakpoints';
 import { family } from '@amn/styles/Fonts';
-import { darkBlue, vibrantOrange } from '@amn/styles/Colors';
+import { darkBlue, metallicGray, vibrantOrange } from '@amn/styles/Colors';
 
 export default styles.main`
 font-family: ${family.base};
@@ -46,6 +46,8 @@ section {
         }
 
         &#card-horario-funcionamento {
+          height: fit-content;
+
           .eui-card-icon {
             background: ${vibrantOrange};
           }
@@ -53,12 +55,22 @@ section {
       }
     }
 
-    .map-container {
-      min-height: 20rem;
-      width: calc(100% - 3rem);
-    }
-  }
+    .address-container {
+      p {
+        color: ${metallicGray};
+        font-size: 0.875rem;
+        padding: 0;
+        margin: 0;
+      }
 
+      .map-container {
+        margin-top: 1rem;
+        min-height: 10rem;
+        width: calc(100% - 3rem);
+      }
+    }
+
+  }
 }
 
 #section-main-services {

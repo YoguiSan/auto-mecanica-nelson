@@ -51,7 +51,7 @@ export default function Home() {
                 <p>Jardim Ana Maria, São Paulo - SP</p>
                 <p>CEP: 05757-200</p>
                 <div className="map-container">
-                  <iframe width="100%" height="320px" style={{ border:0 }} loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJz-PlXglUzpQRM89MGSwDX2E&key=AIzaSyAJJKRiWNemMWX6dX2iT6KSm_9UbaxiBH8"></iframe> 
+                  <iframe width="100%" height="200px" style={{ border:0 }} loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJz-PlXglUzpQRM89MGSwDX2E&key=AIzaSyAJJKRiWNemMWX6dX2iT6KSm_9UbaxiBH8"></iframe> 
                 </div>
               </div>
             </eui-card>
