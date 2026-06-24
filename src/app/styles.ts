@@ -110,6 +110,16 @@ section {
         margin: auto;
       }
     }
+
+  .eui-card-title {
+    color: ${darkBlue};
+    font-size: 1.5rem;
+  }
+
+    .description {
+      color: ${metallicGray};
+      font-size: 14px;
+    }
   }
 }
 
