@@ -52,7 +52,13 @@ section {
         }
       }
     }
+
+    .map-container {
+      min-height: 20rem;
+      width: calc(100% - 3rem);
+    }
   }
+
 }
 
 #section-main-services {

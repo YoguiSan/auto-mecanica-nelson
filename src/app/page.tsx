@@ -18,13 +18,13 @@ export default function Home() {
         subtitle="Revisões, freios, injeção eletrônica e mais. Confiança geracional."
         ctas={[{
           text: 'Agende pelo Whatsapp',
-          action: 'https://wa.me/5511999999999',
+          action: 'https://wa.me/5511912175547',
           variant: "primary",
           color: whatsAppGreen,
           icon: SendMessage,
         }, {
           text: 'Ligue Agora',
-          action: 'tel:+5511999999999',
+          action: 'tel:+5511912175547',
           variant: "primary",
           color: vibrantOrange,
           icon: PhoneIcon,
@@ -50,7 +50,9 @@ export default function Home() {
                 <p>Rua Lourenço Saporito, 332</p>
                 <p>Jardim Ana Maria, São Paulo - SP</p>
                 <p>CEP: 05757-200</p>
-                <div className="map-container"></div>
+                <div className="map-container">
+                  <iframe width="100%" height="320px" style={{ border:0 }} loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJz-PlXglUzpQRM89MGSwDX2E&key=AIzaSyAJJKRiWNemMWX6dX2iT6KSm_9UbaxiBH8"></iframe> 
+                </div>
               </div>
             </eui-card>
           </eui-grid>
@@ -280,37 +282,11 @@ export default function Home() {
                   variant="primary"
                   color={whatsAppGreen}
                   text="Enviar via WhatsApp"
-                  onClick="wa.me/5511999999999"
+                  action="https://wa.me/5511912175547"
                 />
               </eui-card>
             </eui-grid>
             <eui-grid extraSmall={2} medium={1} className="contact-cards-container">
-              <eui-card
-                title="Telefone"
-              >
-                <Image src={PhoneIcon} slot="icon" alt="" />
-                <div slot="body">
-                  <p className="highlight">
-                    (11) 9999-9999
-                  </p>
-                  <p>
-                    Seg.-Sex.: 8h - 18h
-                  </p>
-                </div>
-              </eui-card>
-              <eui-card
-                title="Whatsapp"
-              >
-                <Image src={PhoneIcon} slot="icon" alt="" />
-                <div slot="body">
-                  <p className="highlight">
-                    (11) 99999-9999
-                  </p>
-                  <p>
-                    Nelson Salles
-                  </p>
-                </div>
-              </eui-card>
               <eui-card
                 title="E-mail"
               >
@@ -322,34 +298,6 @@ export default function Home() {
                   <p>
                     Respondemos em até 24h
                   </p>
-                </div>
-              </eui-card>
-              <eui-card
-                title="Endereço"
-                className="address-card"
-              >
-                <Image src={MapPinpoint} slot="icon" />
-                <div slot="body">
-                  <p>
-                    Rua Lourenço Saporito, 332
-                  </p>
-                  <p>
-                    Jardim Ana Maria, São Paulo - SP
-                  </p>
-                  <p>
-                    CEP: 05757-200
-                  </p>
-                </div>
-              </eui-card>
-              <eui-card
-                title="Horário de Funcionamento"
-                className="schedule-card"
-              >
-                <div slot="body">
-                  <Image src={Clock} slot="icon" alt="" />
-                  <p>Seg.-Sex.: 8h - 18h</p>
-                  <p>Sáb.: 8h - 14h</p>
-                  <p>Domingos e feriados: Fechado</p>
                 </div>
               </eui-card>
             </eui-grid>
