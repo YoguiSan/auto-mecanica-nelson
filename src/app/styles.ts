@@ -73,6 +73,20 @@ section {
   }
 }
 
+#section-about-us {
+  .about-us-qualities {
+    eui-card {
+      border: none;
+      border-left: solid 5px ${vibrantOrange};
+      box-shadow: 3px 3px 10px lightgray;
+
+      .eui-card-header {
+        height: 0;
+      }
+    }
+  }
+}
+
 #section-main-services {
   eui-card {
     height: 100%;
