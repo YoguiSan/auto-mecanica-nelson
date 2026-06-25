@@ -10,6 +10,7 @@ export type IQuestion = {
   onChange: (key: string, value: unknown) => void,
   errorMessage?: string,
   error?: boolean,
+  required?: boolean,
 };
 
 type IButton = {

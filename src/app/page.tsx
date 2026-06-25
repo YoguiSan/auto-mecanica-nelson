@@ -1,21 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import HeroBanner from '@amn/components/HeroBanner';
-import { darkBlue, vibrantOrange, whatsAppGreen } from '@amn/styles/Colors';
 import Image from 'next/image';
+import HeroBanner from '@amn/components/HeroBanner';
+import Form, { IQuestion } from '@amn/components/Form';
+import MainServicesSection from '@amn/components/_sections/MainServices';
+import { darkBlue, vibrantOrange, whatsAppGreen } from '@amn/styles/Colors';
 import Clock from '@icons/clock.svg';
 import SendMessage from '@icons/send-message.svg';
 import MapPinpoint from '@icons/map-pinpoint.svg';
 import PhoneIcon from '@icons/phone.svg';
-import WrenchIcon from '@icons/wrench.svg';
 import Main from './styles';
-import Form, { IQuestion } from '@amn/components/Form';
 
 export default function Home() {
   const [quotationForm, setQuotationForm] = useState([]);
 
-  const quotationFormQuestions: IQuestion = [{
+  const quotationFormQuestions: IQuestion[] = [{
     key: 'fullName',
     label: 'Nome Completo',
     placeholder: 'Seu Nome',
@@ -147,123 +147,7 @@ export default function Home() {
             </eui-grid>
           </eui-grid>
         </section>
-        <section id="section-main-services">
-          <eui-grid container="true">
-            <eui-grid extraSmall={16} narrow="true">
-              <h2>Nossos Serviços Principais</h2>
-              <p className="subtitle">
-                Oferecemos uma ampla gama de serviços automotivos com garantia, peças de qualidade e mão de obra especializada.
-              </p>
-            </eui-grid>
-            <eui-grid container="true" columns={4}>
-              <eui-grid extraSmall={16} large={2} extraLarge={1} narrow="true">
-                <eui-card title="Revisão básica" iconBgColor={darkBlue}>
-                  <Image src={WrenchIcon} slot="icon" alt="" />
-                  <div slot="body">
-                    <p className="description">Troca de óleo, filtros, verificação completa de fluidos e sistema</p>
-                    <div className="price-container">
-                      <p className="price">R$ 120,00</p>
-                      <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
-                      
-                    </div>
-                  </div>
-                </eui-card>
-              </eui-grid>
-              <eui-grid small={4} medium={2} large={1} narrow="true">
-                <eui-card title="Freios" iconBgColor={darkBlue}>
-                  <Image src={WrenchIcon} slot="icon" alt="" />
-                  <div slot="body">
-                    <p className="description">Manutenção e troca de pastilhas, discos, fluido de freio</p>
-                    <div className="price-container">
-                      <p className="price">R$ 300 - 800</p>
-                      <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
-                    </div>
-                  </div>
-                </eui-card>
-              </eui-grid>
-              <eui-grid small={4} medium={2} large={1} narrow="true">
-                <eui-card title="Injeção Eletrônica" iconBgColor={darkBlue}>
-                  <Image src={WrenchIcon} slot="icon" alt="" />
-                  <div slot="body">
-                    <p className="description">Diagnóstico EFI, scanner, limpeza de bicos e regulagem</p>
-                    <div className="price-container">
-                      <p className="price">R$ 120,00</p>
-                      <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
-                    </div>
-                  </div>
-                </eui-card>
-              </eui-grid>
-              <eui-grid small={4} medium={2} large={1} narrow="true">
-                <eui-card title="Motor" iconBgColor={darkBlue}>
-                  <Image src={WrenchIcon} slot="icon" />
-                  <div slot="body">
-                    <p className="description">Troca de correia dentada, válvulas e componentes</p>
-                    <div className="price-container">
-                      <p className="price">R$ 120,00</p>
-                      <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
-                    </div>
-                  </div>
-                </eui-card>
-              </eui-grid>
-              <eui-grid small={4} medium={2} large={1} narrow="true">
-                <eui-card title="Suspensão" iconBgColor={darkBlue}>
-                  <Image src={WrenchIcon} slot="icon" alt="" />
-                  <div slot="body">
-                    <p className="description">Troca de amortecedores, molas, buchas</p>
-                    <div className="price-container">
-                      <p className="price">R$ 120,00</p>
-                      <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
-                    </div>
-                  </div>
-                </eui-card>
-              </eui-grid>
-              <eui-grid small={4} medium={2} large={1} narrow="true">
-                <eui-card title="Elétrica" iconBgColor={darkBlue}>
-                  <Image src={WrenchIcon} slot="icon" alt="" />
-                  <div slot="body">
-                    <p className="description">Bateria, alternador, motor de partida e sistema elétrico</p>
-                    <div className="price-container">
-                      <p className="price">R$ 120,00</p>
-                      <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
-                    </div>
-                  </div>
-                </eui-card>
-              </eui-grid>
-              <eui-grid small={4} medium={2} large={1} narrow="true">
-                <eui-card title="Diagnóstico Completo" iconBgColor={darkBlue}>
-                  <Image src={WrenchIcon} slot="icon" alt="" />
-                  <div slot="body">
-                    <p className="description">Scanner automotivo, teste de compressão e sistemas</p>
-                    <div className="price-container">
-                      <p className="price">R$ 120,00</p>
-                      <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
-                    </div>
-                  </div>
-                </eui-card>
-              </eui-grid>
-              <eui-grid small={4} medium={2} large={1} narrow="true">
-                <eui-card title="Ar Condicionado" iconBgColor={darkBlue}>
-                  <Image src={WrenchIcon} slot="icon" alt="" />
-                  <div slot="body">
-                    <p className="description">Recarga de gás, limpeza de sistema e troca de compressor</p>
-                    <div className="price-container">
-                      <p className="price">R$ 120,00</p>
-                      <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
-                    </div>
-                  </div>
-                </eui-card>
-              </eui-grid>
-            </eui-grid>
-          </eui-grid>
-        </section>
+        <MainServicesSection />
         <section id="section-more-services">
           <eui-card title="Não encontrou o que precisa?">
             <div slot="body">
