@@ -2,8 +2,12 @@ import style from 'styled-components';
 import { darkBlue } from '@amn/styles/Colors';
 
 export default style.section`
+max-width: 100vw !important;
+
 eui-card {
   background: ${darkBlue};
+  border-radius: 0;
+  border: none;
   color: white;
   display: flex;
   flex-direction: column;
