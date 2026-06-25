@@ -35,7 +35,7 @@ ${({
 
     ${
       image ? `
-      background: url(${image}) no-repeat center center / cover;
+      background: url("${image}") no-repeat center center / cover;
       `
       : `background: ${darkBlue};`
     }

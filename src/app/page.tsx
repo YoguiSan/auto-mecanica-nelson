@@ -8,9 +8,10 @@ import MainServicesSection from '@amn/components/_sections/MainServices';
 import TimeAndPlaceSection from '@amn/components/_sections/TimeAndPlace';
 import AboutUsSection from '@amn/components/_sections/AboutUs';
 import MoreServicesSection from '@amn/components/_sections/MoreServices';
-import { darkBlue, vibrantOrange, whatsAppGreen } from '@amn/styles/Colors';
+import { vibrantOrange, whatsAppGreen } from '@amn/styles/Colors';
 import SendMessage from '@icons/send-message.svg';
 import PhoneIcon from '@icons/phone.svg';
+import BannerImage from '../assets/images/Scanner Foxwell.jpg';
 import Main from './styles';
 
 export default function Home() {
@@ -35,6 +36,7 @@ export default function Home() {
         title="Auto Mecânica Nelson"
         callout="30+ Anos de Mecânica de Excelência"
         subtitle="Revisões, freios, injeção eletrônica e mais. Confiança geracional."
+        image={BannerImage.src}
         ctas={[{
           text: 'Agende pelo Whatsapp',
           action: 'https://wa.me/5511912175547',
