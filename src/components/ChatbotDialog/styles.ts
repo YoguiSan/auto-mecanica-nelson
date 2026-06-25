@@ -3,10 +3,6 @@
 import styles from 'styled-components';
 import {
   darkBlue,
-  darkBlueBg,
-  metallicGray,
-  vibrantOrange,
-  white,
 } from '@amn/styles/Colors';
 import {
   family,
@@ -28,6 +24,9 @@ box-shadow: 1rem 1rem 1rem 1rem gray;
 display: flex;
 flex-direction: column;
 justify-content: flex-end;
+
+// FIXME: ocultado por enquanto
+display: none;
 
 padding: 1rem;
 position: fixed;

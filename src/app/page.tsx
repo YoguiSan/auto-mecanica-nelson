@@ -70,7 +70,7 @@ export default function Home() {
             </eui-grid>
           </eui-grid>
         </section>
-        <section id="section-get-in-touch">
+        <section id="section-get-in-touch" style={{ display: 'none' }}>
           <eui-grid container="true" narrow="true" columns={2}>
             <eui-grid extraSmall={2} medium={1}>
               <eui-card

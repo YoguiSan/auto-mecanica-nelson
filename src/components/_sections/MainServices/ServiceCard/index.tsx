@@ -30,8 +30,8 @@ const ServiceCard = ({
         <div slot="body">
           <p className="description">{description}</p>
           <div className="price-container">
-            <p className="price">{price ? formatMoney(price) : 'A verificar'}</p>
-            <p className="time">{estimatedTime}</p>
+            <p className="price">{price && typeof (price) === 'number' ? formatMoney(price) : 'Valor a consultar'}</p>
+            <p className="time">{estimatedTime || 'Tempo estimado a consultar'}</p>
             <eui-button
               text="Solicitar Orçamento"
               color={requestQuoteButtonColor}
