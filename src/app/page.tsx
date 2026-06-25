@@ -164,7 +164,7 @@ export default function Home() {
                     <div className="price-container">
                       <p className="price">R$ 120,00</p>
                       <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
                       
                     </div>
                   </div>
@@ -178,6 +178,7 @@ export default function Home() {
                     <div className="price-container">
                       <p className="price">R$ 300 - 800</p>
                       <p className="time">1-2h</p>
+                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
                     </div>
                   </div>
                 </eui-card>
@@ -190,7 +191,7 @@ export default function Home() {
                     <div className="price-container">
                       <p className="price">R$ 120,00</p>
                       <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
                     </div>
                   </div>
                 </eui-card>
@@ -203,7 +204,7 @@ export default function Home() {
                     <div className="price-container">
                       <p className="price">R$ 120,00</p>
                       <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
                     </div>
                   </div>
                 </eui-card>
@@ -216,7 +217,7 @@ export default function Home() {
                     <div className="price-container">
                       <p className="price">R$ 120,00</p>
                       <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
                     </div>
                   </div>
                 </eui-card>
@@ -229,7 +230,7 @@ export default function Home() {
                     <div className="price-container">
                       <p className="price">R$ 120,00</p>
                       <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
                     </div>
                   </div>
                 </eui-card>
@@ -242,7 +243,7 @@ export default function Home() {
                     <div className="price-container">
                       <p className="price">R$ 120,00</p>
                       <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
                     </div>
                   </div>
                 </eui-card>
@@ -255,7 +256,7 @@ export default function Home() {
                     <div className="price-container">
                       <p className="price">R$ 120,00</p>
                       <p className="time">1-2h</p>
-                      <eui-button text="Solicitar Orçamento" onClick="console.log('bolas')" />
+                      <eui-button text="Solicitar Orçamento" color={darkBlue} onClick="console.log('bolas')" />
                     </div>
                   </div>
                 </eui-card>
