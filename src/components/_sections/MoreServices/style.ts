@@ -4,7 +4,7 @@ import { darkBlue } from '@amn/styles/Colors';
 export default style.section`
 max-width: 100vw !important;
 
-eui-card {
+eui-card.regular {
   background: ${darkBlue};
   border-radius: 0;
   border: none;
