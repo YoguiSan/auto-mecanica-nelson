@@ -19,7 +19,7 @@ const MainServicesSection = () => {
                 title={service.title}
                 description={service.description}
                 icon={service.icon}
-                price={service.price as number}
+                price={(service.price as number)}
                 estimatedTime={service.estimatedTime}
               />
             ))

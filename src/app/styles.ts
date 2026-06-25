@@ -27,6 +27,15 @@ section {
   }
 }
 
+eui-card {
+  .eui-card-body {
+    color: ${metallicGray};
+    font-size: 0.875rem;
+    padding: 0;
+    margin: 0;
+  }
+}
+
 @media all and (max-width: ${tablet}px) {
   .eui-card-icon {
     min-height: 3rem;

@@ -14,6 +14,10 @@ eui-card {
   margin: auto;
   padding: 2rem;
 
+  .eui-card-body {
+    color: white;
+  }
+
   .eui-card-title {
     font-size: 1.5rem;
     margin-bottom: 1rem;

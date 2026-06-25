@@ -28,6 +28,7 @@ eui-grid {
       }
     }
   }
+
   .address-container {
     p {
       color: ${metallicGray};
