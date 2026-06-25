@@ -5,12 +5,13 @@ import Image from 'next/image';
 import HeroBanner from '@amn/components/HeroBanner';
 import Form, { IQuestion } from '@amn/components/Form';
 import MainServicesSection from '@amn/components/_sections/MainServices';
+import TimeAndPlaceSection from '@amn/components/_sections/TimeAndPlace';
+import AboutUsSection from '@amn/components/_sections/AboutUs';
+import MoreServicesSection from '@amn/components/_sections/MoreServices';
 import { darkBlue, vibrantOrange, whatsAppGreen } from '@amn/styles/Colors';
 import SendMessage from '@icons/send-message.svg';
 import PhoneIcon from '@icons/phone.svg';
 import Main from './styles';
-import TimeAndPlaceSection from '@amn/components/_sections/TimeAndPlace';
-import AboutUsSection from '@amn/components/_sections/AboutUs';
 
 export default function Home() {
   const [quotationForm, setQuotationForm] = useState([]);
@@ -51,17 +52,7 @@ export default function Home() {
         <TimeAndPlaceSection />
         <AboutUsSection />
         <MainServicesSection />
-        <section id="section-more-services">
-          <eui-card title="Não encontrou o que precisa?">
-            <div slot="body">
-              <p>Entre em contato conosco! Realizamos diversos outros serviços automotivos personalizados.</p>
-              <eui-button
-                color={vibrantOrange}
-                text="Fale com Especialista" onClick="wa.me/5511999999999"
-              />
-            </div>
-          </eui-card>
-        </section>
+        <MoreServicesSection />
         <section id="section-testimonials" style={{ display: 'none' }}>
           <eui-grid container="true" narrow="true">
             <eui-grid extraSmall={16}>
