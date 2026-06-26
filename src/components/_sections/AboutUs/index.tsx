@@ -1,3 +1,6 @@
+
+import Image from 'next/image';
+import DevMecanico from '../../../assets/images/dev_mecanico.jpg';
 import Section from './styles';
 
 const AboutUsSection = () => {
@@ -8,7 +11,9 @@ const AboutUsSection = () => {
           extraSmall={16}
           medium={8}
         >
-          **TODO: imagem da equipe ou oficina**
+          <div className="image-container">
+            <Image alt="" src={DevMecanico} />
+          </div>
         </eui-grid>
         <eui-grid
           extraSmall={16}

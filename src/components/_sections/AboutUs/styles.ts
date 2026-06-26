@@ -2,6 +2,17 @@ import styles from 'styled-components';
 import { darkBlue, metallicGray, vibrantOrange } from '@amn/styles/Colors';
 
 export default styles.section`
+.image-container {
+  display: flex;
+  height: 100%;
+
+  img {
+    height: auto;
+    margin: auto;
+    width: 100%;
+  }
+}
+
 .about-us-qualities {
   eui-card {
     border: none;
