@@ -1,5 +1,6 @@
 
 import Image from 'next/image';
+import CheckIcon from '@icons/check.svg';
 import DevMecanico from '../../../assets/images/dev_mecanico.jpg';
 import Section from './styles';
 
@@ -28,21 +29,25 @@ const AboutUsSection = () => {
           </p>
           <div className="about-us-qualities">
             <eui-grid
-              container="true"
+              container
               columns={2}
-              narrow="true"
-              condensed="true"
+              narrow
+              condensed
             >
               <eui-grid extraSmall={2} medium={1}>
+                <span className="icon-container">{<Image alt="" src={CheckIcon} />}</span>
                 <p>Prédio próprio</p>
               </eui-grid>
               <eui-grid extraSmall={2} medium={1}>
+                <span className="icon-container">{<Image alt="" src={CheckIcon} />}</span>
                 <p>Atendimento personalizado</p>
               </eui-grid>
               <eui-grid extraSmall={2} medium={1}>
+                <span className="icon-container">{<Image alt="" src={CheckIcon} />}</span>
                 <p>Ferramentas profissionais</p>
               </eui-grid>
               <eui-grid extraSmall={2} medium={1}>
+                <span className="icon-container">{<Image alt="" src={CheckIcon} />}</span>
                 <p>Equipe certificada</p>
               </eui-grid>
               <eui-grid extraSmall={2}>

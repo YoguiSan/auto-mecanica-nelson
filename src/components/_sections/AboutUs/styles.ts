@@ -14,10 +14,28 @@ export default styles.section`
 }
 
 .about-us-qualities {
+  .icon-container {
+    background: ${darkBlue};
+    border-radius: 10rem;
+    display: flex;
+    height: 56px;
+    padding: 1rem;
+    width: 56px;
+
+    img {
+      filter: invert(100%);
+    }
+  }
+
+  p {
+    color: ${metallicGray};
+  }
+
   eui-card {
     border: none;
     border-left: solid 5px ${vibrantOrange};
     box-shadow: 3px 3px 10px lightgray;
+
     .eui-card-header {
       height: 0;
     }
@@ -27,14 +45,6 @@ export default styles.section`
       font-size: 1.2rem;
       font-style: italic;
     }
-
-    /*
-    .author {
-      color: ${metallicGray};
-      font-size: 14px;
-    }
-    */
   }
 }
-
 `;
