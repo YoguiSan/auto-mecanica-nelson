@@ -57,8 +57,9 @@ const HeroBanner: React.FC<Props> = ({
                   : (event) => action(event)}
                 color={color}
                 variant={variant}
-                padding={16}>
-                  <Image slot="icon" src={icon as unknown} alt="" />
+                padding={16}
+              >
+                  <Image slot="icon" width="32" height="32" src={icon as string} alt="" />
                 </eui-button>
             ))}
           </div>

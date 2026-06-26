@@ -2,7 +2,7 @@ import Image from "next/image";
 import { darkBlue } from "@amn/styles/Colors";
 import { formatMoney } from "@amn/utils/formatters";
 
-type IServiceCard = {
+export type IServiceCard = {
   title: string,
   description: string,
   price: number,
@@ -28,10 +28,20 @@ const ServiceCard = ({
       <eui-card title={title} iconBgColor={iconBgColor}>
         <Image src={icon} slot="icon" alt="" />
         <div slot="body">
-          <p className="description">{description}</p>
+          <p className="description">
+            {description}
+          </p>
           <div className="price-container">
-            <p className="price">{price && typeof (price) === 'number' ? formatMoney(price) : 'Valor a consultar'}</p>
-            <p className="time">{estimatedTime || 'Tempo estimado a consultar'}</p>
+            <p className="price">
+              {
+                price && typeof (price) === 'number'
+                  ? formatMoney(price)
+                  : 'Valor a consultar'
+              }
+            </p>
+            <p className="time">
+              {estimatedTime || 'Tempo estimado a consultar'}
+            </p>
             <eui-button
               text="Solicitar Orçamento"
               color={requestQuoteButtonColor}

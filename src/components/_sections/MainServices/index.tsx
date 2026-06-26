@@ -3,6 +3,10 @@ import ServiceCard from './ServiceCard';
 import Section from './styles';
 
 const MainServicesSection = () => {
+  const requestQuote = (serviceName: string) => {
+
+  };
+
   return (
     <Section id="section-main-services">
       <eui-grid container="true">
@@ -21,6 +25,7 @@ const MainServicesSection = () => {
                 icon={service.icon}
                 price={(service.price as number)}
                 estimatedTime={service.estimatedTime}
+                requestQuoteAction={() => requestQuote(service.title)}
               />
             ))
           }

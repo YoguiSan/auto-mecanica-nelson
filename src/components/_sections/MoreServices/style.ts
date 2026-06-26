@@ -16,6 +16,7 @@ eui-card.regular {
 
   .eui-card-body {
     color: white;
+    margin: auto;
   }
 
   .eui-card-title {

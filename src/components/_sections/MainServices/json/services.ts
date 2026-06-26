@@ -1,3 +1,4 @@
+import { IServiceCard } from './../ServiceCard';
 import WrenchIcon from '@icons/wrench.svg';
 
 export default [
@@ -41,4 +42,4 @@ export default [
     description: 'Recarga de gás, limpeza de sistema e troca de compressor',
     icon: WrenchIcon,
   },
-];
+] as IServiceCard[];
