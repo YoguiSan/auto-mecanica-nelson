@@ -9,16 +9,20 @@ const AboutUsSection = () => {
     <Section id="section-about-us">
       <eui-grid container="true" columns={16} narrow="true">
         <eui-grid
-          extraSmall={16}
-          medium={8}
+          medium={16}
+          large={8}
         >
           <div className="image-container">
             <Image alt="" src={DevMecanico} />
+            <eui-card>
+              <p className="large">30+</p>
+              <p>Anos de tradição</p>
+            </eui-card>
           </div>
         </eui-grid>
         <eui-grid
-          extraSmall={16}
-          medium={8}
+          medium={16}
+          large={8}
         >
           <h2>Sobre nós</h2>
           <p>
@@ -34,19 +38,19 @@ const AboutUsSection = () => {
               narrow
               condensed
             >
-              <eui-grid extraSmall={2} medium={1}>
+              <eui-grid extraSmall={2} medium={1} large={1} extraLarge={1}>
                 <span className="icon-container">{<Image alt="" src={CheckIcon} />}</span>
                 <p>Prédio próprio</p>
               </eui-grid>
-              <eui-grid extraSmall={2} medium={1}>
+              <eui-grid extraSmall={2} medium={1} large={1} extraLarge={1}>
                 <span className="icon-container">{<Image alt="" src={CheckIcon} />}</span>
                 <p>Atendimento personalizado</p>
               </eui-grid>
-              <eui-grid extraSmall={2} medium={1}>
+              <eui-grid extraSmall={2} medium={1} large={1} extraLarge={1}>
                 <span className="icon-container">{<Image alt="" src={CheckIcon} />}</span>
                 <p>Ferramentas profissionais</p>
               </eui-grid>
-              <eui-grid extraSmall={2} medium={1}>
+              <eui-grid extraSmall={2} medium={1} large={1} extraLarge={1}>
                 <span className="icon-container">{<Image alt="" src={CheckIcon} />}</span>
                 <p>Equipe certificada</p>
               </eui-grid>

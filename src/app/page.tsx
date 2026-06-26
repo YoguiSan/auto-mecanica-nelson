@@ -83,7 +83,6 @@ export default function Home() {
                     onClick: () => console.log(),
                     id: "quotation-form-submit",
                   }]}
-                  columns={1}
                 />
               </eui-card>
             </eui-grid>

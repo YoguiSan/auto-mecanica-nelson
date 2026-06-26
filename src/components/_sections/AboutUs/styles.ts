@@ -5,11 +5,35 @@ export default styles.section`
 .image-container {
   display: flex;
   height: 100%;
+  position: relative;
 
   img {
     height: auto;
     margin: auto;
     width: 100%;
+  }
+
+  eui-card {
+    background: ${vibrantOrange};
+    border: none;
+    bottom: -1rem;
+    height: fit-content;
+    padding: 1rem 2rem;
+    position: absolute;
+    right: -3rem;
+
+    .eui-card-header {
+      display: none;
+    }
+
+    p {
+      color: white;
+      margin: 0;
+
+      &.large {
+        font-size: 3rem;
+      }
+    }
   }
 }
 
