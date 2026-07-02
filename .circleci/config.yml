@@ -14,6 +14,9 @@ jobs:
           pkg-manager: npm
           override-ci-command: npm ci # Garante uma instalação limpa e idêntica ao lockfile
       - run:
+          name: Install ts-node
+          command: npm i -D ts-node
+      - run:
           name: Run tests
           command: npm test
 
