@@ -15,7 +15,7 @@ jobs:
             - v1-dependencies-{{ checksum "package-lock.json" }}
             - v1-dependencies-
       - node/install-packages:
-          pkg-manager: npm ci
+          pkg-manager: npm
       - run:
           name: Install ts-node
           command: npm ci -D ts-node
