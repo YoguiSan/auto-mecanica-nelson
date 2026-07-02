@@ -16,13 +16,13 @@ jobs:
             - v1-dependencies-
       - node/install-packages:
           pkg-manager: npm
-      - run:
-          name: Install ts-node
-          command: npm ci -D ts-node
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install ts-node
+          command: npm i -D ts-node
       - run:
           name: Run tests
           command: npm test
