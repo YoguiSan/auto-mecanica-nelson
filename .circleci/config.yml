@@ -10,19 +10,9 @@ jobs:
       tag: '16.10'
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package-lock.json" }}
-            - v1-dependencies-
       - node/install-packages:
           pkg-manager: npm
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
-      - run:
-          name: Install ts-node
-          command: npm i -D ts-node
+          override-ci-command: npm ci # Garante uma instalação limpa e idêntica ao lockfile
       - run:
           name: Run tests
           command: npm test
@@ -35,10 +25,10 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: npm
+          override-ci-command: npm ci
       - run:
           name: Build app
-          command: |
-            npm run build
+          command: npm run build
       - run:
           name: Install Surge
           command: npm install -g surge
