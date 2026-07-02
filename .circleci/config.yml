@@ -13,6 +13,9 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run:
+          name: Install ts-node
+          command: npm i -D ts-node
+      - run:
           name: Run tests
           command: npm test
 
@@ -31,9 +34,6 @@ jobs:
       - run:
           name: Install Surge
           command: npm install -g surge
-      - run:
-          name: Install ts-node
-          command: npm i -D ts-node
       - run:
           name: Deploy to Surge
           command: surge ./out auto-mecanica-nelson.surge.sh
