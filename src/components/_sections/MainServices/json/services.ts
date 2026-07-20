@@ -4,7 +4,7 @@ import WrenchIcon from '@icons/wrench.svg';
 export default [
   {
     title: 'Revisão básica',
-    description: 'Troca de óleo, filtros, verificação completa de fluidos e sistema',
+    description: 'Troca de óleo, filtros, verificação completa de fluidos',
     icon: WrenchIcon,
   },
   {
@@ -14,17 +14,17 @@ export default [
   },
   {
     title: 'Injeção Eletrônica',
-    description: 'Diagnóstico EFI, scanner, limpeza de bicos e regulagem',
+    description: 'Diagnóstico com scanner e osciloscópio, limpeza de bicos, reseet de códigos DTC',
     icon: WrenchIcon,
   },
   {
     title: 'Motor',
-    description: 'Troca de correia dentada, válvulas e componentes',
+    description: 'Troca de correia dentada, válvulas, velas e componentes diversos',
     icon: WrenchIcon,
   },
   {
     title: 'Suspensão',
-    description: 'Troca de amortecedores, molas, buchas',
+    description: 'Troca de amortecedores, molas, buchas, rolamentos',
     icon: WrenchIcon,
   },
   {
@@ -34,12 +34,7 @@ export default [
   },
   {
     title: 'Diagnóstico Completo',
-    description: 'Scanner automotivo, teste de compressão e sistemas',
-    icon: WrenchIcon,
-  },
-  {
-    title: 'Ar Condicionado',
-    description: 'Recarga de gás, limpeza de sistema e troca de compressor',
+    description: 'Scanner automotivo, osciloscópio, teste de compressão e sistemas diversos',
     icon: WrenchIcon,
   },
 ] as IServiceCard[];

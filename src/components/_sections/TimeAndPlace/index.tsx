@@ -53,7 +53,7 @@ const TimeAndPlaceSection = () => {
           >
             <Image src={Clock} slot="icon" alt="" />
             <div slot="body">
-              <p>Segunda a sexta: 8-18h</p>
+              <p>Segunda a sexta: 9-18h</p>
               <p>Sábados, domingos e feriados: fechado</p>
             </div>
           </eui-card>
