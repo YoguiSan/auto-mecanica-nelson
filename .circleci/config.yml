@@ -7,7 +7,7 @@ jobs:
   test:
     executor:
       name: node/default
-      tag: '16.10'
+      tag: '20.9.0'
     steps:
       - checkout
       - node/install-packages:
@@ -23,7 +23,7 @@ jobs:
   deploy_surge:
     executor:
       name: node/default
-      tag: '16.10'
+      tag: '20.9.0'
     steps:
       - checkout
       - node/install-packages:
