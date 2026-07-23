@@ -15,14 +15,39 @@ import { tablet } from '@amn/styles/Breakpoints';
 type HeroBannerStylesType = {
   theme?: 'light' | 'dark',
   image?: string,
+  fadeDuration: number,
+};
+
+const setBackground = (img?: string) => {
+  return img
+    ? `url("${img}") no-repeat center center / cover`
+    : `${darkBlue}`
 };
 
 export default styles.section<HeroBannerStylesType>`
 ${({
   image,
+  fadeDuration,
 }) => `
-  font-family: ${family.base};
-  max-width: 100% !important;
+  @keyframes fadeIn {
+    from {
+      background: transparent;
+    }
+
+    to {
+      background: ${setBackground(image)};
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      background: ${setBackground(image)};
+    }
+
+    to {
+      background: transparent;
+    }
+  }
 
   .hero-image {
     align-items: center;
@@ -33,12 +58,7 @@ ${({
     padding: 0;
     width: 100%;
 
-    ${
-      image ? `
-      background: url("${image}") no-repeat center center / cover;
-      `
-      : `background: ${darkBlue};`
-    }
+    background: ${setBackground(image)};
 
     .hero-text-container {
       align-items: center;
@@ -86,7 +106,19 @@ ${({
     }
   }    
   
+  font-family: ${family.base};
+  max-width: 100% !important;
   width: 100%;
+
+  &.fading-in figure {
+    animation-name: fadeIn;
+    animation-duration: ${fadeDuration / 1000}s;
+  }
+
+  &.fading-out figure {
+    animation-name: fadeOut;
+    animation-duration: ${fadeDuration / 1000}s;
+  }
 
   @media all and (max-width: ${tablet}px) {
     #card-localizacao {

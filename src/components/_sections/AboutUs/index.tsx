@@ -1,7 +1,7 @@
 
 import Image from 'next/image';
 import CheckIcon from '@icons/check.svg';
-import DevMecanico from '../../../assets/images/dev_mecanico.jpg';
+import Us from '../../../assets/images/Nelson_1.jpg';
 import Section from './styles';
 
 const AboutUsSection = () => {
@@ -13,7 +13,7 @@ const AboutUsSection = () => {
           large={8}
         >
           <div className="image-container">
-            <Image alt="" src={DevMecanico} />
+            <Image alt="" src={Us} />
             <eui-card>
               <p className="large">30+</p>
               <p>Anos de tradição</p>

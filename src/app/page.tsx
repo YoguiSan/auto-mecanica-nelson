@@ -11,7 +11,8 @@ import MoreServicesSection from '@amn/components/_sections/MoreServices';
 import { vibrantOrange, whatsAppGreen } from '@amn/styles/Colors';
 import SendMessage from '@icons/send-message.svg';
 import PhoneIcon from '@icons/phone.svg';
-import BannerImage from '../assets/images/Scanner Foxwell.jpg';
+import BannerImageScanner from '../assets/images/Scanner Foxwell.jpg';
+import BannerImageUno from '../assets/images/uno.jpg';
 import Main from './styles';
 
 export default function Home() {
@@ -30,13 +31,18 @@ export default function Home() {
 
   }];
 
+  const BannerImages = [
+    BannerImageUno.src,
+    BannerImageScanner.src,
+  ];
+
   return (
     <Main>
       <HeroBanner
         title="Auto Mecânica Nelson"
         callout="30+ Anos de Mecânica de Excelência"
         subtitle="Revisões, freios, injeção eletrônica e mais. Confiança geracional."
-        image={BannerImage.src}
+        image={BannerImages}
         ctas={[{
           text: 'Agende pelo Whatsapp',
           action: 'https://wa.me/5511912175547',
@@ -50,6 +56,7 @@ export default function Home() {
           color: vibrantOrange,
           icon: PhoneIcon,
         }]}
+        imageRotateTransitionDuration={150}
       />
         <TimeAndPlaceSection />
         <AboutUsSection />
