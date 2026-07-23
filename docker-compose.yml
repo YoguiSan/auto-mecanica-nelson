@@ -1,0 +1,107 @@
+services:
+
+  # Channel API (FastAPI Python)
+  chatbot-channel-api:
+    build:
+      context: ./packages/chatbot-channel-backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - SYSTEM_API_URL=${SYSTEM_API_URL}
+    networks:
+      - backend-net
+    restart: unless-stopped
+
+  # System API (Express Node.js)
+  chatbot-system-api:
+    build:
+      context: ./packages/chatbot-system-backend
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - ADMIN_PHRASE=${ADMIN_PHRASE}
+      - AI_QUESTION_SCOPE=${AI_QUESTION_SCOPE}
+      - AI_REVIEW_SCOPE=${AI_REVIEW_SCOPE}
+    networks:
+      - backend-net
+    restart: unless-stopped
+
+  # Vehicle Data API (.NET)
+  vehicle-system-api:
+    build:
+      context: ./packages/vehicle-system-api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ConnectionStrings__DefaultConnection=server=mysql;port=3306;database=autoshop_vehicle_data;user=autoshop;password=autoshoppassword
+      - ASPNETCORE_ENVIRONMENT=Development
+      - CARAPI_TOKEN=${CARAPI_TOKEN}
+      - CARAPI_SECRET=${CARAPI_SECRET}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - backend-net
+    restart: unless-stopped
+
+  # MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: amn-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: amn_vehicle_data
+      MYSQL_USER: amn
+      MYSQL_PASSWORD: autoshoppassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/initdb:/docker-entrypoint-initdb.d:ro
+    networks:
+      - backend-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "amn", "-pautoshoppassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # # Redis (for future chat sessions)
+  # redis:
+  #   image: redis:7-alpine
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis_data:/data
+  #   networks:
+  #     - backend-net
+  #   restart: unless-stopped
+
+  # # Ollama (local AI fallback - optional)
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   ports:
+  #     - "11434:11434"
+  #   volumes:
+  #     - ollama_data:/root/.ollama
+  #   networks:
+  #     - backend-net
+  #   restart: unless-stopped
+
+volumes:
+  mysql_data:
+  # redis_data:
+  # ollama_data:
+
+networks:
+  backend-net:
+    driver: bridge

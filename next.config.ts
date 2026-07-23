@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,  // Skip TS errors during build
   },
   output: 'export',  // For better production builds
+  images: { unoptimized: true },
 };
 
 export default nextConfig;

@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Context from '@amn/stores';
 import Section from './styles';
 import { useRouter } from 'next/navigation';
@@ -18,7 +18,9 @@ type Props = {
     color?: string,
     variant?: 'text' | 'outlined' | 'black' | 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'error' | 'fatal',
   }[],
-  image?: string,
+  image?: string | string[],
+  imageRotateInterval?: number,
+  imageRotateTransitionDuration?: number,
 };
 
 const HeroBanner: React.FC<Props> = ({
@@ -27,13 +29,52 @@ const HeroBanner: React.FC<Props> = ({
   subtitle,
   ctas,
   image,
+  imageRotateInterval = 5000,
+  imageRotateTransitionDuration = 300,
 }) => {
+  const [currentImage, setCurrentImage] = useState<string>('');
+  const [className, setClassName] = useState<string>('');
   const { theme } = useContext(Context);
-
   const router = useRouter();
 
+  let currentImageIndex = 0;
+
+  const rotateImages = () => {
+    setInterval(() => {
+      if (currentImageIndex + 1 < (image as Array<string>).length) {
+        currentImageIndex += 1;
+      } else {
+        currentImageIndex = 0;
+      }
+
+      setClassName('fading-out');
+
+      setTimeout(() => {
+        setClassName('fading-in');
+        setCurrentImage((image as Array<string>)[currentImageIndex]);
+      }, imageRotateTransitionDuration);
+    }, imageRotateInterval + imageRotateTransitionDuration);
+  };
+
+  useEffect(() => {
+    if (typeof (image) === 'string') {
+      setCurrentImage(image);
+    }
+
+    else if (Array.isArray(image)) {
+      setCurrentImage(image[0]);
+
+      rotateImages();
+    }
+  }, [image]);
+
   return (
-    <Section theme={theme.mode} image={image}>
+    <Section
+      theme={theme.mode}
+      image={currentImage}
+      className={className}
+      fadeDuration={imageRotateTransitionDuration}
+    >
       <figure className="hero-image">
         <div className="hero-text-container">
           <h1 className="hero-title">{title}</h1>
@@ -57,8 +98,9 @@ const HeroBanner: React.FC<Props> = ({
                   : (event) => action(event)}
                 color={color}
                 variant={variant}
-                padding={16}>
-                  <Image slot="icon" src={icon as unknown} alt="" />
+                padding={16}
+              >
+                  <Image slot="icon" width="32" height="32" src={icon as string} alt="" />
                 </eui-button>
             ))}
           </div>
