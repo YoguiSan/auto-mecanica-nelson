@@ -5,7 +5,7 @@ describe('ServiceCard component', () => {
   it('renders the title, description, formatted price and the request quote action', () => {
     const requestQuoteAction = jest.fn();
 
-    render(
+    const { container } = render(
       <ServiceCard
         title="Revisão básica"
         description="Troca de óleo, filtros e fluidos"
@@ -16,12 +16,14 @@ describe('ServiceCard component', () => {
       />,
     );
 
-    expect(screen.getByText('Revisão básica')).toBeInTheDocument();
+    const card = container.querySelector('eui-card');
+    expect(card).toBeTruthy();
+    expect(card?.getAttribute('title')).toBe('Revisão básica');
     expect(screen.getByText('Troca de óleo, filtros e fluidos')).toBeInTheDocument();
     expect(screen.getByText('R$ 120,00')).toBeInTheDocument();
     expect(screen.getByText('45 min')).toBeInTheDocument();
 
-    const button = document.querySelector('eui-button');
+    const button = container.querySelector('eui-button');
     expect(button).toBeTruthy();
     expect(button?.getAttribute('text')).toBe('Solicitar Orçamento');
   });

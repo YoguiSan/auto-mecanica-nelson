@@ -5,8 +5,10 @@ describe('TimeAndPlaceSection component', () => {
   it('renders the location and business hours content', () => {
     const { container } = render(<TimeAndPlaceSection />);
 
-    expect(screen.getByText('Localização')).toBeInTheDocument();
-    expect(screen.getByText('Horário de Funcionamento')).toBeInTheDocument();
+    const cards = container.querySelectorAll('eui-card');
+    expect(cards).toHaveLength(2);
+    expect(cards[0]?.getAttribute('title')).toBe('Localização');
+    expect(cards[1]?.getAttribute('title')).toBe('Horário de Funcionamento');
     expect(screen.getByText('Rua Lourenço Saporito, 332')).toBeInTheDocument();
     expect(screen.getByText('Jardim Ana Maria, São Paulo - SP')).toBeInTheDocument();
     expect(screen.getByText('CEP: 05757-200')).toBeInTheDocument();

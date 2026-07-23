@@ -5,7 +5,9 @@ describe('MoreServicesSection component', () => {
   it('renders the contact callout card and CTA button', () => {
     const { container } = render(<MoreServicesSection />);
 
-    expect(screen.getByText('Não encontrou o que precisa?')).toBeInTheDocument();
+    const card = container.querySelector('eui-card');
+    expect(card).toBeTruthy();
+    expect(card?.getAttribute('title')).toBe('Não encontrou o que precisa?');
     expect(
       screen.getByText(/Entre em contato conosco! Realizamos diversos outros serviços/i),
     ).toBeInTheDocument();

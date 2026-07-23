@@ -40,11 +40,10 @@ describe('Form component', () => {
       />,
     );
 
-    expect(screen.getByText('Nome *')).toBeInTheDocument();
-    expect(screen.getByText('Email')).toBeInTheDocument();
-
     const inputs = container.querySelectorAll('eui-input');
     expect(inputs).toHaveLength(2);
+    expect(inputs[0]?.getAttribute('label')).toContain('Nome');
+    expect(inputs[1]?.getAttribute('label')).toContain('Email');
 
     const buttons = container.querySelectorAll('eui-button');
     expect(buttons).toHaveLength(2);
