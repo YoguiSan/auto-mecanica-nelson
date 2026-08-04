@@ -14,8 +14,8 @@ jobs:
           pkg-manager: npm
           override-ci-command: npm ci --legacy-peer-deps # Garante uma instalação limpa e idêntica ao lockfile
       - run:
-          name: Install ts-node
-          command: npm i -D ts-node
+          name: Install tsx
+          command: npm i -D tsx
       - run:
           name: Run tests
           command: npm test
