@@ -35,7 +35,7 @@ const ask = async (query: string, chatId?: string): Promise<ChatbotResponseType>
 
 const status = async () => {
   try {
-    const request = await Request.get(`${(url as string)}/status`);
+    const request = await Request.get(`${(url as string)}`);
 
     return {
       status: 200,
