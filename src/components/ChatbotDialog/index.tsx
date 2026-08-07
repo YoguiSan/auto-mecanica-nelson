@@ -14,6 +14,7 @@ const ChatbotDialog: React.FC<Props> = () => {
   const [open, setOpen] = useState<boolean>(true);
   const [error, setError] = useState<string | false>(false);
   const [fetching, setFetching] = useState<boolean>(false);
+  const [chatbotOnline, setChatbotOnline] = useState<boolean>(false);
 
   const [currentQuestion, setCurrentQuestion] = useState<string>();
   const {
@@ -26,6 +27,20 @@ const ChatbotDialog: React.FC<Props> = () => {
     messages,
     setMessages,
   } = chat;
+
+  useEffect(() => {
+    const Run = async () => {
+      const {
+        status,
+      } = await ChatbotService.status();
+
+      if (status === 200) {
+        setChatbotOnline(true);
+      }
+    };
+
+    Run();
+  }, []);
 
   useEffect(() => {
     console.log('chatId', chatId)
@@ -61,7 +76,7 @@ const ChatbotDialog: React.FC<Props> = () => {
   };
 
   return (
-    <Div open={open}>
+    <Div open={open} visible={chatbotOnline}>
       {
         open
           ? (

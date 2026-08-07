@@ -8,12 +8,13 @@ import {
   family,
   size,
 } from '@amn/styles/Fonts';
-import { tablet } from '@amn/styles/Breakpoints';
+// import { tablet } from '@amn/styles/Breakpoints';
 
 type ChatbotDialogStylesType = {
   theme?: 'light' | 'dark',
   image?: string,
   open?: boolean,
+  visible?: boolean,
 };
 
 export default styles.div<ChatbotDialogStylesType>`
@@ -25,13 +26,12 @@ display: flex;
 flex-direction: column;
 justify-content: flex-end;
 
-// FIXME: ocultado por enquanto
-display: none;
-
 padding: 1rem;
 position: fixed;
 right: 1rem;
 z-index: 1;
+
+${({ visible }) => !visible && 'display: none;'}
 
 ${({ open }) => open
   ? `

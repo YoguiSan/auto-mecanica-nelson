@@ -1,10 +1,12 @@
 type ConfigType = {
-  CHANNEL_API_URL: string;
+  CHANNEL_API_URL?: string;
 };
 
-const Config = {
+const Config: ConfigType = {
   CHANNEL_API_URL: process.env.NEXT_PUBLIC_CHANNEL_API_URL,
 };
+
+console.log(Config)
 
 export default Config;
 
