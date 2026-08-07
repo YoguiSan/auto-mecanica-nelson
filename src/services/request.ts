@@ -57,7 +57,7 @@ const PostPutDelete = async (
 });
 
 const Request = {
-  get: async (url: string, params: UnknownObject, headers?: UnknownObject) => Get(url, params, headers),
+  get: async (url: string, params?: UnknownObject, headers?: UnknownObject) => Get(url, params, headers),
   post: async (url: string, body: UnknownObject, headers?: UnknownObject) => PostPutDelete(url, 'post', body, headers),
   put: async (url: string, body: UnknownObject, headers?: UnknownObject) => PostPutDelete(url, 'put', body, headers),
   delete: async (url: string, body: UnknownObject, headers?: UnknownObject) => PostPutDelete(url, 'delete', body, headers),
