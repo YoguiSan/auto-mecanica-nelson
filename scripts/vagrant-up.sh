@@ -1,4 +1,4 @@
 #cd ..
 cd devops
-source .env
+. ./.env
 vagrant up
