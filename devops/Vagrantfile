@@ -1,16 +1,21 @@
-defaultConf = {
-  'memory': '512',
-  'cpus': 1,
-  'box': 'ubuntu/jammy64',
-  'ipRange': "192.168.56.2"
-}
+# Override any of these when invoking `vagrant up`, e.g.:
+#   WORKER_COUNT=4 WORKER_MEMORY=4096 WORKER_CPUS=2 vagrant up      (bash/zsh)
+#   $env:WORKER_MEMORY=4096; vagrant up                             (PowerShell)
+# Defaults below are sized conservatively for an 8GB host.
+MASTER_COUNT  = ENV.fetch("MASTER_COUNT", "1").to_i
+MASTER_CPUS   = ENV.fetch("MASTER_CPUS", "2").to_i
+MASTER_MEMORY = ENV.fetch("MASTER_MEMORY", "2048").to_i
+
+WORKER_COUNT  = ENV.fetch("WORKER_COUNT", "2").to_i
+WORKER_CPUS   = ENV.fetch("WORKER_CPUS", "1").to_i
+WORKER_MEMORY = ENV.fetch("WORKER_MEMORY", "512").to_i
 
 Vagrant.configure("2") do |config|
-    (1..1).each do |i|
+    (1..MASTER_COUNT).each do |i|
         config.vm.define "master-#{i}" do |master|
             master.vm.box = "ubuntu/jammy64"
             master.vm.hostname = "master-#{i}"
-            master.vm.network "private_network", ip: "192.168.56.1#{i}"
+            master.vm.network "private_network", ip: "192.168.56.#{10 + i}"
 
             master.ssh.insert_key = false
             master.ssh.private_key_path = ['~/.vagrant.d/insecure_private_key', '~/.ssh/id_rsa']
@@ -20,17 +25,17 @@ Vagrant.configure("2") do |config|
 
             master.vm.provider "virtualbox" do |vb|
               vb.gui = false
-              vb.cpus = 2
-              vb.memory = "2048"
+              vb.cpus = MASTER_CPUS
+              vb.memory = MASTER_MEMORY
             end
         end
     end
 
-    (1..3).each do |i|
-        config.vm.define "default-worker-#{1}" do |worker|
-            worker.vm.box = defaultConf[:box]
-            worker.vm.hostname = "default-worker-#{1}" 
-            worker.vm.network "private_network", ip: "#{defaultConf[:ipRange]}#{i}"
+    (1..WORKER_COUNT).each do |i|
+        config.vm.define "worker-#{i}" do |worker|
+            worker.vm.box = "ubuntu/jammy64"
+            worker.vm.hostname = "worker-#{i}"
+            worker.vm.network "private_network", ip: "192.168.56.#{20 + i}"
 
             worker.ssh.insert_key = false
             worker.ssh.private_key_path = ['~/.vagrant.d/insecure_private_key', '~/.ssh/id_rsa']
@@ -40,8 +45,8 @@ Vagrant.configure("2") do |config|
 
             worker.vm.provider "virtualbox" do |vb|
               vb.gui = false
-              vb.cpus = defaultConf[:cpus]
-              vb.memory = defaultConf[:memory]
+              vb.cpus = WORKER_CPUS
+              vb.memory = WORKER_MEMORY
             end
         end
     end
