@@ -2,16 +2,30 @@
 
 ## Arquitetura
 
+## Configuração do host
+### Instalação do Vagrant
+TODO
+
+### Instalação do VirtualBox
+TODO
+
+### Instalação do Podman
+- Executar:
+```sudo apt install podman```
 
 ## Rodando com Vagrant
-- Entrar na pasta onde está o Vagrantfile:
-```cd devops```
-- Executar:
-```vagrant up```
+- Executar o script:
+```scripts/vagrant-up.sh)```
+- Alternativamente:
+  - Entrar na pasta onde está o Vagrantfile:
+  ```cd devops```
+  - Executar:
+  ```vagrant up```
 - Para pausar as VM's:
 ```vagrant halt```
-- Caso ocorra um erro de que o VT-x esteja sendo usado por outro hypervisor, é preciso desativar o KVM (no Debian/Ubuntu). Para isso (em processadores Intel):
-```sudo modprobe -r kvm_intel && sudo modprobe -r kvm```
+- Caso ocorra um erro de que o **VT-x** esteja sendo usado por outro hypervisor, é preciso desativar o KVM (no Debian/Ubuntu). Para isso:
+  - Em processadores Intel:
+  ```sudo modprobe -r kvm_intel && sudo modprobe -r kvm```
 
 ## Links úteis
 | Nome | Link | Observações |
