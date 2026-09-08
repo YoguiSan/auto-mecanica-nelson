@@ -1,0 +1,2 @@
+cd devops
+vagrant halt

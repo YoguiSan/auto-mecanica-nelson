@@ -46,5 +46,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Vagrant
+# Vagrant and Kubernetes
 devops/.vagrant/
+devops/join-command.sh
