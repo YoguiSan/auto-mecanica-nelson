@@ -46,9 +46,9 @@ Vagrant.configure("2") do |config|
         end
     end
 
-    workerMachines.each do |name, config|
+    workerMachines.each do |name, conf|
         config.vm.define "#{name}" do |worker|
-            worker.vm.box = config['box']
+            worker.vm.box = conf['box']
             worker.vm.hostname = "#{name}"
             worker.vm.network "private_network", ip: conf['ip']
 
