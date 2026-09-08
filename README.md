@@ -2,6 +2,7 @@
 
 ## Arquitetura
 
+
 ## Rodando com Vagrant
 - Entrar na pasta onde está o Vagrantfile:
 ```cd devops```
