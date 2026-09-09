@@ -2,6 +2,7 @@
   "conventionalCommits.scopes": [
     "config.yml",
     "config.py",
-    "scripts"
+    "scripts",
+    "Dockerfile(s)"
   ]
 }
