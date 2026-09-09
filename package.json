@@ -9,7 +9,7 @@
     "dev": "npm run build:eui && npm i --legacy-peer-deps && next dev",
     "dev:all": "concurrently \"npm run watch:eui\" \"npm run dev\"",
     "build": "next build",
-    "start": "npm run build:eui && npm i --legacy-peer-deps && npx serve@latest out",
+    "start": "npm run build:eui && npm i --legacy-peer-deps && npm run build && npx serve@latest out",
     "lint": "eslint",
     "test": "jest --runInBand",
     "test:watch": "jest --watch",
