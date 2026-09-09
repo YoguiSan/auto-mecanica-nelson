@@ -1,5 +1,5 @@
 # Base image
-FROM node:14-alpine
+FROM node:24-alpine
 
 # Set working directory
 WORKDIR /app
@@ -7,6 +7,7 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
+# Copies Ethyl UI into the project dicrectory, allowing it to be installed as a local dependency
 COPY packages/ethyl-ui ./packages/ethyl-ui
 
 # Install dependencies
