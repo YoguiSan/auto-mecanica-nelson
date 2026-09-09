@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     turbopack: {
     resolveAlias: {
       'ethyl-ui/dist/components': 'ethyl-ui/dist/components/index.js',  // Points to your package's components entry
-      'ethyl-ui': '@eui/ethyl-ui',  // Catches all ethyl-ui/* imports
+      'ethyl-ui': 'node_modules/ethyl-ui',  // Catches all ethyl-ui/* imports
     },
   },
   // Or for webpack fallback (if not using Turbopack exclusively):
@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,  // Skip TS errors during build
   },
-  output: 'export',  // For better production builds
+  output: 'standalone',  // For better production builds
   images: { unoptimized: true },
 };
 

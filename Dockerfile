@@ -11,10 +11,13 @@ COPY package*.json ./
 COPY packages/ethyl-ui ./packages/ethyl-ui
 
 # Install dependencies
-RUN npm install
+RUN npm ci
+
+# Build
+RUN npm run build
 
 # Copy application code
-COPY . .
+COPY ./out .
 
 # Expose the port the app runs on
 EXPOSE 3000

@@ -21,7 +21,8 @@
     "paths": {
       "@amn/*": ["./src/*"],
       "@eui/*": ["./packages/ethyl-ui/src/*"],
-      "@icons/*": ["./src/assets/icons/*"]
+      "ethyl-ui": ["./packages/ethyl-ui"],
+      "@icons/*": ["./src/assets/icons/*"],
     }
   },
   "include": [
