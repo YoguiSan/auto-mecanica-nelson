@@ -12,6 +12,8 @@ TODO
 ### Instalação do Podman
 - Executar:
 ```sudo apt install podman```
+- Configurar o Podman para funcionar como o **container runtime** no Kubernetes:
+```sudo apt install podman-docker ```
 
 ## Rodando com Vagrant
 - Executar o script:

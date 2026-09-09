@@ -1,6 +1,7 @@
 {
   "conventionalCommits.scopes": [
     "config.yml",
-    "config.py"
+    "config.py",
+    "scripts"
   ]
 }
