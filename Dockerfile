@@ -20,7 +20,7 @@ RUN npm run build
 
 
 # ---------- Runtime stage ----------
-FROM nginx:alpine
+FROM docker.io/library/nginx:alpine
 
 # Optional: remove nginx's default files
 RUN rm -rf /usr/share/nginx/html/*
