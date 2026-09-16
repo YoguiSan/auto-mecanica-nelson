@@ -4,7 +4,6 @@ SCRIPT=$(readlink -f "$0")
 # Absolute path this script is in, thus /home/user/bin
 SCRIPTPATH=$(dirname "$SCRIPT")
 
-cd "$SCRIPTPATH/../devops" || exit
-. ./.env
-vagrant status
-
+"$SCRIPTPATH/podman-build.sh"
+"$SCRIPTPATH/deployment/chatbot.sh"
+"$SCRIPTPATH/deployment/frontend.sh"

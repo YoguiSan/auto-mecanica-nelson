@@ -3,8 +3,4 @@
 SCRIPT=$(readlink -f "$0")
 # Absolute path this script is in, thus /home/user/bin
 SCRIPTPATH=$(dirname "$SCRIPT")
-
-cd "$SCRIPTPATH/../devops" || exit
-. ./.env
-vagrant status
-
+kubectl apply -f "$SCRIPTPATH/../../devops/chatbot/system.yaml"
