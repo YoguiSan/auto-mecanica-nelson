@@ -3,5 +3,5 @@
 SCRIPT=$(readlink -f "$0")
 # Absolute path this script is in, thus /home/user/bin
 SCRIPTPATH=$(dirname "$SCRIPT")
-cd "$SCRIPTPATH../devops" || exit
+cd "$SCRIPTPATH/../devops" || exit
 vagrant halt

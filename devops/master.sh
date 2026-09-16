@@ -26,3 +26,11 @@ kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/
 
 kubeadm token create --print-join-command > /vagrant/join-command.sh
 chmod +x /vagrant/join-command.sh
+
+# Let the `vagrant` user run kubectl interactively inside this VM
+mkdir -p /home/vagrant/.kube
+cp /etc/kubernetes/admin.conf /home/vagrant/.kube/config
+chown vagrant:vagrant /home/vagrant/.kube/config
+
+# Expose the same credentials to the host via the shared folder
+cp /etc/kubernetes/admin.conf /vagrant/kube-config

@@ -49,3 +49,4 @@ next-env.d.ts
 # Vagrant and Kubernetes
 devops/.vagrant/
 devops/join-command.sh
+devops/kube-config
