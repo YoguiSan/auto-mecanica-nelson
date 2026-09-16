@@ -13,7 +13,7 @@ spec:
         app: amn-frontend
     spec:
       containers:
-      - name: amn-frontend:0.1.0
+      - name: amn-frontend
         image: amn-frontend:0.1.0
         ports:
         - containerPort: 3000
