@@ -4,6 +4,7 @@
     "config.py",
     "scripts",
     "Dockerfile(s)",
-    "Kubernetes Manifests"
+    "Kubernetes Manifests",
+    "kubeadm Config"
   ]
 }
