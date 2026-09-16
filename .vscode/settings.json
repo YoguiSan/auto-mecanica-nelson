@@ -3,6 +3,7 @@
     "config.yml",
     "config.py",
     "scripts",
-    "Dockerfile(s)"
+    "Dockerfile(s)",
+    "Kubernetes Manifests"
   ]
 }
