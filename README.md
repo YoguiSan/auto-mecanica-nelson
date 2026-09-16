@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Auto Mecânica Nelson
 
-## Getting Started
+## Arquitetura
 
-First, run the development server:
+## Configuração do host
+### Instalação do Vagrant
+TODO
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Instalação do VirtualBox
+TODO
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Instalação do Podman
+- Executar:
+```sudo apt install podman```
+- Configurar o Podman para funcionar como o **container runtime** no Kubernetes:
+```sudo apt install podman-docker ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Rodando com Vagrant
+- Executar o script:
+```scripts/vagrant-up.sh)```
+- Alternativamente:
+  - Entrar na pasta onde está o Vagrantfile:
+  ```cd devops```
+  - Executar:
+  ```vagrant up```
+- Para pausar as VM's:
+```vagrant halt```
+- Caso ocorra um erro de que o **VT-x** esteja sendo usado por outro hypervisor, é preciso desativar o KVM (no Debian/Ubuntu). Para isso:
+  - Em processadores Intel:
+  ```sudo modprobe -r kvm_intel && sudo modprobe -r kvm```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Links úteis
+| Nome | Link | Observações |
+|------|------|-------------|
+| Anotações do curso de Arquitetura de software | https://docs.google.com/document/d/1u44oPp290PYlaC8a8Wf5ZCjN9DmfYhtUfSYLz4RyOB4/edit?tab=t.ss0198y1gxbb#heading=h.zib3vwmbf339
+| Anotações do curso de Kubernetes | https://docs.google.com/document/d/1uUqUIdGj7gv0zDicG3cRtPJXKGmEibjA9vVyJbQEO0k/edit?tab=t.f3l463aru340
+| Repositório do Kubespray | https://github.com/kubernetes-sigs/kubespray
+| Gerador de Dockerfile | https://dockerbuild.com/tools/dockerfile-generator
