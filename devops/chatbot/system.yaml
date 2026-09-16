@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amn-chatbot-system-backend
+spec:
+  selector:
+    matchLabels:
+      app: amn-chatbot-system-backend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: amn-chatbot-system-backend
+    spec:
+      containers:
+        - name: amn-chatbot-system
+          image: amn-chatbot-system:0.1.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 4000
