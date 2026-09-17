@@ -15,5 +15,6 @@ spec:
       containers:
       - name: amn-frontend
         image: amn-frontend:0.1.0
+        imagePullPolicy: Never
         ports:
         - containerPort: 3000
