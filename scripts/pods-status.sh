@@ -4,4 +4,5 @@ SCRIPT=$(readlink -f "$0")
 # Absolute path this script is in, thus /home/user/bin
 SCRIPTPATH=$(dirname "$SCRIPT")
 
-(cd "$SCRIPTPATH/../devops/" && KUBECONFIG="$SCRIPTPATH/../devops/kube-config" kubectl get pods -w)
+cd "$SCRIPTPATH/../devops/" || exit
+KUBECONFIG="$SCRIPTPATH/../devops/kube-config" kubectl get pods

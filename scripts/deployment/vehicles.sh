@@ -4,5 +4,6 @@ SCRIPT=$(readlink -f "$0")
 # Absolute path this script is in, thus /home/user/bin
 SCRIPTPATH=$(dirname "$SCRIPT")
 
-"$SCRIPTPATH/deployment/chatbot.sh"
-"$SCRIPTPATH/deployment/frontend.sh"
+export KUBECONFIG="$SCRIPTPATH/../../devops/kube-config"
+
+kubectl apply -f "$SCRIPTPATH/../../devops/vehicles/system.yaml"
