@@ -50,3 +50,4 @@ next-env.d.ts
 devops/.vagrant/
 devops/join-command.sh
 devops/kube-config
+devops/container-images/

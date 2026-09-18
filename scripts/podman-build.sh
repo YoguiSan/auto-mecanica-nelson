@@ -3,7 +3,7 @@
 SCRIPT=$(readlink -f "$0")
 # Absolute path this script is in, thus /home/user/bin
 SCRIPTPATH=$(dirname "$SCRIPT")
-BUILD_DIR="$SCRIPTPATH/../devops/.vagrant/container-images"
+BUILD_DIR="$SCRIPTPATH/../devops/container-images"
 
 # shellcheck source=../devops/.env
 source "$SCRIPTPATH/../devops/.env"
@@ -21,11 +21,24 @@ cd ../../
 # Chatbot system backend
 cd "$SCRIPTPATH/../packages/chatbot-system-backend" || exit
 podman build . -t "amn-chatbot-system:$CHATBOT_SYSTEM_VERSION"
-podman save "amn-chatbot-system:$CHATBOT_SYSTEM_VERSION" -o "chatbot-system-$CHATBOT_SYSTEM_VERSION.tar"
+podman save "amn-chatbot-system:$CHATBOT_SYSTEM_VERSION" -o "$BUILD_DIR/chatbot-system-$CHATBOT_SYSTEM_VERSION.tar"
 echo "Chatbot system API version $CHATBOT_SYSTEM_VERSION built and saved to $BUILD_DIR/chatbot-system-$CHATBOT_SYSTEM_VERSION.tar"
 cd ../../
 
 # Frontend
-podman build . -t "amn-frontend:$FRONTEND_VERSION" || exit
-podman "save amn-frontend:$FRONTEND_VERSION" -o "frontend-$FRONTEND_VERSION.tar"
+podman build . -t "amn-frontend:$FRONTEND_VERSION"
+podman save "amn-frontend:$FRONTEND_VERSION" -o "$BUILD_DIR/frontend-$FRONTEND_VERSION.tar"
 echo "Frontend version $FRONTEND_VERSION built and saved to $BUILD_DIR/frontend-$FRONTEND_VERSION.tar"
+
+# Imports the images into the VMs
+for ((i = 1; i <= $WORKER_COUNT; ++ i))
+do
+    cd "$SCRIPTPATH/../devops" || exit
+    vagrant ssh "worker-$i" -c "
+        sudo ctr -n k8s.io images import /vagrant/container-images/chatbot-system-${CHATBOT_SYSTEM_VERSION}.tar &&
+        sudo ctr -n k8s.io images import /vagrant/container-images/chatbot-channel-${CHATBOT_CHANNEL_VERSION}.tar &&
+        sudo ctr -n k8s.io images import /vagrant/container-images/frontend-${FRONTEND_VERSION}.tar
+        exit
+    "
+
+done
