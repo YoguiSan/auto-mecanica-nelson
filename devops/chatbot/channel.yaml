@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amn-chatbot-channel-backend
+spec:
+  selector:
+    matchLabels:
+      app: amn-chatbot-channel-backend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: amn-chatbot-channel-backend
+    spec:
+      containers:
+      - name: amn-chatbot-channel
+        image: amn-chatbot-channel:0.1.0
+        imagePullPolicy: Never
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+          - containerPort: 4000

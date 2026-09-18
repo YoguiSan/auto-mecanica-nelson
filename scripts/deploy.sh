@@ -60,12 +60,12 @@ deploy_frontend() {
 
 deploy_chatbot() {
     apply_manifest "chatbot-system" "$CHATBOT_SYSTEM_MANIFEST" "$@"
-    # apply_manifest "chatbot-channel" "$CHATBOT_CHANNEL_MANIFEST" "$@"
+    apply_manifest "chatbot-channel" "$CHATBOT_CHANNEL_MANIFEST" "$@"
 }
 
 deploy_vehicles() {
     apply_manifest "vehicles-system" "$VEHICLES_SYSTEM_MANIFEST" "$@"
-    # apply_manifest "vehicles-channel" "$VEHICLES_CHANNEL_MANIFEST" "$@"
+    apply_manifest "vehicles-channel" "$VEHICLES_CHANNEL_MANIFEST" "$@"
 }
 
 deploy_all() {
