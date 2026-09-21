@@ -70,9 +70,14 @@ case "$action" in
         echo "Container images imported into the VM's."
         echo
 
+        "$SCRIPTPATH/../devops" kubectl delete deployment amn-vehicles-system-backend amn-vehicles-channel-backend
+        echo "Deployments removed from Kubernetes."
+        echo
+
         "$SCRIPTPATH/deploy.sh"
         echo "Applications redeployed."
         echo
+
         exit 0
         ;;
     vms)
