@@ -71,7 +71,7 @@ deploy_vehicles() {
 deploy_all() {
     deploy_frontend "$@"
     deploy_chatbot "$@"
-    deploy_vehicles "$@"
+    # deploy_vehicles "$@"
 }
 
 # No target means: deploy everything

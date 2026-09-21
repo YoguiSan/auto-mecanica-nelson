@@ -23,7 +23,7 @@ Actions:
 Examples:
   $(basename "$0")
   $(basename "$0") build
-  $(basename "$0") imnport
+  $(basename "$0") import
 EOF
 }
 
@@ -36,7 +36,6 @@ fi
 
 case "$action" in
     import)
-        # Alias for halting
         for ((i = 1; i <= $WORKER_COUNT; ++ i))
         do
             cd "$SCRIPT_DIR/../devops" || exit
@@ -44,7 +43,7 @@ case "$action" in
                 echo \"Importing images into worker-$i\" &&
                 sudo ctr -n k8s.io images import /vagrant/container-images/chatbot-system-${CHATBOT_SYSTEM_VERSION}.tar &&
                 sudo ctr -n k8s.io images import /vagrant/container-images/chatbot-channel-${CHATBOT_CHANNEL_VERSION}.tar &&
-                sudo ctr -n k8s.io images import /vagrant/container-images/frontend-${FRONTEND_VERSION}.tar
+                sudo ctr -n k8s.io images import /vagrant/container-images/frontend-${FRONTEND_VERSION}.tar &&
                 echo \"Finished importing images into worker-$i\" &&
                 exit
             "
@@ -52,6 +51,8 @@ case "$action" in
         ;;
 
     build)
+        mkdir -p "$BUILD_DIR"
+
         # Chatbot channel backend
         cd "$SCRIPT_DIR/../packages/chatbot-channel-backend" || exit
         podman build . -t "amn-chatbot-channel:$CHATBOT_CHANNEL_VERSION"

@@ -23,7 +23,7 @@ Actions:
 Examples:
   $(basename "$0")
   $(basename "$0") build
-  $(basename "$0") imnport
+  $(basename "$0") import
 EOF
 }
 
@@ -48,19 +48,46 @@ case "$action" in
         echo 1
         sleep 1
         echo "You have been warned."
+        sleep 1
+
+        "$SCRIPTPATH/vagrant.sh" destroy
+        echo "VM's destroyed."
+        echo
+
+        rm -rf "$BUILD_DIR"
+        echo "Container images removed."
+        echo
+
+        "$SCRIPTPATH/containers.sh" build
+        echo "Container images rebuilt."
+        echo
+
+        "$SCRIPTPATH/vagrant.sh" up
+        echo "VM's running again."
+        echo
+
+        "$SCRIPTPATH/containers.sh" import
+        echo "Container images imported into the VM's."
+        echo
+
+        "$SCRIPTPATH/deploy.sh"
+        echo "Applications redeployed."
+        echo
+        exit 0
+        ;;
+    vms)
         "$SCRIPTPATH/vagrant.sh" destroy
         "$SCRIPTPATH/vagrant.sh" up
-        "$SCRIPTPATH/containers.sh" build
-        "$SCRIPTPATH/containers.sh" import
-        "$SCRIPTPATH/deploy.sh"
-        rm -rf "$BUILD_DIR"
-
+        exit 0
         ;;
-
+      help|-h|--help)
+        usage
+        exit 0
+        ;;
+      *)
+        echo "Error: unknown action: $action" >&2
+        usage >&2
+        exit 2
+        ;;
 esac
 
-
-"$SCRIPTPATH/vagrant.sh" destroy
-"$SCRIPTPATH/vagrant.sh" up
-
-"$SCRIPTPATH/deploy.sh"
