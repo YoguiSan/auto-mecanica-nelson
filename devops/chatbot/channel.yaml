@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: amn-chatbot-channel
-        image: amn-chatbot-channel:0.1.0
+        image: localhost/amn-chatbot-channel:0.1.0
         imagePullPolicy: Never
         resources:
           requests:

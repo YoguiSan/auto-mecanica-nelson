@@ -55,21 +55,21 @@ case "$action" in
 
         # Chatbot channel backend
         cd "$SCRIPT_DIR/../packages/chatbot-channel-backend" || exit
-        podman build . -t "amn-chatbot-channel:$CHATBOT_CHANNEL_VERSION"
-        podman save "amn-chatbot-channel:$CHATBOT_CHANNEL_VERSION" -o "$BUILD_DIR/chatbot-channel-$CHATBOT_CHANNEL_VERSION.tar"
+        podman build . -t "localhost/amn-chatbot-channel:$CHATBOT_CHANNEL_VERSION"
+        podman save "localhost/amn-chatbot-channel:$CHATBOT_CHANNEL_VERSION" -o "$BUILD_DIR/chatbot-channel-$CHATBOT_CHANNEL_VERSION.tar"
         echo "Chatbot channel API version $CHATBOT_CHANNEL_VERSION built and saved to $BUILD_DIR/chatbot-channel-$CHATBOT_CHANNEL_VERSION.tar"
         cd ../../
 
         # Chatbot system backend
         cd "$SCRIPT_DIR/../packages/chatbot-system-backend" || exit
-        podman build . -t "amn-chatbot-system:$CHATBOT_SYSTEM_VERSION"
-        podman save "amn-chatbot-system:$CHATBOT_SYSTEM_VERSION" -o "$BUILD_DIR/chatbot-system-$CHATBOT_SYSTEM_VERSION.tar"
+        podman build . -t "localhost/amn-chatbot-system:$CHATBOT_SYSTEM_VERSION"
+        podman save "localhost/amn-chatbot-system:$CHATBOT_SYSTEM_VERSION" -o "$BUILD_DIR/chatbot-system-$CHATBOT_SYSTEM_VERSION.tar"
         echo "Chatbot system API version $CHATBOT_SYSTEM_VERSION built and saved to $BUILD_DIR/chatbot-system-$CHATBOT_SYSTEM_VERSION.tar"
         cd ../../
 
         # Frontend
-        podman build . -t "amn-frontend:$FRONTEND_VERSION"
-        podman save "amn-frontend:$FRONTEND_VERSION" -o "$BUILD_DIR/frontend-$FRONTEND_VERSION.tar"
+        podman build . -t "localhost/amn-frontend:$FRONTEND_VERSION"
+        podman save "localhost/amn-frontend:$FRONTEND_VERSION" -o "$BUILD_DIR/frontend-$FRONTEND_VERSION.tar"
         echo "Frontend version $FRONTEND_VERSION built and saved to $BUILD_DIR/frontend-$FRONTEND_VERSION.tar"
         ;;
 
