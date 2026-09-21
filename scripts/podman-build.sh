@@ -31,14 +31,4 @@ podman save "amn-frontend:$FRONTEND_VERSION" -o "$BUILD_DIR/frontend-$FRONTEND_V
 echo "Frontend version $FRONTEND_VERSION built and saved to $BUILD_DIR/frontend-$FRONTEND_VERSION.tar"
 
 # Imports the images into the VMs
-for ((i = 1; i <= $WORKER_COUNT; ++ i))
-do
-    cd "$SCRIPTPATH/../devops" || exit
-    vagrant ssh "worker-$i" -c "
-        sudo ctr -n k8s.io images import /vagrant/container-images/chatbot-system-${CHATBOT_SYSTEM_VERSION}.tar &&
-        sudo ctr -n k8s.io images import /vagrant/container-images/chatbot-channel-${CHATBOT_CHANNEL_VERSION}.tar &&
-        sudo ctr -n k8s.io images import /vagrant/container-images/frontend-${FRONTEND_VERSION}.tar
-        exit
-    "
-
-done
+"$SCRIPTPATH/scripts/import-images.sh"

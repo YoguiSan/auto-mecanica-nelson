@@ -8,6 +8,10 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 # Adjust this path if necessary
 VAGRANT_DIR="$SCRIPT_DIR/../devops"
 
+set -a
+source "$VAGRANT_DIR/.env"
+set +a
+
 usage() {
     cat <<EOF
 Usage:
