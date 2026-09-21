@@ -12,6 +12,16 @@ set -a
 source "$VAGRANT_DIR/.env"
 set +a
 
+echo "Master settings:"
+echo "MASTER_CPUS: $MASTER_CPUS"
+echo "MASTER_MEMORY: $MASTER_MEMORY"
+echo "MASTER_COUNT: $MASTER_COUNT"
+
+echo "Worker settings:"
+echo "WORKER_COUNT: $WORKER_COUNT"
+echo "WORKER_CPUS: $WORKER_CPUS"
+echo "WORKER_MEMORY: $WORKER_MEMORY"
+
 usage() {
     cat <<EOF
 Usage:
