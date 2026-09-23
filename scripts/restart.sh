@@ -35,7 +35,7 @@ else
 fi
 
 case "$action" in
-    scratch|nuclear)  import          Imports container images into the VMs
+    scratch|nuclear)
         echo "WARNING!! Destroying and recreating the VMs..."
         echo 5
         sleep 1
