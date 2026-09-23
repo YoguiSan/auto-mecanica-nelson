@@ -43,7 +43,7 @@ case "$action" in
       podman info --format \
       'GraphRoot={{.Store.GraphRoot}} Driver={{.Store.GraphDriverName}}'
 
-      podman system df -v                                                                                                                                                                                 [±develop ●]
+      podman system df -v
       podman ps -a --size
       podman images
       podman volume ls
