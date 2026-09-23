@@ -15,6 +15,7 @@ CHATBOT_SYSTEM_MANIFEST="$SCRIPT_DIR/../devops/chatbot/system.yaml"
 CHATBOT_CHANNEL_MANIFEST="$SCRIPT_DIR/../devops/chatbot/channel.yaml"
 VEHICLES_SYSTEM_MANIFEST="$SCRIPT_DIR/../devops/vehicles/system.yaml"
 VEHICLES_CHANNEL_MANIFEST="$SCRIPT_DIR/../devops/vehicles/channel.yaml"
+LOAD_BALANCER_MANIFEST="$SCRIPT_DIR/../devops/metallb.yaml"
 
 usage() {
     cat <<EOF
@@ -26,6 +27,7 @@ Targets:
   frontend     Deploy the frontend
   chatbot      Deploy the chatbot system
   vehicles     Deploy the vehicles system
+  loadbalancer Deploy the load balancer
   status       Show Kubernetes resources
   help         Show this help
 
@@ -70,10 +72,15 @@ deploy_vehicles() {
     apply_manifest "vehicles-channel" "$VEHICLES_CHANNEL_MANIFEST" "$@"
 }
 
+deploy_loadbalancer() {
+    apply_manifest "loadbalancer" "$LOAD_BALANCER_MANIFEST" "$@"
+}
+
 deploy_all() {
     deploy_frontend "$@"
     deploy_chatbot "$@"
     # deploy_vehicles "$@"
+    deploy_loadbalancer "$@"
 }
 
 # No target means: deploy everything

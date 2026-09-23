@@ -54,8 +54,12 @@ case "$action" in
         echo "VM's destroyed."
         echo
 
-        rm -rf "$BUILD_DIR"
+        "$SCRIPTPATH/maintenance/cleanup.sh" containers
         echo "Container images removed."
+        echo
+
+        "$SCRIPTPATH/maintenance/cleanup.sh" virtualbox --destroy
+        echo "VirtualBox VMs cleared."
         echo
 
         "$SCRIPTPATH/containers.sh" build
