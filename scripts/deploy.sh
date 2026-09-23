@@ -10,6 +10,7 @@ export KUBECONFIG="$SCRIPT_DIR/../devops/kube-config"
 
 # Adjust these paths
 FRONTEND_MANIFEST="$SCRIPT_DIR/../devops/frontend/deployment.yaml"
+FRONTEND_SERVICE_MANIFEST="$SCRIPT_DIR/../devops/frontend/service.yaml"
 CHATBOT_SYSTEM_MANIFEST="$SCRIPT_DIR/../devops/chatbot/system.yaml"
 CHATBOT_CHANNEL_MANIFEST="$SCRIPT_DIR/../devops/chatbot/channel.yaml"
 VEHICLES_SYSTEM_MANIFEST="$SCRIPT_DIR/../devops/vehicles/system.yaml"
@@ -56,6 +57,7 @@ apply_manifest() {
 
 deploy_frontend() {
     apply_manifest "frontend" "$FRONTEND_MANIFEST" "$@"
+    apply_manifest "frontend-service" "$FRONTEND_SERVICE_MANIFEST" "$@"
 }
 
 deploy_chatbot() {
