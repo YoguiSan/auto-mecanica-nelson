@@ -16,9 +16,9 @@ Usage:
   $(basename "$0") [action] [options]
 
 Actions:
-  build           Builds container images
-  import          Imports container images into the VMs
-  help            Show this help
+  scratch,nuclear     Destroys and recreates the VMs, rebuilds and imports container images, and redeploys the applications
+  vms                 Destroys and recreates the VMs
+  help                Show this help
 
 Examples:
   $(basename "$0")
@@ -35,7 +35,7 @@ else
 fi
 
 case "$action" in
-    scratch|nuclear)
+    scratch|nuclear)  import          Imports container images into the VMs
         echo "WARNING!! Destroying and recreating the VMs..."
         echo 5
         sleep 1
