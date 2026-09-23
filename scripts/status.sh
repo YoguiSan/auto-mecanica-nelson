@@ -21,8 +21,8 @@ Usage:
   $(basename "$0") [action] [options]
 
 Actions:
-  lb,loadbalancer       Installs MetalLB
-  help                  Show this help
+  pods          Show pod status
+  help          Show this help
 
 Examples:
   $(basename "$0")
@@ -38,26 +38,34 @@ else
 fi
 
 case "$action" in
-    lb|loadbalancer)
-        echo "Using configurations from: $KUBECONFIG"
-
-        # Setup MetalLB (load balancer)
+    pods)
         cd "$VAGRANT_DIR" || exit
-        KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml
-        KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl wait --namespace metallb-system --for=condition=ready pod --selector=app=metallb --timeout=90s
+        KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl get pods
         ;;
-    # Disable VM's recording feature to save disk space
-    virtualbox-configs)
-        VBoxManage list vms |
-        sed -n 's/^"\([^"]*\)".*$/\1/p' |
-        while IFS= read -r vm; do
-            VBoxManage modifyvm "$vm" --recording off
-        done
-    ;;
+    disk-usage)
+        echo "Current disk usage:"
+        df -h "$HOME"
+        echo
+
+        echo "Disk usage of VirtualBox VMs:"
+        du -sh "$HOME/VirtualBox VMs"
+        echo
+
+        echo "Largest files in VirtualBox VMs directory:"
+        du -ah "$HOME/VirtualBox VMs" | sort -h | tail -30
+        echo
+
+        echo "Space currently being used by container images:"
+        du -ah "$VAGRANT_DIR/container-images" | sort -h | tail -30
+        ;;
     help|-h|--help)
         usage
+        exit 0
         ;;
-
+    vagrant)
+        "$SCRIPT_DIR/vagrant.sh status"
+        exit 0
+        ;;
     *)
         echo "Error: unknown action: $action" >&2
         echo >&2
