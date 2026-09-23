@@ -43,8 +43,15 @@ case "$action" in
 
         # Setup MetalLB (load balancer)
         cd "$VAGRANT_DIR" || exit
-        KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml
+        KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.16.1/config/manifests/metallb-frr-k8s.yaml
         KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl wait --namespace metallb-system --for=condition=ready pod --selector=app=metallb --timeout=90s
+
+        # From MetalLB's documentation: This will deploy MetalLB to your cluster, under the metallb-system namespace. The components in the manifest are:
+
+        # - The metallb-system/controller deployment. This is the cluster-wide controller that handles IP address assignments.
+        # - The metallb-system/speaker daemonset. This is the component that speaks the protocol(s) of your choice to make the services reachable.
+        # - Service accounts for the controller and speaker, along with the RBAC permissions that the components need to function.
+        # The installation manifest does not include a configuration file. MetalLB’s components will still start, but will remain idle until you start deploying resources.
         ;;
     # Disable VM's recording feature to save disk space
     virtualbox-configs)
