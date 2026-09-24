@@ -70,6 +70,14 @@ case "$action" in
         echo "VM's running again."
         echo
 
+        "$SCRIPTPATH/setup.sh" nodes-network
+        echo "Nodes networks set up"
+        echo
+
+        "$SCRIPTPATH/setup.sh" nodes-ips
+        echo "Nodes IP ranges adjusted and kubelet restarted"
+        echo
+
         "$SCRIPTPATH/containers.sh" import
         echo "Container images imported into the VM's."
         echo
