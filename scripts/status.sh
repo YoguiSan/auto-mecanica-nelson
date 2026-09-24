@@ -69,6 +69,10 @@ case "$action" in
         cd "$VAGRANT_DIR" || exit
         KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl get pods -n metallb-system -o wide
         ;;
+    frontend-ip)
+        cd "$VAGRANT_DIR" || exit
+        KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl get svc amn-frontend 
+        ;;
     help|-h|--help)
         usage
         exit 0

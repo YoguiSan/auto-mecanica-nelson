@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: amn-frontend
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: amn-frontend
   ports:
     - port: 80
-      targetPort: 8000
+      # The port in which the application is running inside the container/pod (the one configured in the env variables)
+      targetPort: 3000
       nodePort: 30080
