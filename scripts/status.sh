@@ -21,8 +21,11 @@ Usage:
   $(basename "$0") [action] [options]
 
 Actions:
-  pods          Show pod status
-  help          Show this help
+  pods                          Show pod status
+  metallb,lb,loadbalancer       Shows the status of MetalLB pods
+  disk-usage                    Show disk usage of VirtualBox VMs and container images
+  vagrant                       Show the status of Vagrant VMs
+  help                          Show this help
 
 Examples:
   $(basename "$0")
@@ -58,12 +61,16 @@ case "$action" in
         echo "Space currently being used by container images:"
         du -ah "$VAGRANT_DIR/container-images" | sort -h | tail -30
         ;;
-    help|-h|--help)
-        usage
-        exit 0
-        ;;
     vagrant)
         "$SCRIPT_DIR/vagrant.sh status"
+        exit 0
+        ;;
+    metallb|lb|loadbalancer)
+        cd "$VAGRANT_DIR" || exit
+        KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl get pods -n metallb-system -o wide
+        ;;
+    help|-h|--help)
+        usage
         exit 0
         ;;
     *)

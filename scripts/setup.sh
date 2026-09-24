@@ -15,6 +15,11 @@ set +a
 # Kubernetes configuration
 export KUBECONFIG="$VAGRANT_DIR/kube-config"
 
+if [[ $MASTER_COUNT -gt 99 ]]; then
+    echo "Error: The number of master nodes is greater than 99."
+    exit 1
+fi
+
 usage() {
     cat <<EOF
 Usage:
@@ -64,7 +69,53 @@ case "$action" in
     help|-h|--help)
         usage
         ;;
+    
+    kubeconfig)
+        echo "Exporting KUBECONFIG for current shell session:"
+        echo "KUBECONFIG=\"$VAGRANT_DIR/kube-config\""
+        ;;
+    nodes-network)
+        # This is in order to fix the issue with flannel not being able to find the correct network interface on some systems. Each VM ends up with two network interfaces, one for NAT and one for the internal network. Flannel needs to use the internal network interface, which is usually named "enp0s8" on Linux systems.
+        KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl -n kube-flannel patch daemonset kube-flannel-ds --type='json' \
+        -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--iface=enp0s8"}]'
 
+        KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl -n kube-flannel rollout restart daemonset kube-flannel-ds
+        ;;
+    nodes-ips)
+        echo "Adjusting the IP addresses on master nodes..."
+        echo
+
+        for ((i = 1; i <= MASTER_COUNT; ++ i))
+        do
+            master_ip_address="192.168.56.$((100 + i))"
+            cd "$SCRIPT_DIR/../devops" || exit
+            vagrant ssh "master-$i" -c "
+                echo \"Setting master-$i IP address to $master_ip_address\" &&
+                echo 'KUBELET_EXTRA_ARGS=\"--node-ip=192.168.56.$master_ip_address\"' | sudo tee -a /etc/default/kubelet &&
+                sudo systemctl restart kubelet &&
+                exit
+            "
+        done
+        echo "Done"
+        echo
+        echo
+
+        echo "Adjusting the IP addresses on worker nodes..."
+        echo
+
+        for ((j = 1; j <= WORKER_COUNT; ++ j))
+        do
+            worker_ip_address="192.168.56.$((200 + j))"
+            cd "$SCRIPT_DIR/../devops" || exit
+            vagrant ssh "worker-$j" -c "
+                echo \"Setting master-$j IP address to $worker_ip_address\" &&
+                echo 'KUBELET_EXTRA_ARGS=\"--node-ip=192.168.56.$worker_ip_address\"' | sudo tee -a /etc/default/kubelet &&
+                sudo systemctl restart kubelet &&
+                exit
+            "
+        done
+        echo "Done"
+        ;;
     *)
         echo "Error: unknown action: $action" >&2
         echo >&2
