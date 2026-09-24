@@ -1,0 +1,68 @@
+services:
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy
+    container_name: nginx-proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    environment:
+      - TRUST_DOWNSTREAM_PROXY=false
+ 
+  acme-companion:
+    image: nginxproxy/acme-companion
+    container_name: acme-companion
+    restart: unless-stopped
+    volumes_from:
+      - nginx-proxy
+    volumes:
+      - acme:/etc/acme.sh
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - DEFAULT_EMAIL=your-email@example.com
+ 
+  app:
+    container_name: torqvoice
+    image: ghcr.io/torqvoice/torqvoice:latest
+    restart: unless-stopped
+    expose:
+      - "3000"
+    environment:
+      - DATABASE_URL=postgresql://torqvoice:torqvoice@db:5432/torqvoice
+      - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET}
+      - NEXT_PUBLIC_APP_URL=https://torqvoice.example.com
+      - VIRTUAL_HOST=torqvoice.example.com
+      - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=torqvoice.example.com
+    volumes:
+      - uploads:/app/data/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+ 
+  db:
+    image: postgres:16-alpine
+    container_name: torqvoice-db
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: torqvoice
+      POSTGRES_PASSWORD: torqvoice
+      POSTGRES_DB: torqvoice
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U torqvoice"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+ 
+volumes:
+  certs:
+  html:
+  acme:
+  postgres-data:
+  uploads:

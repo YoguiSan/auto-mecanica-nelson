@@ -51,3 +51,5 @@ devops/.vagrant/
 devops/join-command.sh
 devops/kube-config
 devops/container-images/
+packages/torqvoice/*
+!packages/torqvoice/docker-compose.yml
