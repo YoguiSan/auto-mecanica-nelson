@@ -26,7 +26,11 @@ Usage:
   $(basename "$0") [action] [options]
 
 Actions:
+  init                  Initial setup
   lb,loadbalancer       Installs MetalLB
+  virtualbox-configs    Sets Virtualbox configurations
+  nodes-network         Setups the networks for master and worker nodes
+  nodes-ips             Sets the proper IP ranges for master and worker nodes
   help                  Show this help
 
 Examples:
@@ -43,6 +47,27 @@ else
 fi
 
 case "$action" in
+    init)
+        "$SCRIPT_DIR/containers.sh" build
+        echo "Container images rebuilt."
+        echo
+
+        "$SCRIPT_DIR/vagrant.sh" up
+        echo "VM's running again."
+        echo
+
+        "$SCRIPT_DIR/setup.sh" nodes-network
+        echo "Nodes networks set up"
+        echo
+
+        "$SCRIPT_DIR/setup.sh" nodes-ips
+        echo "Nodes IP ranges adjusted and kubelet restarted"
+        echo
+
+        "$SCRIPT_DIR/containers.sh" import
+        echo "Container images imported into the VM's."
+        echo
+    ;;
     lb|loadbalancer)
         echo "Using configurations from: $KUBECONFIG"
 
@@ -65,11 +90,7 @@ case "$action" in
         while IFS= read -r vm; do
             VBoxManage modifyvm "$vm" --recording off
         done
-    ;;
-    help|-h|--help)
-        usage
-        ;;
-    
+    ;;    
     kubeconfig)
         echo "Exporting KUBECONFIG for current shell session:"
         echo "KUBECONFIG=\"$VAGRANT_DIR/kube-config\""
@@ -115,6 +136,9 @@ case "$action" in
             "
         done
         echo "Done"
+        ;;
+    help|-h|--help)
+        usage
         ;;
     *)
         echo "Error: unknown action: $action" >&2

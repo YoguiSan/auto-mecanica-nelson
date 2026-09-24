@@ -62,24 +62,7 @@ case "$action" in
         echo "VirtualBox VMs cleared."
         echo
 
-        "$SCRIPTPATH/containers.sh" build
-        echo "Container images rebuilt."
-        echo
-
-        "$SCRIPTPATH/vagrant.sh" up
-        echo "VM's running again."
-        echo
-
-        "$SCRIPTPATH/setup.sh" nodes-network
-        echo "Nodes networks set up"
-        echo
-
-        "$SCRIPTPATH/setup.sh" nodes-ips
-        echo "Nodes IP ranges adjusted and kubelet restarted"
-        echo
-
-        "$SCRIPTPATH/containers.sh" import
-        echo "Container images imported into the VM's."
+        "$SCRIPTPATH/setup.sh" init
         echo
 
         KUBECONFIG="$SCRIPTPATH/../devops/kube-config" kubectl delete deployment \
