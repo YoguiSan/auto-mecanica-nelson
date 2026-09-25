@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: amn-chatbot-system-backend
+  name: amn-vehicles-system-backend
 spec:
   selector:
     matchLabels:
-      app: amn-chatbot-system-backend
+      app: amn-vehicles-system-backend
   replicas: 2
   template:
     metadata:
       labels:
-        app: amn-chatbot-system-backend
+        app: amn-vehicles-system-backend
     spec:
       containers:
-      - name: amn-chatbot-system
-        image: localhost/amn-chatbot-system:0.1.0
+      - name: amn-vehicles-system
+        image: amn-vehicles-system:0.1.0
         imagePullPolicy: Never
         resources:
           requests:

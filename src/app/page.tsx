@@ -40,7 +40,7 @@ export default function Home() {
     <Main>
       <HeroBanner
         title="Auto Mecânica Nelson"
-        callout="30+ Anos de Mecânica de Excelência"
+        callout="40+ Anos de Mecânica de Excelência"
         subtitle="Revisões, freios, injeção eletrônica e mais. Confiança geracional."
         image={BannerImages}
         ctas={[{

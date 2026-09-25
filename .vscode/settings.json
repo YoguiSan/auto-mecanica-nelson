@@ -5,6 +5,7 @@
     "scripts",
     "Dockerfile(s)",
     "Kubernetes Manifests",
-    "kubeadm Config"
+    "kubeadm Config",
+    "Components (JSX/TSX)"
   ]
 }
