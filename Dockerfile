@@ -6,8 +6,8 @@ WORKDIR /app
 # Copy dependency manifests first for better layer caching
 COPY package*.json ./
 
-# Ethyl UI is a local file dependency, so it must be present before npm ci
-COPY packages/ethyl-ui ./packages/ethyl-ui
+# E100 UI is a local file dependency, so it must be present before npm ci
+COPY packages/e100-ui ./packages/e100-ui
 
 # Install dependencies
 RUN npm ci --legacy-peer-deps

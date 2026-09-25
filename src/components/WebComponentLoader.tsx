@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 export default function WebComponentLoader() {
   useEffect(() => {
-    import('ethyl-ui');
+    import('e100-ui');
   }, []);
 
   return null;

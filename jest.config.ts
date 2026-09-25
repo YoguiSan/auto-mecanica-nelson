@@ -10,7 +10,7 @@ const config: Config.InitialOptions = {
     '^@icons/(.*)$': '<rootDir>/__mocks__/fileMock.ts',
     '\\.(svg)$': '<rootDir>/__mocks__/fileMock.ts',
     '^@amn/(.*)$': '<rootDir>/src/$1',
-    '^@eui/(.*)$': '<rootDir>/packages/ethyl-ui/src/$1',
+    '^@eui/(.*)$': '<rootDir>/packages/e100-ui/src/$1',
     '^next/image$': '<rootDir>/__mocks__/nextImage.tsx',
     '^next/navigation$': '<rootDir>/__mocks__/nextNavigation.ts',
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
