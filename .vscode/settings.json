@@ -6,6 +6,7 @@
     "Dockerfile(s)",
     "Kubernetes Manifests",
     "kubeadm Config",
-    "Components (JSX/TSX)"
+    "Components (JSX/TSX)",
+    "Controller"
   ]
 }

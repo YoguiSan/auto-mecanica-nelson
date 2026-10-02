@@ -38,7 +38,7 @@ Examples:
   $(basename "$0") chatbot
   $(basename "$0") vehicles
   $(basename "$0") status
-  $(basename "$0") all --namespace development
+  $(basename "$0") all
 EOF
 }
 
@@ -98,7 +98,7 @@ deploy_torqvoice() {
 deploy_all() {
     deploy_frontend "$@"
     deploy_chatbot "$@"
-    # deploy_vehicles "$@"
+    deploy_vehicles "$@"
     deploy_loadbalancer "$@"
     deploy_torqvoice "$@"
 }

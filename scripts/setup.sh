@@ -113,7 +113,7 @@ case "$action" in
             cd "$SCRIPT_DIR/../devops" || exit
             vagrant ssh "master-$i" -c "
                 echo \"Setting master-$i IP address to $master_ip_address\" &&
-                echo 'KUBELET_EXTRA_ARGS=\"--node-ip=192.168.56.$master_ip_address\"' | sudo tee -a /etc/default/kubelet &&
+                echo 'KUBELET_EXTRA_ARGS=\"--node-ip=$master_ip_address\"' | sudo tee -a /etc/default/kubelet &&
                 sudo systemctl restart kubelet &&
                 exit
             "
@@ -131,7 +131,7 @@ case "$action" in
             cd "$SCRIPT_DIR/../devops" || exit
             vagrant ssh "worker-$j" -c "
                 echo \"Setting master-$j IP address to $worker_ip_address\" &&
-                echo 'KUBELET_EXTRA_ARGS=\"--node-ip=192.168.56.$worker_ip_address\"' | sudo tee -a /etc/default/kubelet &&
+                echo 'KUBELET_EXTRA_ARGS=\"--node-ip=$worker_ip_address\"' | sudo tee -a /etc/default/kubelet &&
                 sudo systemctl restart kubelet &&
                 exit
             "

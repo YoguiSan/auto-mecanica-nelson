@@ -10,7 +10,7 @@
       "request": "launch",
       "preLaunchTask": "build",
       // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/packages/vehicle-system-api/src/bin/Debug/net9.0/VehicleDataApi.dll",
+      "program": "${workspaceFolder}/packages/vehicle-system-api/src/bin/Debug/net10.0/VehicleDataApi.dll",
       "args": [],
       "cwd": "${workspaceFolder}/packages/vehicle-system-api/src",
       "stopAtEntry": false,

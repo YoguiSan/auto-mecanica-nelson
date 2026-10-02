@@ -63,9 +63,16 @@ build_chatbot() {
 }
 
 build_vehicles() {
-    # FIXME: not yet implemented
-    echo "FIXME: not yet implemented"
-    exit 1
+    cd "$SCRIPT_DIR/../packages/vehicle-system-api" || exit
+    podman build . -t "localhost/amn-vehicle-system:$VEHICLES_SYSTEM_VERSION"
+    podman save "localhost/amn-vehicle-system:$VEHICLES_SYSTEM_VERSION" -o "$BUILD_DIR/vehicle-system-$VEHICLES_SYSTEM_VERSION.tar"
+    echo "Vehicle system API version $VEHICLES_SYSTEM_VERSION built and saved to $BUILD_DIR/vehicle-system-$VEHICLES_SYSTEM_VERSION.tar"
+    cd ../../
+}
+
+build_backends() {
+    build_chatbot "$@"
+    build_vehicles "$@"   
 }
 
 build_torqvoice() {
@@ -106,8 +113,8 @@ case "$action" in
     build-frontend)
         build_frontend "$@"
         ;;
-    build-backend)
-        build_backend "$@"
+    build-backend|build-backends)
+        build_backends "$@"
         ;;
     build-vehicles)
         build_vehicles "$@"
