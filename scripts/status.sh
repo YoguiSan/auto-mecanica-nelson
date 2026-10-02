@@ -78,8 +78,19 @@ case "$action" in
         usage
         exit 0
         ;;
+    system-pods)
+        KUBECONFIG=./devops/kube-config kubectl -n kube-system get pods
+    ;;
+    proxy-pods)
+        KUBECONFIG=./devops/kube-config kubectl -n kube-system get pods | grep kube-proxy
+    ;;
     proxy)
-            KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl -n kube-system logs kube-proxy-c5v4z
+        echo "List of kube-proxy pods in the kube-system namespace:"
+        "$SCRIPT_DIR/status.sh" proxy-pods
+        echo
+
+        read -r -p "kube-proxy suffix: " kube_proxy_suffix
+        KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl -n kube-system logs "kube-proxy-$kube_proxy_suffix"
         ;;
     *)
         echo "Error: unknown action: $action" >&2
