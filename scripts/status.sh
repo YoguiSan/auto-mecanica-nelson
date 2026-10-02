@@ -25,6 +25,7 @@ Actions:
   metallb,lb,loadbalancer       Shows the status of MetalLB pods
   disk-usage                    Show disk usage of VirtualBox VMs and container images
   vagrant                       Show the status of Vagrant VMs
+  proxy                         Show the logs of the kube-proxy pod in the kube-system namespace
   help                          Show this help
 
 Examples:

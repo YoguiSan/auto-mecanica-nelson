@@ -18,6 +18,7 @@ Usage:
 Actions:
   scratch,nuclear     Destroys and recreates the VMs, rebuilds and imports container images, and redeploys the applications
   vms                 Destroys and recreates the VMs
+  proxy               Restarts the kube-proxy daemonset in the kube-system namespace
   help                Show this help
 
 Examples:
@@ -82,6 +83,9 @@ case "$action" in
         "$SCRIPTPATH/vagrant.sh" up
         exit 0
         ;;
+      proxy)
+        KUBECONFIG="$SCRIPTPATH/../devops/kube-config" kubectl -n kube-system rollout restart daemonset kube-proxy
+      ;;
       help|-h|--help)
         usage
         exit 0

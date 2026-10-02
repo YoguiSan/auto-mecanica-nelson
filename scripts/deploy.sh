@@ -73,6 +73,7 @@ deploy_vehicles() {
 }
 
 deploy_loadbalancer() {
+    "$SCRIPT_DIR/setup.sh" loadbalancer
     apply_manifest "loadbalancer" "$LOAD_BALANCER_MANIFEST" "$@"
 }
 
@@ -126,6 +127,9 @@ case "$target" in
         ;;
     torqvoice)
         deploy_torqvoice "$@"
+        ;;
+    loadbalancer|lb)
+        deploy_loadbalancer "$@"
         ;;
     status)
         kubectl get pods,services,deployments "$@"
