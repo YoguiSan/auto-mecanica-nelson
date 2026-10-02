@@ -109,7 +109,7 @@ case "$action" in
 
         for ((i = 1; i <= MASTER_COUNT; ++ i))
         do
-            master_ip_address="192.168.56.$((100 + i))"
+            master_ip_address="192.168.56.$((10 + i))"
             cd "$SCRIPT_DIR/../devops" || exit
             vagrant ssh "master-$i" -c "
                 echo \"Setting master-$i IP address to $master_ip_address\" &&

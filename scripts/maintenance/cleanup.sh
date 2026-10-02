@@ -5,13 +5,10 @@ set -Eeuo pipefail
 SCRIPT=$(readlink -f "$0")
 
 # Absolute path this script is in, thus /home/user/bin
-SCRIPTPATH=$(dirname "$SCRIPT")
-
-# Directory containing this script
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+SCRIPT_DIR=$(dirname "$SCRIPT")
 
 # Target directory for the container images
-BUILD_DIR="$SCRIPT_DIR/../devops/container-images"
+BUILD_DIR="$SCRIPT_DIR/../../devops/container-images"
 
 usage() {
     cat <<EOF
@@ -54,7 +51,8 @@ case "$action" in
       "$SCRIPTPATH/nuke-virtualbox.sh" --destroy
     ;;
     containers|images)
-      "rm -rf $BUILD_DIR"
+      echo "Removing images (path: $BUILD_DIR)"
+      rm -rf "$BUILD_DIR/"*
     ;;
     help|-h|--help)
         usage

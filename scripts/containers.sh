@@ -84,7 +84,7 @@ build_torqvoice() {
 }
 
 build_all() {
-    build_backend "$@"
+    build_backends "$@"
     build_frontend "$@"
     build_torqvoice "$@"
 }

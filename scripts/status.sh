@@ -77,6 +77,9 @@ case "$action" in
         usage
         exit 0
         ;;
+    proxy)
+            KUBECONFIG="$VAGRANT_DIR/kube-config" kubectl -n kube-system logs kube-proxy-c5v4z
+        ;;
     *)
         echo "Error: unknown action: $action" >&2
         echo >&2
