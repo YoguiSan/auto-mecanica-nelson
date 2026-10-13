@@ -5,6 +5,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
+    # Redirects traffic to the pods with the label "app: amn-frontend"
     app: amn-frontend
   ports:
     - port: 80

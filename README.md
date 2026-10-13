@@ -23,6 +23,14 @@ TODO
   - Em processadores Intel:
   ```sudo modprobe -r kvm_intel && sudo modprobe -r kvm```
 
+## Acessando aplicações
+### Rodando via Vagrant
+| Aplicação               | URL           | Porta | Observações |
+|-------------------------|---------------|-------|-------------|
+| Frontend                |               |       |             |
+| Channel API de veículos |               |       |             |
+| System API de veículos  |               | 7147  |             |
+
 ## Links úteis
 | Nome | Link | Observações |
 |------|------|-------------|

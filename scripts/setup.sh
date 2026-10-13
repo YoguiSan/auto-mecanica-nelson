@@ -127,12 +127,15 @@ case "$action" in
 
         for ((j = 1; j <= WORKER_COUNT; ++ j))
         do
-            worker_ip_address="192.168.56.$((200 + j))"
+            worker_ip_address="192.168.56.$((20 + j))"
             cd "$SCRIPT_DIR/../devops" || exit
             vagrant ssh "worker-$j" -c "
-                echo \"Setting master-$j IP address to $worker_ip_address\" &&
-                echo 'KUBELET_EXTRA_ARGS=\"--node-ip=$worker_ip_address\"' | sudo tee -a /etc/default/kubelet &&
+                echo \"Setting worker-$j IP address to $worker_ip_address\" &&
+                sudo sed -i '/^KUBELET_EXTRA_ARGS=/d' /etc/default/kubelet &&
+                echo 'KUBELET_EXTRA_ARGS="--node-ip=$worker_ip_address"' | sudo tee -a /etc/default/kubelet &&
                 sudo systemctl restart kubelet &&
+                echo \"New IP address for worker-$j: $worker_ip_address\" &&
+                ip -br -4 addr && 
                 exit
             "
         done
