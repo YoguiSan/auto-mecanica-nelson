@@ -99,6 +99,7 @@ case "$action" in
                 sudo ctr -n k8s.io images import /vagrant/container-images/chatbot-system-${CHATBOT_SYSTEM_VERSION}.tar &&
                 sudo ctr -n k8s.io images import /vagrant/container-images/chatbot-channel-${CHATBOT_CHANNEL_VERSION}.tar &&
                 sudo ctr -n k8s.io images import /vagrant/container-images/frontend-${FRONTEND_VERSION}.tar &&
+                sudo ctr -n k8s.io images import /vagrant/container-images/vehicle-system-${VEHICLES_SYSTEM_VERSION}.tar &&
                 echo \"Finished importing images into worker-$i\" &&
                 exit
             "
