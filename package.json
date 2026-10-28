@@ -30,7 +30,7 @@
     "channel:docker": "npm run channel:stop-docker && npm run channel:build-docker && npm run channel:run-docker",
     "channel:dev": "(cd packages/chatbot-channel-backend && source ./.venv/bin/activate & fastapi dev src/__init__.py && cd ../../)",
     "channel:dev:windows": "(packages/chatbot-channel-backend/scripts/windows/start.bat)",
-    "system:vehicle:docker": "packages/vehicle-system-api/scripts/linux/run.sh",
+    "system:vehicle": "packages/vehicle-system-api/scripts/linux/run.sh",
     "system:vehicle:build-docker": "(cd packages/vehicle-system-api && docker build --no-cache . && cd ../../)",
     "docker:build": "npm run system:build-docker && npm run channel:build-docker && npm run system:vehicle:build-docker",
     "docker:start": "docker compose build --no-cache -f docker-compose.yml -p amn-webapp up",
