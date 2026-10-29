@@ -9,7 +9,7 @@ services:
     volumes:
       - certs:/etc/nginx/certs
       - html:/usr/share/nginx/html
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ${PODMAN_SOCKET:?Set PODMAN_SOCKET to the Podman API socket}:/tmp/docker.sock:ro
     environment:
       - TRUST_DOWNSTREAM_PROXY=false
  
@@ -21,7 +21,7 @@ services:
       - nginx-proxy
     volumes:
       - acme:/etc/acme.sh
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${PODMAN_SOCKET:?Set PODMAN_SOCKET to the Podman API socket}:/var/run/docker.sock
     environment:
       - DEFAULT_EMAIL=your-email@example.com
  

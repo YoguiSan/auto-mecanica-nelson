@@ -38,6 +38,19 @@ case "$action" in
         set -a
         source "$SCRIPT_DIR/../../packages/vehicle-system-api/.env"
         set +a
+        if [[ -z "${PODMAN_SOCKET:-}" ]]; then
+            if [[ -n "${XDG_RUNTIME_DIR:-}" ]]; then
+                PODMAN_SOCKET="$XDG_RUNTIME_DIR/podman/podman.sock"
+            else
+                PODMAN_SOCKET="/run/podman/podman.sock"
+            fi
+        fi
+        if [[ ! -S "$PODMAN_SOCKET" ]]; then
+            echo "Error: Podman API socket not found at $PODMAN_SOCKET" >&2
+            echo "Start it with 'systemctl --user start podman.socket' or set PODMAN_SOCKET to its path." >&2
+            exit 1
+        fi
+        export PODMAN_SOCKET
         PODMAN_CONTAINERS_CONF=short-name-mode="enforcing" podman compose -f "$SCRIPTPATH/../../docker-compose.vehicles.yml" up --build
       ;;
     chatbot)
@@ -57,4 +70,3 @@ case "$action" in
         exit 2
         ;;
 esac
-
