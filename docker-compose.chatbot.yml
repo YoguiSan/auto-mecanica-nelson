@@ -1,0 +1,3 @@
+include:
+  - docker-compose.chatbot-services.yml
+  - docker-compose.redis.yml

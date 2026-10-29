@@ -1,0 +1,52 @@
+services:
+  # Vehicle Data API (.NET)
+  vehicle-system-api:
+    build:
+      context: ./packages/vehicle-system-api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ConnectionStrings__DefaultConnection=server=mysql;port=3306;database=${MYSQL_DATABASE:-autoshop_vehicle_data};user=${MYSQL_USER:-autoshop};password=${MYSQL_PASSWORD:-autoshoppassword}
+      - ASPNETCORE_ENVIRONMENT=Development
+      - CARAPI_TOKEN=${CARAPI_TOKEN}
+      - CARAPI_SECRET=${CARAPI_SECRET}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=1
+      - "REDIS_KEY_PREFIX=amn-vehicles:"
+      - REDIS_PASSWORD=${REDIS_PASSWORD:?Set REDIS_PASSWORD in the root .env}
+      - REDIS_CACHE_EXPIRY_SECONDS=${REDIS_CACHE_EXPIRY_SECONDS:-3600}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - backend-net
+    restart: unless-stopped
+
+  # MySQL used by the vehicle API
+  mysql:
+    image: mysql:8.0
+    container_name: amn-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-autoshop_vehicle_data}
+      MYSQL_USER: ${MYSQL_USER:-autoshop}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-autoshoppassword}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/initdb:/docker-entrypoint-initdb.d:ro
+    networks:
+      - backend-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u \"$${MYSQL_USER}\" -p\"$${MYSQL_PASSWORD}\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  mysql_data:

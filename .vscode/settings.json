@@ -8,5 +8,18 @@
     "kubeadm Config",
     "Components (JSX/TSX)",
     "Controller"
-  ]
+  ],
+  "chat.tools.terminal.autoApprove": {
+    "dotnet run": true,
+    "/^dotnet --version && git -C packages/vehicle-system-api status --short$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "printf": true,
+    "dotnet test": true,
+    "podman": true,
+    "set": true,
+    "awk": true,
+    "dotnet build": true
+  }
 }

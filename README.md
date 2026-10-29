@@ -16,6 +16,36 @@ TODO
 - Configurar o Podman para funcionar como o **container runtime** no Kubernetes:
 ```sudo apt install podman-docker ```
 
+## Rodando as aplicações com Podman Compose
+
+Os arquivos de Compose menores permitem iniciar um grupo por vez:
+
+```sh
+podman-compose --env-file .env -f docker-compose.chatbot.yml up -d
+podman-compose --env-file .env -f docker-compose.vehicles.yml up -d
+```
+
+Forneça as variáveis exigidas pelas aplicações no ambiente ou no `.env` da raiz
+antes de iniciar. `podman-compose` não carrega esse arquivo automaticamente.
+Use o Compose da raiz abaixo para executar os grupos simultaneamente; iniciar
+os dois grupos menores ao mesmo tempo causa conflitos nas portas publicadas.
+
+Para iniciar todos os serviços juntos, use o Compose da raiz:
+
+```sh
+podman-compose --env-file .env up -d
+```
+
+Use `podman-compose --env-file .env down` para parar o grupo iniciado pela raiz.
+Ao usar `--env-file .env`, esse arquivo deve fornecer os valores usados pelas
+aplicações (como `REDIS_PASSWORD`, as credenciais das APIs e
+`BETTER_AUTH_SECRET`). O
+`packages/torqvoice/.env` não é carregado automaticamente ao incluir o Compose
+do Torqvoice; disponibilize esses valores no ambiente ou no `.env` da raiz.
+As credenciais do MySQL têm valores padrão para desenvolvimento local e podem
+ser sobrescritas com `MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE`, `MYSQL_USER` e
+`MYSQL_PASSWORD`.
+
 ## Rodando com Vagrant
 - Executar o script:
 ```scripts/vagrant-up.sh up```

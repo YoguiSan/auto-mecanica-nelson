@@ -1,0 +1,4 @@
+include:
+  - docker-compose.vehicle-services.yml
+  - packages/torqvoice/docker-compose.yml
+  - docker-compose.redis.yml

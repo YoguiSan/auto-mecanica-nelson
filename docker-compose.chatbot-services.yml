@@ -1,0 +1,51 @@
+services:
+  # Chatbot Channel API (FastAPI Python)
+  chatbot-channel-api:
+    build:
+      context: ./packages/chatbot-channel-backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - SYSTEM_API_URL=${SYSTEM_API_URL}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - REDIS_PASSWORD=${REDIS_PASSWORD:?Set REDIS_PASSWORD in the root .env}
+    networks:
+      - backend-net
+    restart: unless-stopped
+
+  # Chatbot System API (Express Node.js)
+  chatbot-system-api:
+    build:
+      context: ./packages/chatbot-system-backend
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - ADMIN_PHRASE=${ADMIN_PHRASE}
+      - AI_QUESTION_SCOPE=${AI_QUESTION_SCOPE}
+      - AI_REVIEW_SCOPE=${AI_REVIEW_SCOPE}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - REDIS_PASSWORD=${REDIS_PASSWORD:?Set REDIS_PASSWORD in the root .env}
+    networks:
+      - backend-net
+    restart: unless-stopped
+
+  # Optional local AI fallback
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   ports:
+  #     - "11434:11434"
+  #   volumes:
+  #     - ollama_data:/root/.ollama
+  #   networks:
+  #     - backend-net
+  #   restart: unless-stopped
