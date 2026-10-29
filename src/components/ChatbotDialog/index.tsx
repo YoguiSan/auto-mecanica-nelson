@@ -43,6 +43,40 @@ const ChatbotDialog: React.FC<Props> = () => {
   }, []);
 
   useEffect(() => {
+    const savedChatId = sessionStorage.getItem('chatId');
+
+    if (!savedChatId) {
+      return;
+    }
+
+    setChatId!(savedChatId);
+    setFetching(true);
+
+    let active = true;
+
+    ChatbotService.history(savedChatId)
+      .then(({ chatHistory }) => {
+        if (active) {
+          setMessages!(chatHistory);
+        }
+      })
+      .catch(() => {
+        if (active) {
+          setError('Não foi possível carregar o histórico da conversa.');
+        }
+      })
+      .finally(() => {
+        if (active) {
+          setFetching(false);
+        }
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [setChatId, setMessages]);
+
+  useEffect(() => {
     console.log('chatId', chatId)
     console.log('setChatId', setChatId)
   }, [chatId])
@@ -68,8 +102,9 @@ const ChatbotDialog: React.FC<Props> = () => {
     setFetching(false);
     setError(false);
 
-    if (!chatId || chatId === 'null') {
+    if (id) {
       setChatId!(id);
+      sessionStorage.setItem('chatId', id);
     }
 
     setCurrentQuestion(undefined);

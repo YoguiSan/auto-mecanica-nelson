@@ -2,13 +2,16 @@ import Config from '@amn/utils/config';
 import Request from './request';
 import { MessagesType } from '@amn/types/stores/chat';
 
-const {
-  CHANNEL_API_URL: url,
-} = Config;
+const getBaseUrl = () => Config.CHANNEL_API_URL as string;
 
 export type ChatbotResponseType = {
   chatId: string,
   answer: string,
+  chatHistory: MessagesType[];
+};
+
+export type ChatbotHistoryResponseType = {
+  chatId: string,
   chatHistory: MessagesType[];
 };
 
@@ -19,7 +22,7 @@ export type ChatbotStatusResponseType = {
 
 const ask = async (query: string, chatId?: string): Promise<ChatbotResponseType> => {
   try {
-    const request = await Request.get(`${(url as string)}/ask`, {
+    const request = await Request.get(`${getBaseUrl()}/ask`, {
       query,
     }, {
       chatId,
@@ -33,9 +36,21 @@ const ask = async (query: string, chatId?: string): Promise<ChatbotResponseType>
   }
 };
 
+const history = async (chatId: string): Promise<ChatbotHistoryResponseType> => {
+  const response = await Request.get(`${getBaseUrl()}/history`, undefined, {
+    chatId,
+  }) as Partial<ChatbotHistoryResponseType>;
+
+  if (!Array.isArray(response.chatHistory)) {
+    throw new Error('Chat history response has an invalid format');
+  }
+
+  return response as ChatbotHistoryResponseType;
+};
+
 const status = async () => {
   try {
-    const request = await Request.get(`${(url as string)}`);
+    const request = await Request.get(`${getBaseUrl()}`);
 
     return {
       status: 200,
@@ -50,6 +65,7 @@ const status = async () => {
 
 const ChatbotService = {
   ask,
+  history,
   status,
 };
 
